@@ -26,16 +26,11 @@ const endingLabels: Record<string, { title: string; description: string; emoji: 
     description: 'Même dans l\'échec apparent, Souhayl a découvert des vérités profondes sur lui-même.',
     emoji: '🌙',
   },
-  struggle: {
-    title: 'La Lutte Éternelle',
-    description: 'Souhayl sait maintenant que la lutte contre l\'ego est un combat de chaque instant.',
-    emoji: '⚔️',
-  },
 };
 
 export default function EndingScreen({ page, endingsFound, onRestart }: EndingScreenProps) {
   const ending = endingLabels[page.endingType || 'wisdom'];
-  const totalEndings = 4;
+  const totalEndings = 3;
   const foundCount = endingsFound.length;
 
   return (
@@ -128,7 +123,7 @@ export default function EndingScreen({ page, endingsFound, onRestart }: EndingSc
             </span>
           </div>
           <div className="flex items-center justify-center gap-2">
-            {['light', 'wisdom', 'shadow', 'struggle'].map((type) => (
+            {['light', 'wisdom', 'shadow'].map((type) => (
               <div
                 key={type}
                 className={`w-3 h-3 rounded-full transition-colors duration-300 ${

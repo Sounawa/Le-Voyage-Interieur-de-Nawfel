@@ -2,16 +2,21 @@
 
 import { AnimatePresence } from 'framer-motion';
 import { useCallback, useEffect, useState } from 'react';
+import { BookOpen, Scroll } from 'lucide-react';
 import { useStoryStore } from '@/store/story-store';
 import { storyPages, firstPageId } from '@/data/story-data';
 import type { Choice } from '@/lib/story-types';
 import ParticleBackground from '@/components/book/ParticleBackground';
+import IslamicPattern from '@/components/book/IslamicPattern';
+import VignetteOverlay from '@/components/book/VignetteOverlay';
 import ProgressBar from '@/components/book/ProgressBar';
 import BookCover from '@/components/book/BookCover';
 import ChapterTitle from '@/components/book/ChapterTitle';
+import BismillahHeader from '@/components/book/BismillahHeader';
 import StoryPageView from '@/components/book/StoryPageView';
 import ChoiceButtons from '@/components/book/ChoiceButtons';
 import EndingScreen from '@/components/book/EndingScreen';
+import ChoiceJournal from '@/components/book/ChoiceJournal';
 
 type AppView = 'cover' | 'reading' | 'chapter-transition' | 'ending';
 
@@ -25,6 +30,7 @@ export default function Home() {
   const [view, setView] = useState<AppView>(savedView);
   const [transitioningChapter, setTransitioningChapter] = useState<{ chapter: number; title: string } | null>(null);
   const [previousChapter, setPreviousChapter] = useState<number>(-1);
+  const [journalOpen, setJournalOpen] = useState(false);
 
   const currentPage = storyPages[currentPageId];
 
@@ -49,12 +55,10 @@ export default function Home() {
     const nextPage = storyPages[currentPage.next];
     if (!nextPage) return;
 
-    // Check if we need to show a chapter transition
     if (nextPage.isChapterStart && nextPage.chapter !== previousChapter) {
       setTransitioningChapter({ chapter: nextPage.chapter, title: nextPage.chapterTitle });
       setView('chapter-transition');
       setPreviousChapter(nextPage.chapter);
-      // Pre-navigate to the chapter start page
       goToPage(nextPage.id, nextPage.chapter);
       return;
     }
@@ -63,25 +67,10 @@ export default function Home() {
   }, [currentPage, previousChapter, goToPage]);
 
   const handleChoice = useCallback((choice: Choice) => {
-    // Dynamic routing: if seeking guidance but has mixed/strong ego choices, redirect to struggle ending
-    let targetPageId = choice.nextPage;
-    if (choice.id === 'seek-guidance') {
-      const tags = useStoryStore.getState().chosenTags;
-      // If player made many ego-driven choices, they get the "struggle" ending instead of "wisdom"
-      const egoTags = ['courage', 'confrontation', 'discipline', 'passion', 'firmness', 'curiosity'];
-      const spiritualTags = ['humility', 'patience', 'detachment', 'mercy', 'dhikr', 'wisdom'];
-      const egoCount = tags.filter(t => egoTags.includes(t)).length;
-      const spiritualCount = tags.filter(t => spiritualTags.includes(t)).length;
-      if (egoCount > spiritualCount && egoCount >= 3) {
-        targetPageId = 'ending-struggle';
-      }
-    }
-
-    const nextPage = storyPages[targetPageId];
+    const nextPage = storyPages[choice.nextPage];
     if (!nextPage) return;
 
     if (choice.tag) {
-      // Check if this choice leads to a new chapter
       if (nextPage.isChapterStart && nextPage.chapter !== previousChapter) {
         makeChoice(choice.id, nextPage.id, choice.tag, nextPage.chapter);
         setTransitioningChapter({ chapter: nextPage.chapter, title: nextPage.chapterTitle });
@@ -100,17 +89,14 @@ export default function Home() {
     setTransitioningChapter(null);
   }, []);
 
-  // Detect endings
   useEffect(() => {
     if (currentPage?.isEnding && currentPage.endingType) {
       markEndingFound(currentPage.endingType);
-      // Small delay before showing ending screen
       const timer = setTimeout(() => setView('ending'), 1500);
       return () => clearTimeout(timer);
     }
   }, [currentPageId, currentPage, markEndingFound]);
 
-  // Mood-based background colors
   const getMoodClasses = () => {
     if (!currentPage) return 'bg-[#0a0a0f]';
     switch (currentPage.mood) {
@@ -125,16 +111,40 @@ export default function Home() {
     }
   };
 
+  const showJournalButton = view === 'reading' && !currentPage?.isEnding;
+
   return (
     <main className={`min-h-screen text-amber-100/90 transition-colors duration-1000 ${getMoodClasses()}`}>
       <ParticleBackground />
+      <IslamicPattern />
+      <VignetteOverlay />
 
       {view === 'cover' && (
         <BookCover onStart={handleStart} />
       )}
 
       {view !== 'cover' && view !== 'ending' && (
-        <ProgressBar currentPageId={currentPageId} totalPages={Object.keys(storyPages).length} />
+        <>
+          <ProgressBar currentPageId={currentPageId} totalPages={Object.keys(storyPages).length} />
+          
+          {/* Journal button */}
+          {showJournalButton && (
+            <button
+              onClick={() => setJournalOpen(true)}
+              className="fixed top-14 right-4 z-30 p-2.5 rounded-lg bg-[#0d0c14]/80 backdrop-blur-sm border border-amber-800/15 hover:bg-amber-900/20 hover:border-amber-700/30 transition-all duration-300 group"
+              title="Journal de Souhayl"
+            >
+              <Scroll className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
+            </button>
+          )}
+        </>
+      )}
+
+      {/* Bismillah at chapter starts */}
+      {view === 'reading' && currentPage?.isChapterStart && currentPage.chapter >= 1 && (
+        <div className="pt-14">
+          <BismillahHeader />
+        </div>
       )}
 
       <AnimatePresence mode="wait">
@@ -166,6 +176,9 @@ export default function Home() {
           />
         )}
       </AnimatePresence>
+
+      {/* Choice Journal sidebar */}
+      <ChoiceJournal isOpen={journalOpen} onClose={() => setJournalOpen(false)} />
     </main>
   );
 }

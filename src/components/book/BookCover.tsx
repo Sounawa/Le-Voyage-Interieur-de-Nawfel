@@ -144,7 +144,7 @@ export default function BookCover({ onStart }: BookCoverProps) {
             transition={{ delay: 2.3, duration: 1 }}
             className="text-amber-400/50 text-xs mt-6 font-serif"
           >
-            Fins découvertes : {endingsFound.length}/4
+            Fins découvertes : {endingsFound.length}/3
           </motion.p>
         )}
 

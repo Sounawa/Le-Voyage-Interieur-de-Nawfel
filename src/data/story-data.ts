@@ -10,9 +10,8 @@ export const storyPages: Record<string, StoryPage> = {
     chapter: 0,
     chapterTitle: 'Prologue',
     paragraphs: [
-      `Dans un petit village niché entre les collines, là où le vent porte le parfum de la terre mouillée et où les étoiles semblent plus proches que partout ailleurs, vivait un garçon de dix ans qui portait un nom lumineux : Souhayl.`,
-      `Son nom signifiait « l'étoile du soir », celle qui apparaît juste après le coucher du soleil, celle qui guide les voyageurs égarés. Et peut-être, justement, était-ce un signe — car Souhayl allait bientôt entreprendre un voyage que peu d'adultes osent même imaginer.`,
-      `Un voyage qui ne se mesure pas en kilomètres, mais en battements de cœur. Un voyage qui ne traverse pas des paysages, mais traverse l'âme même. Un voyage vers l'intérieur de lui-même.`,
+      `Dans un petit village niché entre les collines, là où le vent porte le parfum de la terre mouillée, vivait un garçon de dix ans qui portait un nom lumineux : Souhayl — l'étoile du soir, celle qui guide les voyageurs égarés.`,
+      `Et ce soir, Souhayl allait lui-même devenir un voyageur. Mais son voyage ne se mesurerait pas en kilomètres. Il traverserait l'âme elle-même.`,
     ],
     mood: 'prologue',
     next: 'ch1-start',
@@ -27,260 +26,368 @@ export const storyPages: Record<string, StoryPage> = {
     chapter: 1,
     chapterTitle: 'La Découverte',
     paragraphs: [
-      `C'était un jeudi après-midi, comme tous les jeudis. Souhayl rentrait de l'école en traînant ses pieds, son cartable trop lourd sur les épaules. Le soleil de fin d'automne étalait des ombres longues sur le chemin de terre qui menait à la maison familiale.`,
-      `La maison de Souhayl était ancienne, avec des murs épais de pierre ocre et un toit en tuiles usées par le temps. Son grand-père, que tout le monde appelait « Moulay » — un titre de respect — y vivait depuis toujours. C'était un homme silencieux aux yeux d'un bleu profond, comme le ciel juste avant l'aube.`,
-      `Moulay avait été, dans sa jeunesse, un compagnon de route spirituelle — ce qu'on appelle un soufi. Il avait marché sur le chemin du Tassawuf, cette science mystique de l'Islam qui enseigne comment purifier le cœur pour se rapprocher d'Allah. Mais il n'en parlait presque jamais. La sagesse, disait-il, ne crie pas dans les rues — elle murmure dans les cœurs qui savent écouter.`,
+      `C'était un jeudi après-midi. Souhayl rentrait de l'école en traînant ses pieds quand il remarqua quelque chose d'inhabituel : la porte du grenier — toujours fermée — était entrouverte. Un filet de lumière dorée en filtrait.`,
+      `Son grand-père Moulay était assis dans la cour, son chapelet entre ses doigts. — « Le grenier t'attend, dit-il sans lever les yeux. Il t'attendait depuis ta naissance. »`,
     ],
     mood: 'wonder',
-    next: 'ch1-2',
+    next: 'ch1-grenier',
     isChapterStart: true,
   },
 
-  'ch1-2': {
-    id: 'ch1-2',
+  'ch1-grenier': {
+    id: 'ch1-grenier',
     chapter: 1,
     chapterTitle: 'La Découverte',
     paragraphs: [
-      `En entrant dans la maison, Souhayl remarqua quelque chose d'inhabituel. La porte du grenier — cette porte toujours fermée, toujours verrouillée, que même le vent ne semblait pas oser frôler — était entrouverte.`,
-      `Un filet de lumière dorée s'en échappait, comme si quelqu'un y avait allumé une lampe. Mais Moulay était assis dans la cour, son chapelet entre ses doigts, les yeux mi-clos. Il ne semblait pas avoir bougé depuis des heures.`,
-      `— « Grand-père ? » appela Souhayl en posant son cartable contre le mur. Moulay ouvrit un œil, puis l'autre. Un sourire imperceptible plissa le coin de ses lèvres. — « Le grenier t'attend, mon enfant. Il t'attendait depuis ta naissance. »`,
-      `Souhayl fronça les sourcils. Il ne comprenait pas. Mais quelque chose dans la voix de son grand-père — une douceur grave, une certitude tranquille — lui fit comprendre qu'il ne devait pas poser de questions. Il devait monter.`,
+      `L'escalier grinçait sous ses pieds. Quand il poussa la trappe, Souhayl resta bouche bée. L'espace était transformé — des bougies flottaient dans l'air, des tapis anciens couvraient le sol, et au centre, un livre attendait sur un pupitre sculpté.`,
+      `Sa couverture était en cuir noir, ornée d'inscriptions dorées en arabe. Elle était tiède, comme la peau de quelqu'un qui vient de s'endormir au soleil.`,
     ],
     mood: 'wonder',
-    next: 'ch1-3',
+    next: 'ch1-choice-reaction',
   },
 
-  'ch1-3': {
-    id: 'ch1-3',
+  // ─── CHOICE 1: Réaction face au livre mystérieux ───
+  'ch1-choice-reaction': {
+    id: 'ch1-choice-reaction',
     chapter: 1,
     chapterTitle: 'La Découverte',
     paragraphs: [
-      `L'escalier du grenier grinçait sous ses pas. Chaque marche protestait, comme si elle voulait le dissuader d'aller plus loin. Mais Souhayl était curieux — et la curiosité, disait sa mère, était son plus grand défaut. Ou peut-être son plus grand don.`,
-      `Quand il poussa la trappe et émergea dans le grenier, il resta immobile, bouche bée. L'espace, qu'il avait imaginé poussiéreux et encombré, était transformé. Des dizaines de bougies flottaient dans l'air sans support, diffusant une lumière chaude et douce. Des tapis anciens, aux motifs rouges et dorés, couvraient le sol de bois.`,
-      `Et au centre, posé sur un pupitre sculpté de mains expertes, un livre attendait. Pas un livre ordinaire — sa couverture était en cuir noir, ornée d'inscriptions dorées en arabe que Souhayl ne pouvait pas lire, mais qui semblaient briller de leur propre lumière.`,
-    ],
-    mood: 'wonder',
-    next: 'ch1-4',
-  },
-
-  'ch1-4': {
-    id: 'ch1-4',
-    chapter: 1,
-    chapterTitle: 'La Découverte',
-    paragraphs: [
-      `Souhayl s'approcha lentement, comme on s'approche d'un animal sauvage qu'on craint de faire fuir. Ses doigts tremblaient quand il toucha la couverture du livre. Elle était chaude — tiède, comme la peau de quelqu'un qui vient de s'endormir au soleil.`,
-      `Il l'ouvrit avec précaution. Les pages, épaisses et jaunies par le temps, exhalaient un parfum étrange — un mélange de santal, de pluie sur la terre sèche et de quelque chose d'indéfinissable, quelque chose d'ancien, d'avant les mots, d'avant le monde.`,
-      `Sur la première page, une seule phrase était écrite, en français et en arabe :`,
-      `« Celui qui connaît son âme connaît son Seigneur. » — Prophète Muhammad ﷺ`,
-      `Puis, en dessous, dans une écriture plus petite, comme une note laissée par quelqu'un de pressé : « Souhayl — le voyage commence quand tu fermes les yeux. »`,
-    ],
-    mood: 'wonder',
-    next: 'ch1-5',
-  },
-
-  'ch1-5': {
-    id: 'ch1-5',
-    chapter: 1,
-    chapterTitle: 'La Découverte',
-    paragraphs: [
-      `Le cœur de Souhayl battait si fort qu'il l'entendait dans ses tempes. Son nom — écrit dans ce livre mystérieux, dans ce grenier interdit — son nom, comme si quelqu'un l'avait attendu depuis toujours.`,
-      `Il tourna les pages lentement. Des dessins étranges l'habitaient : un labyrinthe aux murs faits de mots, un arbre dont les racines plongeaient dans les étoiles, un miroir qui reflétait non pas un visage mais un paysage de sable et de vent.`,
-      `Puis il arriva à une page qui le figea. Elle représentait un jeune garçon — à peu près son âge — debout devant une porte immense, noire comme la nuit, ornée de symboles dorés. Le garçon tenait dans sa main une petite lampe dont la flamme vacillait. Et derrière la porte, on devinait... quelque chose. Un monde. Un monde qui n'était pas celui de tous les jours.`,
-    ],
-    mood: 'wonder',
-    next: 'ch1-6',
-  },
-
-  'ch1-6': {
-    id: 'ch1-6',
-    chapter: 1,
-    chapterTitle: 'La Découverte',
-    paragraphs: [
-      `— « Tu as trouvé le Livre des Cœurs », dit une voix derrière lui.`,
-      `Souhayl sursauta et se retourna. Moulay se tenait dans l'encadrement de la trappe, appuyé sur sa canne, son visage illuminé par la lueur des bougies flottantes. Il ne semblait pas surpris de trouver son petit-fils ici.`,
-      `— « Grand-père... c'est quoi ce livre ? C'est quoi cet endroit ? » balbutia Souhayl.`,
-      `Moulay monta lentement, chaque lui un acte de patience. Il s'assit sur un tapis, croisa les jambes, et invita Souhayl à faire de même. — « Assieds-toi, mon étoile du soir. Il est temps que je te raconte une histoire. Mais pas n'importe quelle histoire — la tienne. »`,
-    ],
-    mood: 'wisdom',
-    next: 'ch1-7',
-  },
-
-  'ch1-7': {
-    id: 'ch1-7',
-    chapter: 1,
-    chapterTitle: 'La Découverte',
-    paragraphs: [
-      `— « Ce livre, expliqua Moulay d'une voix qui ressemblait au murmure du vent dans les oliviers, est un héritage. Il a été transmis de Shaykh à Shaykh, de génération en génération, depuis des siècles. Il contient la carte d'un monde que peu de gens connaissent — le monde intérieur. »`,
-      `— « Le monde intérieur ? répéta Souhayl. C'est comme... dans la tête ? »`,
-      `Moulay rit doucement, un rire qui venait du fond de sa poitrine, comme une source souterraine. — « Pas dans la tête, Souhayl. Dans le cœur. Le cœur est un univers entier — plus vaste que tout ce que tes yeux ont jamais vu. Il contient des océans, des déserts, des montagnes, des forêts. Et il contient aussi... des ennemis. »`,
-      `Souhayl sentit un frisson lui parcourir l'échine. — « Des ennemis ? »`,
-      `— « Le plus dangereux de tous, continua Moulay, vit à l'intérieur de toi-même. On l'appelle le Nafs — l'ego. Et il a un allié puissant, très ancien, très rusé... » Moulay baissa la voix. « On l'appelle Shaytan. »`,
-    ],
-    mood: 'wisdom',
-    shaykhSpeaks: 'Le plus long voyage est celui qui va de la tête au cœur. Et le plus court, celui du cœur à Allah.',
-    next: 'ch1-8',
-  },
-
-  'ch1-8': {
-    id: 'ch1-8',
-    chapter: 1,
-    chapterTitle: 'La Découverte',
-    paragraphs: [
-      `Moulay posa sa main sur l'épaule de Souhayl. Sa paume était rugueuse, usée par les années, mais sa pression était douce — comme si, à travers ce simple contact, il transmettait quelque chose d'invisible.`,
-      `— « Le Tassawuf, dit-il, c'est le chemin de la purification. C'est l'art de nettoyer le cœur de ses impuretés — l'orgueil, la jalousie, la colère, l'attachement — pour que la lumière d'Allah puisse y entrer. Imagine un miroir couvert de poussière. Le Tassawuf, c'est l'action de nettoyer ce miroir, jusqu'à ce qu'il reflète parfaitement la lumière. »`,
-      `— « Et comment on fait ? demanda Souhayl, les yeux grands ouverts. Comment on nettoie le miroir ? »`,
-      `Moulay sourit. — « En le regardant d'abord. En osant voir la poussière. La plupart des gens passent leur vie à détourner le regard. Mais toi, Souhayl... toi, tu as déjà ouvert ce livre. »`,
-      `— « Le voyage dont parle ce livre, continua Moulay, ne se fait pas avec des pieds. Il se fait avec le cœur. Tu devras entrer dans ton propre monde intérieur, y affronter tes peurs, tes désirs, tes faiblesses. Et là, tu trouveras la vérité. »`,
-    ],
-    mood: 'wisdom',
-    shaykhSpeaks: 'Le cœur est le champ de bataille de l\'homme. S\'il est vaincu, tout est perdu. S\'il est vainqueur, tout est gagné.',
-    next: 'ch1-9',
-  },
-
-  'ch1-9': {
-    id: 'ch1-9',
-    chapter: 1,
-    chapterTitle: 'La Découverte',
-    paragraphs: [
-      `Cette nuit-là, Souhayl ne put pas dormir. Il était allongé sur son lit, les yeux fixés sur le plafond, le cœur battant à tout rompre. Les mots de son grand-père tournaient dans sa tête comme des feuilles prises dans un tourbillon : « Le monde intérieur... le Nafs... Shaytan... »`,
-      `Autour de lui, la maison était silencieuse. Pas un bruit. Même le chat, Moustique — ainsi nommé à cause de sa petite taille — dormait en boule au pied du lit. Dehors, la lune pleine baignait le village d'une lumière argentée qui transformait chaque ombre en paysage onirique.`,
-      `Souhayl ferma les yeux. Et au moment exact où ses paupières se rejoignirent, quelque chose changea. L'odeur de la pièce se transforma — plus de lavande, plus de coton frais. À la place, un parfum de sable chaud, d'encens brûlé et de quelque chose d'indéfinissable envahit ses narines.`,
-      `Et puis, il entendit une voix. Pas une voix extérieure — une voix intérieure, qui venait du plus profond de son être, comme si son âme elle-même lui parlait :`,
-      `— « Souhayl... tu as fermé les yeux. Le voyage commence maintenant. »`,
-    ],
-    mood: 'wonder',
-    next: 'ch1-10',
-  },
-
-  'ch1-10': {
-    id: 'ch1-10',
-    chapter: 1,
-    chapterTitle: 'La Découverte',
-    paragraphs: [
-      `Quand Souhayl rouvrit les yeux — ses yeux intérieurs — il n'était plus dans sa chambre. Il se tenait debout sur un sol de terre rouge sombre, sous un ciel qui n'avait pas de couleur fixe. Parfois il était pourpre, parfois noir constellé d'étoiles immenses, parfois d'un bleu si profond qu'il semblait solide.`,
-      `Devant lui, à quelques mètres, se dressait une porte. Pas n'importe quelle porte — elle ressemblait exactement à celle du dessin dans le livre. Immense, noire, ornée de symboles dorés qui pulsaient doucement, comme un cœur vivant. Les inscriptions arabes brillaient d'une lumière propre, et Souhayl sentait, plutôt qu'il ne comprenait, qu'elles racontaient une histoire — son histoire.`,
-      `À ses pieds, une petite lampe à huile attendait, sa flamme vacillant dans un souffle invisible. Et autour de lui, le silence n'était pas un silence vide — c'était un silence plein, comme celui d'une mosquée avant la prière, quand chaque atome semble retenir son souffle.`,
-      `Souhayl prit la lampe dans ses mains. Sa lumière projetait des ombres dansantes sur la porte, comme si les ténèbres elles-mêmes cherchaient à fuir cette petite flamme.`,
-    ],
-    mood: 'wonder',
-    next: 'ch1-11',
-  },
-
-  'ch1-11': {
-    id: 'ch1-11',
-    chapter: 1,
-    chapterTitle: 'La Découverte',
-    paragraphs: [
-      `Il s'approcha de la porte. Plus il avançait, plus il sentait quelque chose — pas de la peur, exactement, mais quelque chose de plus complexe. Une mélange de fascination et de terreur sacrée, comme quand on se tient au bord d'un précipice et qu'on sait que d'un côté il y a le danger, et de l'autre, la découverte.`,
-      `La porte était couverte de symboles qu'il ne comprenait pas. Des cercles entrelacés, des étoiles à huit branches, des lettres arabes formant des mots qui semblaient se déplacer quand il ne les regardait pas directement. Et au centre, un seul mot, plus grand que les autres :`,
-      `"قلب" — « Qalb » — Le Cœur.`,
-      `Souhayl leva la main pour toucher la porte. Sa peau frôla le métal froid — non, ce n'était pas du métal. C'était quelque chose de vivant. La porte pulsa sous ses doigts, comme si elle respirait. Et quand il appuya doucement, elle résista. Pas méchamment — plutôt comme un gardien prudent qui demande : « Es-tu sûr de vouloir entrer ? »`,
-      `Puis une voix — la même voix intérieure — murmura :`,
-      `— « Avant de franchir cette porte, Souhayl, dis-moi... avec quoi veux-tu la franchir ? »`,
-    ],
-    mood: 'wonder',
-    next: 'ch1-choice-1',
-  },
-
-  // ─── CHOICE 1: How to enter the inner world ───
-  'ch1-choice-1': {
-    id: 'ch1-choice-1',
-    chapter: 1,
-    chapterTitle: 'La Découverte',
-    paragraphs: [
-      `La question résonna dans tout son être, vibrant dans ses os, dans son sang, dans le espace entre ses pensées. Ce n'était pas une question ordinaire. C'était le premier test — le premier choix véritable de son voyage.`,
+      `Le livre semblait vivant, comme s'il respirait. Ses inscriptions dorées pulsaient doucement. Qu'allait faire Souhayl ?`,
     ],
     mood: 'wonder',
     choices: [
       {
-        id: 'courage',
-        text: 'Avec courage — je ne reculerai devant rien, même si ce qui m\'attend me fait peur. Le courage est la première étape de tout chemin.',
-        nextPage: 'ch1-a1',
+        id: 'open-immediately',
+        text: 'L\'ouvrir tout de suite — la curiosité est trop forte, il DOIT savoir ce qu\'il y a dedans !',
+        nextPage: 'ch1-a1-open',
+        tag: 'curiosity',
+        emoji: '📖',
+      },
+      {
+        id: 'examine-first',
+        text: 'L\'examiner d\'abord — observer les inscriptions, toucher la couverture, essayer de comprendre avant d\'agir.',
+        nextPage: 'ch1-a2-examine',
+        tag: 'patience',
+        emoji: '🔍',
+      },
+      {
+        id: 'call-grandfather',
+        text: 'Appeler Moulay — c\'est son grenier, son livre. Il ne devrait pas toucher quelque chose qui ne lui appartient pas.',
+        nextPage: 'ch1-a3-call',
+        tag: 'respect',
+        emoji: '👴',
+      },
+    ],
+  },
+
+  'ch1-a1-open': {
+    id: 'ch1-a1-open',
+    chapter: 1,
+    chapterTitle: 'La Découverte',
+    paragraphs: [
+      `Souhayl ouvrit le livre d'un geste vif. Les pages, épaisses et jaunies, exhalaient un parfum de santal et de pluie. Sur la première page, une phrase en arabe et en français :`,
+      `« Celui qui connaît son âme connaît son Seigneur. » — Prophète Muhammad ﷺ`,
+      `Et en dessous, écrit à la hâte : « Souhayl — le voyage commence quand tu fermes les yeux. » Son nom ! Écrit dans ce livre ! Son cœur battait si fort qu'il l'entendait dans ses tempes.`,
+    ],
+    mood: 'wonder',
+    next: 'ch1-moulay',
+  },
+
+  'ch1-a2-examine': {
+    id: 'ch1-a2-examine',
+    chapter: 1,
+    chapterTitle: 'La Découverte',
+    paragraphs: [
+      `Souhayl passa ses doigts sur les inscriptions dorées. Elles étaient gravées profondément, comme si quelqu'un y avait consacré des années. Il reconnut quelques lettres arabes — le bismillah, peut-être ? — mais le reste lui échappait.`,
+      `Il souleva le livre avec précaution. Il était plus lourd qu'il n'en avait l'air. Et quand il l'ouvrit enfin, la première page lui coupa le souffle : une phrase magnifique en calligraphie dorée, et en dessous... son propre nom.`,
+    ],
+    mood: 'wonder',
+    next: 'ch1-moulay',
+  },
+
+  'ch1-a3-call': {
+    id: 'ch1-a3-call',
+    chapter: 1,
+    chapterTitle: 'La Découverte',
+    paragraphs: [
+      `— « Grand-père ! cria Souhayl depuis le grenier. Il y a un livre ici ! Un livre avec mon nom dessus ! »`,
+      `Moulay monta lentement, chaque marche un acte de patience. Il s'assit sur un tapis et invita Souhayl à faire de même. — « Ouvre-le, mon étoile du soir. Ce livre t'attendait. »`,
+      `Les pages s'ouvrirent sous ses doigts, révélant une calligraphie dorée : « Celui qui connaît son âme connaît son Seigneur. » Et en dessous, son nom.`,
+    ],
+    mood: 'wonder',
+    next: 'ch1-moulay',
+  },
+
+  'ch1-moulay': {
+    id: 'ch1-moulay',
+    chapter: 1,
+    chapterTitle: 'La Découverte',
+    paragraphs: [
+      `— « Ce livre, expliqua Moulay, contient la carte d'un monde que peu de gens connaissent — le monde intérieur. Le cœur est un univers entier : des océans, des déserts, des montagnes. Et il contient aussi des ennemis. »`,
+      `Souhayl sentit un frisson. — « Des ennemis ? » — « Le plus dangereux vit en toi : le Nafs — l'ego. Et il a un allié très rusé qu'on appelle Shaytan. »`,
+      `Moulay posa sa main sur l'épaule de Souhayl. — « Le Tassawuf, c'est le chemin pour nettoyer le cœur, comme on nettoie un miroir couvert de poussière. Tu devras entrer dans ton propre monde intérieur. »`,
+    ],
+    mood: 'wisdom',
+    shaykhSpeaks: 'Le plus long voyage est celui qui va de la tête au cœur. Et le plus court, celui du cœur à Allah.',
+    next: 'ch1-choice-question',
+  },
+
+  // ─── CHOICE 2: Question à poser à Moulay ───
+  'ch1-choice-question': {
+    id: 'ch1-choice-question',
+    chapter: 1,
+    chapterTitle: 'La Découverte',
+    paragraphs: [
+      `Souhayl avait la tête pleine de questions. Moulay attendait, patient comme toujours. Mais une question allait définir la suite de son voyage.`,
+    ],
+    mood: 'wisdom',
+    choices: [
+      {
+        id: 'ask-fear',
+        text: '« J\'ai peur... Et si je n\'arrive pas à nettoyer mon cœur ? Et si je suis trop faible ? »',
+        nextPage: 'ch1-b1-fear',
+        tag: 'vulnerability',
+        emoji: '😰',
+      },
+      {
+        id: 'ask-ego',
+        text: '« Mon ego... Comment je fais pour le voir ? Il est invisible, non ? Comment combattre quelque chose que je ne vois pas ? »',
+        nextPage: 'ch1-b2-ego',
+        tag: 'courage',
+        emoji: '🤔',
+      },
+      {
+        id: 'ask-why-me',
+        text: '« Mais pourquoi moi ? Je suis qu\'un enfant. Il y a des adultes bien plus sages que moi ! »',
+        nextPage: 'ch1-b3-why',
+        tag: 'humility',
+        emoji: '👶',
+      },
+    ],
+  },
+
+  'ch1-b1-fear': {
+    id: 'ch1-b1-fear',
+    chapter: 1,
+    chapterTitle: 'La Découverte',
+    paragraphs: [
+      `Moulay sourit tendrement. — « La peur est le début de la sagesse, Souhayl. Seul l'insensé n'a pas peur. Mais écoute bien : la faiblesse n'est pas un défaut quand on s'appuie sur le Fort. Et le plus Fort de tous, c'est Allah. »`,
+      `— « Quand tu te sentiras faible, murmura-t-il, souviens-toi de cette phrase : « Hasbunallahu wa ni'mal wakeel » — Allah nous suffit, et quel excellent protecteur. Ce n'est pas ta force qui comptera, mais ta confiance en Lui. »`,
+    ],
+    mood: 'wisdom',
+    shaykhSpeaks: 'La peur est la porte de la foi. Celui qui a peur et avance quand même est plus fort que celui qui n\'a jamais eu peur.',
+    next: 'ch1-night',
+  },
+
+  'ch1-b2-ego': {
+    id: 'ch1-b2-ego',
+    chapter: 1,
+    chapterTitle: 'La Découverte',
+    paragraphs: [
+      `Moulay écarquilla les yeux, surpris. — « Excellente question ! L'ego est invisible, oui... mais il laisse des traces. Quand tu te mets en colère sans raison, c'est lui. Quand tu refuses d'admettre que tu as tort, c'est lui. Quand tu compares tes jouets à ceux de ton ami et que tu en veux plus, c'est encore lui. »`,
+      `— « Le Tassawuf t'apprendra à le reconnaître. Pas à le détruire — impossible — mais à le connaître, pour qu'il ne te contrôle plus sans que tu le saches. »`,
+    ],
+    mood: 'wisdom',
+    shaykhSpeaks: 'Ton ego est comme un chien en laisse. Si tu ne le tiens pas, il te traîne. Si tu le tiens trop fort, il te mord. La sagesse, c\'est de connaître la bonne longueur de laisse.',
+    next: 'ch1-night',
+  },
+
+  'ch1-b3-why': {
+    id: 'ch1-b3-why',
+    chapter: 1,
+    chapterTitle: 'La Découverte',
+    paragraphs: [
+      `Moulay rit doucement, un rire qui venait du fond de sa poitrine. — « Précisément ! Les adultes ont construit des forteresses autour de leur ego — si épaisses que même la lumière a du mal à y pénétrer. Le tien est encore une cabane. Plus facile à transformer. »`,
+      `— « Et puis, continua-t-il, tu as quelque chose que beaucoup d'adultes ont perdu : la sincérité. Tu ne cherches pas la gloire ni la reconnaissance. Tu veux juste comprendre. Et c'est la meilleure intention possible. »`,
+    ],
+    mood: 'wisdom',
+    shaykhSpeaks: 'Les cœurs purs voient ce que les cœurs voilés ne peuvent même pas imaginer. Ne sous-estime jamais la force de ton innocence.',
+    next: 'ch1-night',
+  },
+
+  'ch1-night': {
+    id: 'ch1-night',
+    chapter: 1,
+    chapterTitle: 'La Découverte',
+    paragraphs: [
+      `Cette nuit-là, Souhayl ne put pas dormir. Les mots de Moulay tournaient dans sa tête. Dehors, la lune baignait le village d'une lumière argentée.`,
+      `Il ferma les yeux. Et au moment exact où ses paupières se rejoignirent, l'odeur de sa chambre changea — plus de lavande, mais du sable chaud, de l'encens brûlé. Une voix intérieure murmura : « Souhayl... le voyage commence maintenant. »`,
+    ],
+    mood: 'wonder',
+    next: 'ch1-door',
+  },
+
+  'ch1-door': {
+    id: 'ch1-door',
+    chapter: 1,
+    chapterTitle: 'La Découverte',
+    paragraphs: [
+      `Quand Souhayl rouvrit les yeux, il se tenait debout sur un sol de terre rouge, sous un ciel changeant. Devant lui, une porte immense — noire, ornée de symboles dorés pulsant comme un cœur vivant. Au centre du mot « قلب » — Qalb — Le Cœur.`,
+      `À ses pieds, une petite lampe à huile attendait. La voix intérieure demanda : « Avec quoi veux-tu franchir cette porte, Souhayl ? »`,
+    ],
+    mood: 'wonder',
+    next: 'ch1-choice-enter',
+  },
+
+  // ─── CHOICE 3: Comment franchir la porte ───
+  'ch1-choice-enter': {
+    id: 'ch1-choice-enter',
+    chapter: 1,
+    chapterTitle: 'La Découverte',
+    paragraphs: [
+      `La porte pulsait doucement. Chaque battement résonnait dans sa poitrine, comme si la porte et son cœur battaient au même rythme. Le moment était venu de choisir.`,
+    ],
+    mood: 'wonder',
+    choices: [
+      {
+        id: 'enter-courage',
+        text: 'Pousser la porte avec force — « Je n\'ai peur de rien ! Mon cœur est brave et Allah est avec moi ! »',
+        nextPage: 'ch1-c1-courage',
         tag: 'courage',
         emoji: '🦁',
       },
       {
-        id: 'humility',
-        text: 'Avec humilité — je sais que je ne suis rien sans l\'aide d\'Allah. Je frapperai à cette porte comme un serviteur humble frappe à celle de son maître.',
-        nextPage: 'ch1-a2',
+        id: 'enter-humility',
+        text: 'S\'agenouiller et prier — « Ya Allah, je ne suis rien sans Toi. Ouvre-moi cette porte, car seul Toi le peux. »',
+        nextPage: 'ch1-c2-humility',
         tag: 'humility',
-        emoji: '🕯️',
+        emoji: '🤲',
       },
       {
-        id: 'curiosity',
-        text: 'Avec curiosité — je veux comprendre, découvrir, apprendre. Le monde intérieur est un mystère et je suis un explorateur.',
-        nextPage: 'ch1-a3',
-        tag: 'curiosity',
-        emoji: '🔮',
+        id: 'enter-wonder',
+        text: 'Tendre la main et toucher la porte doucement — la caresser comme on caresse un animal sauvage, avec curiosité et respect.',
+        nextPage: 'ch1-c3-wonder',
+        tag: 'sensitivity',
+        emoji: '✨',
       },
     ],
   },
 
-  'ch1-a1': {
-    id: 'ch1-a1',
+  'ch1-c1-courage': {
+    id: 'ch1-c1-courage',
     chapter: 1,
     chapterTitle: 'La Découverte',
     paragraphs: [
-      `— « Avec courage », dit Souhayl d'une voix qui tremblait à peine. Il serrait les poings, redressa les épaules, et poussa la porte de toutes ses forces.`,
-      `La porte s'ouvrit dans un grondement sourd, comme un tonnerre lointain. Un souffle d'air chaud l'accueillit, portant avec lui des odeurs d'épices, de cèdre brûlé et de terre ancienne. La lumière de sa lampe bondit en avant, éclairant un corridor aux murs ornés de mosaïques qui scintillaient comme des galaxies.`,
-      `Le courage avait ouvert la porte, mais il avait aussi réveillé quelque chose. Au loin, dans les profondeurs du corridor, un grondement répondit au sien — un grondement qui n'était pas de la pierre. C'était quelque chose de vivant. Quelque chose qui avait entendu sa déclaration de bravoure et qui, maintenant, le défiait.`,
-      `— « Bien », murmura la voix intérieure. « Le courage est une arme à double tranchant. Il peut te protéger... ou te rendre aveugle. Veille à ne pas confondre la force du corps avec la force du cœur. »`,
+      `La porte s'ouvrit dans un grondement sourd. Un corridor aux murs de mosaïques scintillantes apparut. Mais quelque chose avait aussi été réveillé — au loin, un grondement répondit au sien. Quelque chose de vivant qui avait entendu sa bravoure et le défiait.`,
+      `— « Le courage est une arme, murmura la voix. Mais toute arme peut se retourner contre celui qui la manie. Veille à ce que ta bravoure ne devienne pas de l'orgueil. »`,
     ],
     mood: 'wonder',
-    next: 'ch1-14',
+    next: 'ch1-arrival',
   },
 
-  'ch1-a2': {
-    id: 'ch1-a2',
+  'ch1-c2-humility': {
+    id: 'ch1-c2-humility',
     chapter: 1,
     chapterTitle: 'La Découverte',
     paragraphs: [
-      `— « Avec humilité », souffla Souhayl. Et au lieu de pousser la porte, il s'agenouilla. Il posa sa lampe à terre, joignit ses mains, et ferma les yeux. — « Ya Allah, je ne suis qu'un petit garçon. Je ne sais pas où ce chemin me mènera. Mais je fais confiance. Guide-moi. »`,
-      `La porte ne s'ouvrit pas avec fracas. Elle se dissolut doucement, comme du sel dans l'eau, jusqu'à disparaître complètement. Et ce qui apparut derrière n'était pas un corridor sombre, mais une lumière — douce, dorée, infiniment paisible. Comme la lumière qui filtre à travers les fenêtres d'une mosquée à l'aube.`,
-      `Souhayl se releva lentement. Ses yeux brillaient de larmes qu'il ne comprenait pas. Quelque chose en lui — pas dans sa tête, plus profond — avait reconnu cette lumière. Comme si son âme s'en souvenait, d'un temps avant sa naissance.`,
-      `— « Bien », murmura la voix intérieure avec une tendresse infinie. « L'humilité est la clé qui ouvre toutes les portes du ciel. Garde-la précieusement — beaucoup la perdent en route. »`,
+      `La porte se dissolut comme du sel dans l'eau. Derrière elle, une lumière dorée infiniment paisible l'accueillit — comme l'aube filtrant les fenêtres d'une mosquée. Des larmes coulèrent sur les joues de Souhayl sans qu'il sache pourquoi.`,
+      `— « L'humilité est la clé de toutes les portes du ciel, murmura la voix avec tendresse. Garde-la précieusement — beaucoup la perdent en chemin. »`,
     ],
     mood: 'peace',
-    next: 'ch1-14',
+    next: 'ch1-arrival',
   },
 
-  'ch1-a3': {
-    id: 'ch1-a3',
+  'ch1-c3-wonder': {
+    id: 'ch1-c3-wonder',
     chapter: 1,
     chapterTitle: 'La Découverte',
     paragraphs: [
-      `— « Avec curiosité ! » s'exclama Souhayl, les yeux brillants d'excitation. Il ne réfléchit pas deux fois — il mit un pied puis l'autre, franchissant le seuil comme on franchit celui d'un parc d'attractions, avec l'émerveillement naïf de l'enfance.`,
-      `La porte se referma derrière lui avec un claquement sec, et Souhayl se retrouva dans un espace impossible. Le plafond n'existait pas — à la place, un ciel en spirale tournoyait au-dessus de lui, rempli de nébuleuses colorées et d'étoiles qui formaient des lettres, des mots, des versets entiers du Coran écrits en lumière.`,
-      `Le sol sous ses pieds était translucide, et en regardant vers le bas, Souhayl vit des océans, des forêts, des montagnes — des paysages entiers qui vivaient sous la surface, comme un monde parallèle encapsulé dans le sien. Sa curiosité débordante lui faisait vouloir aller partout à la fois.`,
-      `— « Bien », murmura la voix, amusée. « La curiosité est le premier éveil de l'âme. Mais attention, petit explorateur — la curiosité sans sagesse est un feu sans foyer. Il te faudra apprendre à canaliser cette flamme. »`,
+      `Ses doigts frôlèrent la porte. Elle trembla, puis s'entrouvit doucement, comme une fleur qui s'épanouit. À l'intérieur, le monde était différent — le sol était translucide, révélant des océans et des forêts souterraines. Le plafond était un ciel en spirale de nébuleuses colorées.`,
+      `— « La sensibilité est un don rare, murmura la voix. Le monde intérieur se révèle à ceux qui savent le toucher avec douceur. Ton cœur est doux, Souhayl. Ne laisse jamais le monde l'endurcir. »`,
     ],
     mood: 'wonder',
-    next: 'ch1-14',
+    next: 'ch1-arrival',
   },
 
-  'ch1-14': {
-    id: 'ch1-14',
+  'ch1-arrival': {
+    id: 'ch1-arrival',
     chapter: 1,
     chapterTitle: 'La Découverte',
     paragraphs: [
-      `Souhayl fit ses premiers pas dans le monde intérieur, et chaque pas était une découverte. Le sol changeait sous ses pieds — tantôt herbe tendre, tantôt sable chaud, tantôt marbre froid — comme si le paysage lui-même respirait et changeait d'humeur.`,
-      `L'air ici était différent. Plus dense, plus vivant. Chaque respiration lui remplissait le corps d'une énergie étrange, à la fois apaisante et excitante. Il se sentait à la fois minuscule — un grain de poussière dans l'immensité — et immense — comme si l'univers tout entier pouvait tenir dans sa poitrine.`,
-      `Sa lampe à huile brûlait d'une flamme constante, projetant un cercle de lumière dorée autour de lui. Et dans ce cercle, il se sentait protégé. En dehors... l'obscurité n'était pas hostile, mais elle n'était pas non plus amie. Elle attendait. Elle observait.`,
+      `Souhayl fit ses premiers pas. Le sol changeait sous ses pieds — herbe tendre, puis sable chaud, puis marbre froid. Sa lampe brûlait d'une flamme constante. Des arbres aux feuilles de lumière poussaient par endroits, leurs branches chargées de fruits-souvenirs.`,
+      `Et au loin, trois chemins se dessinaient : un vers une lumière blanche, un vers un son mélodieux, un vers une rivière scintillante. Chacun semblait l'appeler différemment.`,
     ],
     mood: 'wonder',
-    next: 'ch1-15',
+    next: 'ch1-choice-path',
   },
 
-  'ch1-15': {
-    id: 'ch1-15',
+  // ─── CHOICE 4: Quel chemin explorer en premier ───
+  'ch1-choice-path': {
+    id: 'ch1-choice-path',
     chapter: 1,
     chapterTitle: 'La Découverte',
     paragraphs: [
-      `En marchant, Souhayl commença à percevoir les détails de ce monde. Des arbres aux feuilles de lumière poussaient par endroits, leurs branches chargées de fruits qui n'étaient pas des fruits — c'étaient des souvenirs. Il le sentait sans savoir comment : chaque fruit contenait un moment de sa vie, enfoui dans son cœur.`,
-      `Un ruisseau coulait non loin, et ses eaux étaient transparentes comme du cristal. Mais quand Souhayl s'approcha, il vit que le ruisseau ne reflétait pas son visage — il reflétait ses émotions. À chaque instant, l'eau changeait de couleur : bleu quand il ressentait de la paix, rouge quand il pensait à quelque chose qui le mettait en colère, noir quand une ombre de peur traversait son esprit.`,
-      `Et plus il avançait, plus le paysage s'ouvrait. L'horizon n'était pas une ligne — c'était une promesse. Un paysage se dévoilait au loin : un désert immense, aux dunes dorées, sous un ciel où deux lunes se croisaient.`,
-      `C'est là qu'une voix — pas la voix intérieure, une autre voix, plus grave, plus forte — appela depuis les hauteurs :`,
-      `— « Souhayl ! Fils de la lumière ! Le désert t'attend ! Viens voir ce que ton cœur contient vraiment ! »`,
+      `Les trois chemins l'attiraient chacun avec une force différente. Le chemin de lumière lui donnait envie de courir. Le chemin du son l'apaisait. Le chemin de la rivière éveillait sa soif. Lequel choisir ?`,
+    ],
+    mood: 'wonder',
+    choices: [
+      {
+        id: 'path-light',
+        text: 'La lumière blanche — quelque chose de pur et de brillant l\'attend là-bas. Il veut voir ce qui brille autant.',
+        nextPage: 'ch1-d1-light',
+        tag: 'truth',
+        emoji: '☀️',
+      },
+      {
+        id: 'path-sound',
+        text: 'Le son mélodieux — une mélodie ancienne l\'appelle. C\'est comme une prière, mais en musique. Il veut l\'écouter.',
+        nextPage: 'ch1-d2-sound',
+        tag: 'devotion',
+        emoji: '🎵',
+      },
+      {
+        id: 'path-river',
+        text: 'La rivière scintillante — ses eaux sont transparentes comme du cristal. Quelque chose lui dit qu\'elles reflètent la vérité.',
+        nextPage: 'ch1-d3-river',
+        tag: 'reflection',
+        emoji: '🌊',
+      },
+    ],
+  },
+
+  'ch1-d1-light': {
+    id: 'ch1-d1-light',
+    chapter: 1,
+    chapterTitle: 'La Découverte',
+    paragraphs: [
+      `Souhayl marcha vers la lumière. Plus il s'approchait, plus il se sentait léger — comme si des poids invisibles se détachaient de ses épaules. Quand il arriva à la source, il découvrit une lanterne ancienne flottant dans les airs, sa flamme blanche irradiant une paix indescriptible.`,
+      `— « La lumière de la guidance, dit une voix grave. Elle ne brille que pour celui qui la cherche sincèrement. Souhayl, tu as choisi la voie de la vérité. Souviens-toi de cette lumière quand l'obscurité viendra. »`,
+    ],
+    mood: 'peace',
+    next: 'ch1-end',
+  },
+
+  'ch1-d2-sound': {
+    id: 'ch1-d2-sound',
+    chapter: 1,
+    chapterTitle: 'La Découverte',
+    paragraphs: [
+      `La mélodie se faisait plus claire à chaque pas. Ce n'était pas une musique ordinaire — c'était du dhikr, la répétition des noms d'Allah, chantée par des voix invisibles d'une beauté surnaturelle. Souhayl sentit son cœur vibrer à l'unisson.`,
+      `— « Le dhikr est la nourriture des âmes, dit une voix douce. Quand tu te sentiras seul dans ce monde, rappelle-toi d'Allah, et Il se souviendra de toi. C'est la promesse la plus sûre. »`,
+    ],
+    mood: 'peace',
+    next: 'ch1-end',
+  },
+
+  'ch1-d3-river': {
+    id: 'ch1-d3-river',
+    chapter: 1,
+    chapterTitle: 'La Découverte',
+    paragraphs: [
+      `Souhayl s'agenouilla au bord de la rivière. Ses eaux ne reflétaient pas son visage — elles reflétaient ses émotions. Bleu quand il était calme, rouge quand il pensait à la colère, noir quand la peur traversait son esprit. C'était fascinant et terrifiant.`,
+      `— « Cette rivière est ton cœur, dit une voix sourde. Regarde-la bien. Apprends à la connaître. Car bientôt, tu devras la traverser, et seule la sincérité te permettra de ne pas couler. »`,
+    ],
+    mood: 'wonder',
+    next: 'ch1-end',
+  },
+
+  'ch1-end': {
+    id: 'ch1-end',
+    chapter: 1,
+    chapterTitle: 'La Découverte',
+    paragraphs: [
+      `Après cette première exploration, une voix appela depuis les hauteurs : « Souhayl ! Le désert de ton âme t'attend ! Viens voir ce que ton cœur contient vraiment ! »`,
+      `Le paysage se transforma. L'horizon s'ouvrit sur un désert immense aux dunes dorées, sous un ciel où deux lunes se croisaient. Le vent soufflait, chaud et chargé de mystère.`,
     ],
     mood: 'wonder',
     next: 'ch2-start',
@@ -294,227 +401,273 @@ export const storyPages: Record<string, StoryPage> = {
     chapter: 2,
     chapterTitle: 'Le Désert de l\'Âme',
     paragraphs: [
-      `Le désert de l'âme n'était pas un désert comme ceux qu'on voit dans les livres de géographie. Ses dunes n'étaient pas faites de sable, mais de pensées. Chaque grain était une pensée que Souhayl avait eue un jour — des millions de grains, des milliards de pensées, certaines brillantes comme de l'or, d'autres sombres comme des cendres.`,
-      `Le vent qui soufflait n'était pas un vent ordinaire. C'était le souffle de ses propres désirs — tantôt chaud et envahissant, tantôt froid et tranchant. Il faisait voleter les grains de pensées dans des tourbillons hypnotiques, créant des formes éphémères : un visage qui ressemblait à sa mère, un chien qu'il avait aimé enfant, un devoir d'école qu'il n'avait pas fini, un mensonge qu'il avait dit.`,
-      `Souhayl marchait, et le désert s'étendait devant lui, infini. Sa lampe vacillait sous le souffle du vent. Il avait soif — non pas une soif d'eau, mais une soif de quelque chose qu'il ne pouvait pas nommer. Quelque chose de fondamental, d'essentiel, qui lui manquait depuis toujours sans qu'il le sache.`,
+      `Les dunes du désert n'étaient pas faites de sable — chaque grain était une pensée de Souhayl. Des millions de grains, des milliards de pensées, certaines dorées et brillantes, d'autres sombres comme des cendres.`,
+      `Il marchait depuis combien de temps ? Impossible à dire. Sa lampe vacillait sous le souffle du vent. Et puis, il vit des traces — pas les siennes. Elles le suivaient, parallèles, invisibles. Souhayl accéléra — les traces accélérèrent.`,
     ],
     mood: 'darkness',
-    next: 'ch2-2',
+    next: 'ch2-choice-footsteps',
     isChapterStart: true,
   },
 
-  'ch2-2': {
-    id: 'ch2-2',
+  // ─── CHOICE 5: Réaction aux pas mystérieux ───
+  'ch2-choice-footsteps': {
+    id: 'ch2-choice-footsteps',
     chapter: 2,
     chapterTitle: 'Le Désert de l\'Âme',
     paragraphs: [
-      `Le soleil — s'il y en avait un — n'était pas visible, mais une lumière diffuse baignait tout le paysage d'une teinte ambrée, comme les dernières minutes d'un jour d'été. Souhayl marchait depuis combien de temps ? Impossible à dire. Le temps ici n'avait pas la même signification.`,
-      `Ses pas laissaient des traces dans le sable des pensées, et chaque trace s'effaçait presque aussitôt derrière lui, comme si le désert refusait de garder la mémoire de son passage. Ce qui était troublant, c'est que parfois, il croisait d'autres traces — des traces qui n'étaient pas les siennes.`,
-      `Elles allaient dans la même direction que lui, mais légèrement décalées, comme si quelqu'un marchait parallèlement, à quelques mètres de distance, invisible. Souhayl accéléra — les traces accélérèrent. Il s'arrêta — les traces s'arrêtèrent. Son cœur se serra.`,
-      `— « Qui est là ? » cria-t-il, mais sa voix fut avalée par le désert. Le vent se mit à souffler plus fort, et les dunes commencèrent à danser, formant des silhouettes éphémères qui semblaient se moquer de lui.`,
+      `Les traces s'arrêtèrent quand il s'arrêta. Elles l'imitaient. Quelque chose — ou quelqu'un — marchait juste à côté de lui, invisible. Son cœur battait si fort que le sable vibrait autour de ses pieds.`,
     ],
     mood: 'darkness',
-    next: 'ch2-3',
+    choices: [
+      {
+        id: 'call-out',
+        text: 'Crier vers l\'invisible — « Montre-toi ! Qui es-tu ? Je n\'ai pas peur de toi ! » — l\'affronter directement.',
+        nextPage: 'ch2-a1-call',
+        tag: 'boldness',
+        emoji: '📢',
+      },
+      {
+        id: 'follow-traces',
+        text: 'Suivre les traces silencieusement — se déplacer prudemment, essayer de surprendre cette chose par ruse.',
+        nextPage: 'ch2-a2-follow',
+        tag: 'cunning',
+        emoji: '👣',
+      },
+      {
+        id: 'stand-still',
+        text: 'S\'immobiliser et attendre — ne pas bouger, ne pas parler. Laisser l\'invisible venir à lui.',
+        nextPage: 'ch2-a3-still',
+        tag: 'patience',
+        emoji: '🧘',
+      },
+    ],
   },
 
-  'ch2-3': {
-    id: 'ch2-3',
+  'ch2-a1-call': {
+    id: 'ch2-a1-call',
     chapter: 2,
     chapterTitle: 'Le Désert de l\'Âme',
     paragraphs: [
-      `Les silhouettes de sable se multiplièrent. Elles n'avaient pas de visage, mais elles avaient des attitudes — certaines riaient, d'autres pleuraient, d'autres encore pointaient le doigt vers lui en signe d'accusation. Souhayl sentit la peur monter en lui comme une marée.`,
-      `Puis une silhouette se détacha des autres. Elle était plus grande, plus nette, et quand elle s'approcha, Souhayl crut reconnaître... lui-même. Mais pas lui-même comme dans un miroir — lui-même comme dans un cauchemar. La silhouette avait ses traits, ses yeux, mais son expression était différente : un sourire narquois, des yeux brillants de malice, une posture arrogante.`,
-      `— « Tu me cherches ? » dit la silhouette d'une voix qui était la sienne, mais déformée, comme un écho dans une caverne. — « Je suis toujours là, Souhayl. Je suis toujours avec toi. Je suis... toi. Ou plutôt, je suis ce que tu refuses de voir en toi. »`,
-      `Le sol trembla légèrement. La lampe de Souhayl faiblit. Et dans l'obscurité grandissante, la silhouette lui fit un geste — suivez-moi — et commença à marcher vers une dune particulière, plus haute que les autres, au sommet de laquelle quelque chose brillait.`,
+      `— « MONTE-TOI ! » Sa voix déchira le silence du désert. Les dunes tremblèrent. Et la silhouette apparut — pas un ennemi, mais un vieil homme en haillons, assis sur le sable, qui le regardait avec des yeux brillants d'amusement.`,
+      `— « Tu cries fort pour un petit garçon, dit le vieillard. Mais la vraie force, ce n'est pas de crier plus fort que l'ombre — c'est de faire taire l'ombre par ta lumière. Je suis le Gardien du Désert. Je ne suis pas ton ennemi. Je suis ton premier test. »`,
     ],
     mood: 'darkness',
-    next: 'ch2-4',
+    next: 'ch2-guardian',
   },
 
-  'ch2-4': {
-    id: 'ch2-4',
+  'ch2-a2-follow': {
+    id: 'ch2-a2-follow',
     chapter: 2,
     chapterTitle: 'Le Désert de l\'Âme',
     paragraphs: [
-      `Souhayl hésita. Tout en lui lui disait de ne pas suivre cette chose — cette version tordue de lui-même. Mais quelque chose d'autre, plus profond, le tirait vers l'avant. Une force qu'il ne pouvait pas nommer, qui le poussait à comprendre.`,
-      `Il grimpa la dune, les pieds enfonçant dans le sable des pensées. À chaque pas, des images affluaient : des souvenirs qu'il croyait oubliés — sa première dispute avec un ami, le jour où il avait volé un bonbon au magasin, la fois où il avait menti à sa mère pour ne pas être puni. Chaque souvenir était une piqûre dans son cœur.`,
-      `Quand il atteignit le sommet, il resta sans voix. Devant lui, enchâssé dans le sable comme un miroir géant, un rectangle de verre poli reflétait la lumière des deux lunes. Mais ce n'était pas un miroir ordinaire — c'était un Miroir de l'Âme. Et ce qu'il montrait n'était pas le visage de Souhayl, mais son cœur.`,
-      `Le cœur flottait dans le miroir, battant lentement. Autour de lui, des couches de poussière — certaines épaisses, d'autres fines — voilaient sa lumière naturelle. Et dans les zones les plus sombres, des ombres bougeaient, comme des serpents enroulés autour du cœur.`,
-      `— « Voilà ce que tu es vraiment, dit la silhouette en apparaissant à côté de lui. Voilà ton Nafs. Ton ego. Regarde bien. »`,
+      `Souhayl se mit à marcher à pas de loup, les yeux fixés sur les traces. Il contourna une dune, baissa la tête, accéléra — et trébucha sur quelque chose de chaud. Le vieillard était là, allongé sur le sable, comme s'il l'attendait.`,
+      `— « Tu essaies de me surprendre par ruse ? rit le vieil homme. L'esprit est une bonne chose, Souhayl. Mais la ruse contre soi-même ne fonctionne pas. Je suis le Gardien du Désert. Viens, assieds-toi. »`,
     ],
     mood: 'darkness',
-    next: 'ch2-5',
+    next: 'ch2-guardian',
   },
 
-  'ch2-5': {
-    id: 'ch2-5',
+  'ch2-a3-still': {
+    id: 'ch2-a3-still',
     chapter: 2,
     chapterTitle: 'Le Désert de l\'Âme',
     paragraphs: [
-      `Souhayl regardait le miroir, fasciné et terrifié. Son cœur — son vrai cœur — était là, nu, exposé, vulnérable. Et il n'était pas aussi beau qu'il l'aurait imaginé. La poussière le couvrait par endroits, et les ombres... les ombres rampaient comme des vipères.`,
-      `Mais avant qu'il puisse réagir, une lumière chaude apparut à sa gauche. Pas la lumière de sa lampe — une autre lumière, plus forte, plus pure, comme le premier rayon de soleil après une nuit sans lune.`,
-      `Et dans cette lumière, une silhouette se matérialisa. Tall, drapé dans des vêtements blancs et ocre, une barbe blanche encadrant un visage rayonnant de sérénité, des yeux qui contenaient des océans de sagesse — c'était le Shaykh. Pas le grand-père de Souhayl — non, c'était autre chose. C'était l'essence même du guide, la manifestation intérieure de la sagesse qui accompagnait Souhayl depuis le début.`,
-      `— « Ne crains pas, Souhayl, dit le Shaykh d'une voix qui résonnait comme un tambour lointain. Ce que tu vois n'est pas la vérité finale — c'est le point de départ. Chaque voyageur voit la poussière sur son cœur avant d'apprendre à la nettoyer. »`,
+      `Souhayl s'immobilisa. Il ferma les yeux, tendit l'oreille. Le vent chuchotait des mots qu'il ne comprenait pas. Et puis, lentement, il sentit une présence s'installer à côté de lui — tiède, calme, comme un vieil ami.`,
+      `Quand il ouvrit les yeux, le vieillard était là, assis à côté de lui, un sourire paisible sur son visage ridé. — « Tu as choisi le silence. C'est le choix des sages, Souhayl. Je suis le Gardien du Désert. Bienvenue. »`,
+    ],
+    mood: 'darkness',
+    next: 'ch2-guardian',
+  },
+
+  'ch2-guardian': {
+    id: 'ch2-guardian',
+    chapter: 2,
+    chapterTitle: 'Le Désert de l\'Âme',
+    paragraphs: [
+      `Le Gardien pointa une dune plus haute que les autres. — « Là-haut se trouve le Miroir de l'Âme. Il montrera ton cœur tel qu'il est — avec sa poussière et sa lumière. Avant d'y aller, tu dois me dire quelque chose... »`,
+      `— « Dis-moi, Souhayl : quand tu te disputes avec ton frère ou ton ami, qu'est-ce qui te pousse à continuer ? Qu'est-ce qui ne veut pas lâcher ? »`,
+    ],
+    mood: 'darkness',
+    next: 'ch2-choice-truth',
+  },
+
+  // ─── CHOICE 6: Dialogue avec le Gardien ───
+  'ch2-choice-truth': {
+    id: 'ch2-choice-truth',
+    chapter: 2,
+    chapterTitle: 'Le Désert de l\'Âme',
+    paragraphs: [
+      `Le Gardien attendait sa réponse. Le vent soufflait, soulevant des volutes de sable-pensées autour d'eux. Cette question n'était pas anodine — elle allait déterminer comment le miroir allait le recevoir.`,
+    ],
+    mood: 'darkness',
+    choices: [
+      {
+        id: 'truth-justice',
+        text: '« C\'est parce que j\'ai raison ! L\'autre a tort et je veux qu\'il le reconnaisse ! C\'est une question de justice ! »',
+        nextPage: 'ch2-b1-justice',
+        tag: 'pride',
+        emoji: '⚖️',
+      },
+      {
+        id: 'truth-hurt',
+        text: '« Parce que l\'autre m\'a blessé... et quand on me blesse, je veux que ça s\'arrête. Même si ça veut dire que je blesse aussi. »',
+        nextPage: 'ch2-b2-hurt',
+        tag: 'honesty',
+        emoji: '💔',
+      },
+      {
+        id: 'truth-dont-know',
+        text: '« Je... je ne sais pas. Au moment où ça arrive, je ne réfléchis pas. C\'est comme si quelque chose prenait le contrôle. Et après, je regrette toujours. »',
+        nextPage: 'ch2-b3-dontknow',
+        tag: 'awareness',
+        emoji: '💭',
+      },
+    ],
+  },
+
+  'ch2-b1-justice': {
+    id: 'ch2-b1-justice',
+    chapter: 2,
+    chapterTitle: 'Le Désert de l\'Âme',
+    paragraphs: [
+      `Le Gardien inclina la tête. — « La justice, oui... mais est-ce vraiment la justice ? Ou est-ce l'ego qui porte le masque de la justice ? L'ego adore se faire passer pour un justicier. C'est sa ruse la plus ancienne. »`,
+      `— « Souviens-toi : chaque fois que tu te dis 'j'ai raison', pose-toi cette question — 'Et si je me trompais ?' La vraie justice commence par le doute en soi-même. »`,
     ],
     mood: 'wisdom',
-    shaykhSpeaks: 'Le cœur de l\'homme est comme un miroir. Il se salit par les péchés et s\'éclaire par le repentir. Ne fuis pas ta propre image — regarde-la avec le regard de celui qui veut se guérir.',
-    next: 'ch2-6',
+    next: 'ch2-mirror',
   },
 
-  'ch2-6': {
-    id: 'ch2-6',
+  'ch2-b2-hurt': {
+    id: 'ch2-b2-hurt',
     chapter: 2,
     chapterTitle: 'Le Désert de l\'Âme',
     paragraphs: [
-      `Le Shaykh posa sa main sur l'épaule de Souhayl, et une vague de calme traversa le corps du jeune garçon comme l'eau qui apaise la soif. Les silhouettes de sable s'éloignèrent, les ombres du miroir se calment, et le vent cessa de souffler.`,
-      `— « Le Nafs, expliqua le Shaykh, est ton ego — cette partie de toi qui veut toujours avoir raison, qui a toujours faim, qui n'est jamais satisfaite. Les soufis disent qu'il a sept niveaux, comme sept couches d'un oignon. Au plus profond, il y a le Nafs mutma\'inna — l'âme en paix. Mais pour l'atteindre, il faut traverser les six autres. »`,
-      `— « Lesquels ? demanda Souhayl. »`,
-      `Le Shaykh soupira, et son souffle fit trembler les dunes. — « Le Nafs ammara te pousse au mal. Le Nafs lawwama te fait culpabiliser. Le Nafs mulhama t'inspire le bien et le mal. Le Nafs mutma\'inna trouve la paix. Le Nafs radiya est satisfaite. Le Nafs mardiya est agréée. Et le Nafs kamila... est parfaite. »`,
-      `Souhayl essaya de retenir tous ces noms, mais ils glissaient dans son esprit comme du sable entre les doigts. Le Shaykh rit doucement. — « Ne t'inquiète pas des mots pour l'instant. L'important, c'est de reconnaître ton ennemi quand tu le croises. »`,
+      `Le Gardien posa sa main sur celle de Souhayl. — « La douleur parle, Souhayl. Et elle dit souvent la vérité. Mais attention — répondre à la douleur par la douleur, c'est comme éteindre un feu avec du feu. Ça ne fait que grossir les flammes. »`,
+      `— « Le Prophète ﷺ disait : 'Ne sois pas en colère.' Ce n'est pas un ordre de ne pas ressentir — c'est un conseil de ne pas agir sous le coup de l'émotion. La colère est un visiteur. Laisse-le entrer, mais ne lui donne pas les clés de la maison. »`,
     ],
     mood: 'wisdom',
-    shaykhSpeaks: 'Ton pire ennemi est celui que tu nourris chaque jour sans le savoir. Il vit en toi, dort en toi, mange avec toi. Apprends à le reconnaître, et tu auras fait la moitié du chemin.',
-    next: 'ch2-7',
+    next: 'ch2-mirror',
   },
 
-  'ch2-7': {
-    id: 'ch2-7',
+  'ch2-b3-dontknow': {
+    id: 'ch2-b3-dontknow',
     chapter: 2,
     chapterTitle: 'Le Désert de l\'Âme',
     paragraphs: [
-      `Le Shaykh guida Souhayl autour du miroir, lui montrant les différentes zones du cœur. — « Ici, dit-il en pointant une zone couverte d'une poussière rouge, c'est la colère. Elle est comme un feu — si tu ne la maîtrises pas, elle consume tout sur son passage. »`,
-      `— « Ici, continua-t-il en montrant une couche noire et épaisse, c'est l'orgueil — le plus dangereux de tous les voiles. C'est lui qui a fait chuter Iblis du paradis. C'est lui qui empêche la lumière d'entrer. »`,
-      `— « Et ici... » Le Shaykh pointa une zone dorée, encore petite mais lumineuse, nichée au cœur du cœur. « Ici, c'est la fitra — ta nature originelle, pure, celle avec laquelle tu es né. Elle est toujours là, Souhayl. Enterrée sous les couches de poussière, mais toujours vivante, toujours brillante. Le Tassawuf, c'est l'art de la retrouver. »`,
-      `Souhayl regardait la petite lumière dorée, et il sentit quelque chose se serrer dans sa poitrine — pas de la douleur, mais comme un appel. La fitra semblait le reconnaître, elle aussi. Et elle pulsa une fois — un battement de lumière — comme un cœur qui bat pour dire : « Je suis là. Je t'attendais. »`,
+      `Le Gardien sourit, et cette fois son sourire illuminait tout le désert. — « Tu ne sais pas. Et c'est la réponse la plus vraie que tu puisses donner. Le 'je ne sais pas' est le début de toute connaissance. »`,
+      `— « Ce qui prend le contrôle en toi, c'est le Nafs. Et le fait que tu le reconnaisses — que tu regrettes après — c'est la preuve que ta fitra, ta nature originelle, est intacte. Le Tassawuf va t'apprendre à faire en sorte que ce 'quelque chose' n'ait plus le dernier mot. »`,
     ],
     mood: 'wisdom',
-    next: 'ch2-8',
+    shaykhSpeaks: 'Celui qui reconnaît son ignorance est plus savant que celui qui croit tout savoir.',
+    next: 'ch2-mirror',
   },
 
-  'ch2-8': {
-    id: 'ch2-8',
+  'ch2-mirror': {
+    id: 'ch2-mirror',
     chapter: 2,
     chapterTitle: 'Le Désert de l\'Âme',
     paragraphs: [
-      `Mais la silhouette — le Nafs — n'avait pas disparu. Il se tenait à l'ombre du miroir, patient, observateur, comme un prédateur qui attend le bon moment. Et quand le Shaykh se tourna pour montrer quelque chose d'autre à Souhayl, le Nafs fit sa move.`,
-      `Il sortit de l'ombre et vint se placer entre Souhayl et le miroir. Il posa sa main sur le verre, et son toucher fit apparaître des fissures. Les ombres autour du cœur s'agitèrent et grandirent, nourries par sa présence.`,
-      `— « Ne l'écoute pas, Souhayl, dit le Nafs avec la voix de Souhayl. Ce vieil homme te raconte des histoires. Regarde ton cœur — il est laid, couvert de poussière. Tu ne pourras jamais le nettoyer. C'est trop tard pour toi. Tu es trop jeune... ou trop mauvais... ou trop faible. »`,
-      `Le Shaykh se retourna, ses yeux s'adoucissant. — « Le moment est venu, Souhayl. Tu dois faire face à ton Nafs. Pas moi. Toi. C'est ton épreuve. »`,
+      `Au sommet de la dune, le Miroir de l'Âme l'attendait. Un rectangle de verre poli enchâssé dans le sable, reflétant la lumière des deux lunes. Et ce qu'il montrait n'était pas le visage de Souhayl — mais son cœur, battant lentement, couvert de poussière.`,
+      `Des ombres rampaient comme des serpents autour du cœur. Des couches de poussière voilaient sa lumière. Et au centre, une petite flamme dorée — la fitra — pulsait faiblement, comme une bougie dans une pièce sombre.`,
+    ],
+    mood: 'darkness',
+    next: 'ch2-nafs-appears',
+  },
+
+  'ch2-nafs-appears': {
+    id: 'ch2-nafs-appears',
+    chapter: 2,
+    chapterTitle: 'Le Désert de l\'Âme',
+    paragraphs: [
+      `Une silhouette se détacha du miroir. Le Nafs — l'ego de Souhayl. Il avait ses traits, ses yeux, mais son expression était différente : un sourire narquois, des yeux brillants de malice.`,
+      `— « Tu me regardes ? dit le Nafs. Regarde bien. Voilà ce que tu es vraiment. Couvert de poussière. Faible. Mauvais. Tu ne pourras jamais me vaincre. »`,
+      `Le Shaykh apparut à gauche, sa lumière repoussant les ombres. — « Le moment est venu, Souhayl. Tu dois affronter ton Nafs. Pas moi. Toi. C'est ton épreuve. »`,
     ],
     mood: 'danger',
-    next: 'ch2-choice-2',
+    next: 'ch2-choice-nafs',
   },
 
-  // ─── CHOICE 2: Facing the ego ───
-  'ch2-choice-2': {
-    id: 'ch2-choice-2',
+  // ─── CHOICE 7: Affronter le Nafs ───
+  'ch2-choice-nafs': {
+    id: 'ch2-choice-nafs',
     chapter: 2,
     chapterTitle: 'Le Désert de l\'Âme',
     paragraphs: [
-      `Le Nafs se tenait devant Souhayl, un sourire satisfait aux lèvres. Autour de lui, le désert semblait retenir son souffle. Même le vent avait cessé. Le Shaykh, en retrait, observait sans intervenir — son rôle était de guider, pas de combattre.`,
-      `C'était le moment de vérité. La première grande épreuve de Souhayl. Comment allait-il réagir face à l'ennemi le plus rusé, le plus proche, le plus difficile à combattre — lui-même ?`,
+      `Le Nafs se tenait entre Souhayl et le miroir, un sourire satisfait aux lèvres. Le Shaykh observait sans intervenir. C'était l'épreuve de la première bataille intérieure.`,
     ],
     mood: 'danger',
     choices: [
       {
-        id: 'confrontation',
-        text: 'Affronter le Nafs directement — « Tu n\'es qu\'une illusion ! Mon cœur appartient à Allah, et aucune poussière ne pourra étouffer sa lumière ! »',
-        nextPage: 'ch2-a1',
+        id: 'nafs-confront',
+        text: 'Le regarder droit dans les yeux et crier — « Tu n\'es qu\'une illusion ! Mon cœur appartient à Allah ! » L\'affronter de face.',
+        nextPage: 'ch2-c1-confront',
         tag: 'confrontation',
         emoji: '⚔️',
       },
       {
-        id: 'patience-listen',
-        text: 'Écouter le Nafs avec patience — ne pas réagir sous l\'impulsion, mais écouter pour comprendre, comme le Shaykh lui a appris.',
-        nextPage: 'ch2-a2',
-        tag: 'patience',
-        emoji: '🤲',
+        id: 'nafs-ignore',
+        text: 'Se détourner de lui et se concentrer sur la petite lumière dorée dans le miroir — la fitra. L\'ignorer complètement.',
+        nextPage: 'ch2-c2-ignore',
+        tag: 'detachment',
+        emoji: '👁️',
       },
       {
-        id: 'detachment',
-        text: 'Se détourner du Nafs — ne pas lui donner d\'importance, ne pas engager le combat. Tourner le regard vers la lumière de la fitra.',
-        nextPage: 'ch2-a3',
-        tag: 'detachment',
-        emoji: '✨',
+        id: 'nafs-talk',
+        text: 'Lui parler calmement — « Pourquoi tu me fais du mal ? Qu\'est-ce que tu veux ? Comprendre pour mieux agir. »',
+        nextPage: 'ch2-c3-talk',
+        tag: 'empathy',
+        emoji: '🗣️',
       },
     ],
   },
 
-  'ch2-a1': {
-    id: 'ch2-a1',
+  'ch2-c1-confront': {
+    id: 'ch2-c1-confront',
     chapter: 2,
     chapterTitle: 'Le Désert de l\'Âme',
     paragraphs: [
-      `Souhayl serra les poings, fixa le Nafs droit dans les yeux — ses propres yeux, déformés par l'ego — et cria de toutes ses forces :`,
-      `— « Tu n'es qu'une illusion ! Mon cœur appartient à Allah ! Aucune poussière ne pourra étouffer sa lumière ! »`,
-      `Le Nafs recula d'un pas, surpris. Les fissures dans le miroir se propagèrent plus vite, et les ombres autour du cœur s'agitèrent violemment. Mais Souhayl ne cilla pas. Il sentait en lui une force qu'il ne connaissait pas — une force qui venait de plus profond que ses muscles, plus profond que ses pensées.`,
-      `Le Nafs grinça des dents. — « Tu oses ? Toi, un enfant de dix ans ? Tu oses me défier ? » Sa voix se brisa, et pendant un instant — un instant fugace — Souhayl vit quelque chose dans les yeux du Nafs. Pas de la colère. De la peur. Son ego avait peur de lui.`,
-      `Le Shaykh, en retrait, inclina la tête. Il ne dit rien, mais dans ses yeux brillait quelque chose qui ressemblait à de la fierté.`,
+      `Souhayl serra les poings et cria avec toute la force de son cœur. Le Nafs recula d'un pas, surpris. Mais les fissures dans le miroir se propagèrent, les ombres s'agitèrent — la confrontation avait aussi agité le cœur.`,
+      `Le Nafs ricana. — « Tu cries fort... mais crie-tu parce que tu es fort, ou parce que tu as peur ? » Le Shaykh murmura : « Le courage est une étape. Mais le cri sans sagesse est du vent. »`,
     ],
-    mood: 'triumph',
-    next: 'ch2-13',
+    mood: 'danger',
+    next: 'ch2-after-nafs',
   },
 
-  'ch2-a2': {
-    id: 'ch2-a2',
+  'ch2-c2-ignore': {
+    id: 'ch2-c2-ignore',
     chapter: 2,
     chapterTitle: 'Le Désert de l\'Âme',
     paragraphs: [
-      `Souhayl prit une grande inspiration. Il se rappela les mots du Shaykh : « Ne réagis pas sous l'impulsion. Observe. Écoute. Comprends. » Il relâcha ses poings, détendit ses épaules, et regarda le Nafs avec un calme surnaturel.`,
-      `— « Parle, dit-il simplement. Je t'écoute. »`,
-      `Le Nafs fut pris de court. Il s'attendait à de la colère, de la peur, de l'agressivité — c'était ce qui le nourrissait. Mais le calme ? La patience ? L'écoute ? C'étaient des armes qu'il ne connaissait pas.`,
-      `— « Je... je disais que... » Le Nafs hésita. Ses mots perdirent de leur mordant. « Tu es faible, murmura-t-il, mais sa voix n'était plus qu'un filet. Tu es... tu es... » Il répétait les mêmes accusations, mais elles n'avaient plus aucun pouvoir. Sans la réaction de Souhayl, elles étaient comme des flèches sans pointe.`,
-      `Et lentement, le Nafs commença à rétrécir. Pas parce qu'il était vaincu — mais parce qu'il n'avait plus rien à se nourrir. L'ego vit de réaction. Sans réaction, il meurt de faim.`,
-    ],
-    mood: 'wisdom',
-    shaykhSpeaks: 'Le silence est parfois la réponse la plus puissante. Celui qui ne réagit pas aux provocations de son ego maîtrise la plus difficile des batailles.',
-    next: 'ch2-13',
-  },
-
-  'ch2-a3': {
-    id: 'ch2-a3',
-    chapter: 2,
-    chapterTitle: 'Le Désert de l\'Âme',
-    paragraphs: [
-      `Souhayl fit quelque chose d'inattendu. Il tourna le dos au Nafs. Sans un mot, sans un regard en arrière, il s'éloigna de la silhouette sombre et se dirigea vers le miroir. Le Nafs cria, menaça, implora — mais Souhayl continua d'avancer.`,
-      `Devant le miroir, il ferma les yeux et concentra son attention sur la petite lumière dorée — la fitra. Il la visualisa, la sentit, l'appela. Et la lumière répondit. Elle grandit, dévorant la poussière autour d'elle, repoussant les ombres.`,
-      `— « Ne me regarde pas ? cria le Nafs, outré. Je suis TOI ! Tu ne peux pas m'ignorer ! »`,
-      `Mais Souhayl sourit. Parce qu'il comprenait maintenant quelque chose de fondamental : le Nafs n'était pas lui. Il était un voile, une couche, une illusion temporaire. Sa véritable essence — la fitra — était pure, lumineuse, éternelle. Et en se concentrant sur elle, il affaiblissait le voile sans même le combattre.`,
-      `Le Nafs vacilla, diminua, et finit par se dissoudre dans le sable du désert. Non pas vaincu — simplement rendu insignifiant.`,
+      `Souhayl tourna le dos au Nafs. — « Je ne te regarde même pas, murmura-t-il. » Il fixa la petite flamme dorée dans le miroir et se concentra sur elle de tout son être. La flamme grandit, dévorant la poussière autour d'elle.`,
+      `Le Nafs hurla de rage, puis sa voix faiblit, puis se tut. Sans l'attention de Souhayl, il n'avait plus de nourriture. Le Shaykh approuva : « Le plus grand combat contre l'ego est de ne pas lui donner ce qu'il veut : ton attention. »`,
     ],
     mood: 'peace',
-    shaykhSpeaks: 'Le meilleur combat contre l\'ego n\'est pas de l\'affronter, mais de le priver de nourriture. Ne lui donne ni ta colère, ni ta peur, ni ton attention. Tourne-toi vers la Lumière, et l\'ombre disparaît d\'elle-même.',
-    next: 'ch2-13',
+    next: 'ch2-after-nafs',
   },
 
-  'ch2-13': {
-    id: 'ch2-13',
+  'ch2-c3-talk': {
+    id: 'ch2-c3-talk',
     chapter: 2,
     chapterTitle: 'Le Désert de l\'Âme',
     paragraphs: [
-      `Après la confrontation — quelle qu'elle ait été — le silence retomba sur le désert. Un silence différent cette fois : pas le silence vide du début, mais un silence plein, gonflé de signification, comme un soupir de soulagement de la terre entière.`,
-      `Le Shaykh s'approcha de Souhayl et posa sa main sur sa tête. — « Tu as survécu à ta première rencontre avec le Nafs. Sache que ce n'était que la première. Il reviendra, encore et encore, sous des formes différentes. Parfois il sera colérique, parfois séduisant, parfois compatissant. Ne te fie jamais à ses apparences. »`,
-      `Souhayl essuya la sueur de son front — non pas de la fatigue physique, mais de l'effort spirituel. Cette bataille intérieure l'avait épuisé plus que n'importe quelle course, n'importe quelle dispute, n'importe quel examen.`,
-      `— « Mais... dit-il, j'ai réussi ? Enfin... est-ce que c'est fini ? »`,
-      `Le Shaykh le regarda avec une tendresse infinie. — « Mon enfant, le Tassawuf n'a pas de fin dans cette vie. C'est un chemin de tous les instants. Mais tu as fait le premier pas, et c'est le plus difficile. Les autres seront différents... mais tu es plus fort maintenant que tu ne l'étais ce matin. »`,
+      `— « Pourquoi tu me fais du mal ? demanda Souhayl calmement. » Le Nafs fut déstabilisé. On ne lui avait jamais posé cette question. — « Je... je ne te fais pas de mal. Je te protège. Sans moi, tu n'oserais rien. Sans moi, tu serais invisible. »`,
+      `Souhayl comprit : le Nafs n'était pas purement mauvais. Il était un outil devenu maître. — « Merci de me protéger, dit-il. Mais maintenant, je veux choisir moi-même. » Le Nafs vacilla, diminua, et s'assit en silence.`,
     ],
     mood: 'wisdom',
-    shaykhSpeaks: 'La victoire sur soi-même est la plus grande des victoires. Mais ne célèbre pas trop vite — la guerre du cœur dure jusqu\'au dernier souffle.',
-    next: 'ch2-14',
+    shaykhSpeaks: 'Comprendre son ennemi, c\'est déjà le désarmer. Celui qui connaît son ego le maîtrise. Celui qui le combat sans le connaître le renforce.',
+    next: 'ch2-after-nafs',
   },
 
-  'ch2-14': {
-    id: 'ch2-14',
+  'ch2-after-nafs': {
+    id: 'ch2-after-nafs',
     chapter: 2,
     chapterTitle: 'Le Désert de l\'Âme',
     paragraphs: [
-      `Le paysage commença à changer. Les dunes de sable-pensées s'aplatirent, et une végétation éparse apparut — des buissons d'épines, des touffes d'herbe grise, quelques arbres rabougris dont les branches tordues ressemblaient à des bras implorant le ciel.`,
-      `— « Nous approchons de la frontière du désert, dit le Shaykh. Au-delà, il y a la Forêt des Épreuves. C'est là que ton voyage deviendra vraiment difficile. Chaque arbre, chaque ruisseau, chaque ombre sera un test. »`,
-      `— « Un test de quoi ? demanda Souhayl. »`,
-      `— « De ta sincérité, répondit le Shaykh. Le Tassawuf n'est pas un jeu d'enfant — quoique... » Il sourit. « Bien que tu sois un enfant. C'est justement pour cela que tu es ici. Les adultes ont trop de voiles. Leur ego est devenu une forteresse. Le tien est encore une cabane. Il est plus facile de la détruire... et de construire quelque chose de mieux à sa place. »`,
-      `Un vent frais se leva, apportant avec lui l'odeur de la sève, de la mousse humide et des feuilles mortes. La forêt était proche. Souhayl la sentait comme on sent la pluie avant l'orage — dans ses os, dans son cœur, dans cette partie de lui qui savait des choses avant que son esprit ne les comprenne.`,
+      `Le Shaykh posa sa main sur la tête de Souhayl. — « Tu as survécu à ta première rencontre avec le Nafs. Il reviendra sous d'autres formes — colérique, séduisant, compatissant. Ne te fie jamais à ses apparences. »`,
+      `Le désert changea. La végétation apparut, puis les arbres immenses d'une forêt mystérieuse. — « La Forêt des Épreuves t'attend. Chaque arbre, chaque ombre, sera un test. »`,
     ],
-    mood: 'wonder',
+    mood: 'wisdom',
+    shaykhSpeaks: 'La victoire sur soi est la plus grande des victoires. Mais ne célèbre pas trop vite — la guerre du cœur dure jusqu\'au dernier souffle.',
     next: 'ch3-start',
   },
 
@@ -526,320 +679,327 @@ export const storyPages: Record<string, StoryPage> = {
     chapter: 3,
     chapterTitle: 'La Forêt des Épreuves',
     paragraphs: [
-      `La forêt n'était pas comme les forêts que Souhayl avait vues dans les livres. Ses arbres étaient immenses — si hauts que leurs cimes disparaissaient dans un ciel vert-noir, comme si les arbres avaient avalé le ciel lui-même. Leurs troncs étaient larges comme des maisons, couverts d'une écorce qui ressemblait à de la peau humaine — avec des rides, des cicatrices, et parfois ce qui ressemblait à des yeux fermés.`,
-      `Le sol était tapissé de feuilles épaisses, molles sous les pieds, qui dégageaient un parfum à la fois doux et inquiétant — comme des fleurs qui se fanent. La lumière filtrait à travers le feuillage en rayons obliques, dorés et verts, créant un monde de contrastes : lumière et ombre, douceur et menace, beauté et danger.`,
-      `Le Shaykh marchait devant Souhayl, sa silhouette blanche se découpant contre les ténèbres de la forêt. Il ne parlait pas. Il n'avait pas besoin de parler — sa simple présence était un guide suffisant. Souhayl le suivait, sa lampe à huile serrée contre sa poitrine, le cœur battant.`,
-      `— « Dans cette forêt, murmura le Shaykh sans se retourner, tout est un test. Chaque rencontre est une épreuve. Chaque chemin te demande de choisir. Souviens-toi : ce ne sont pas tes actions qui définissent qui tu es, mais les choix que tu fais quand personne ne regarde. Et ici... quelqu'un regarde toujours. »`,
+      `La forêt était immense. Des arbres plus hauts que des maisons, des troncs couverts d'une écorce qui ressemblait à de la peau humaine, des branches qui semblaient bouger quand il ne regardait pas. La lumière filtrait en rayons dorés entre les feuilles.`,
+      `Au bout de quelques minutes, Souhayl arriva à un carrefour. Trois chemins partaient dans trois directions. Et au centre du carrefour, un vieil arbre était tombé en travers du passage. Un arbre énorme qui bloquait complètement le chemin principal.`,
     ],
     mood: 'darkness',
-    next: 'ch3-2',
+    next: 'ch3-choice-tree',
     isChapterStart: true,
   },
 
-  'ch3-2': {
-    id: 'ch3-2',
+  // ─── CHOICE 8: L'arbre tombé (épreuve d'obstacle) ───
+  'ch3-choice-tree': {
+    id: 'ch3-choice-tree',
     chapter: 3,
     chapterTitle: 'La Forêt des Épreuves',
     paragraphs: [
-      `Ils marchèrent pendant ce qui semblait être des heures — ou des minutes — le temps n'avait pas de prise ici. La forêt changeait autour d'eux : tantôt dense et oppressante, tantôt ouverte et apaisante, comme si elle respirait, vivait, ressentait des émotions.`,
-      `Parfois, Souhayl entendait des murmures. Pas des voix distinctes — plutôt des chuchotements, des souffles, des mots à moitié formés qui glissaient entre les arbres comme de la fumée. Il ne pouvait pas les comprendre, mais ils évoquaient en lui des sentiments : de la nostalgie, de la culpabilité, du désir, de la peur.`,
-      `Le Shaykh s'arrêta devant un vieux pont de bois qui enjambait un ravin profond. Le pont était étroit, usé par le temps, et quelques planches manquaient. En dessous, le ravin plongeait dans une obscurité totale — impossible d'en voir le fond.`,
-      `— « Le premier test, dit le Shaykh. La Sabr — la patience. Regarde de l'autre côté. »`,
-      `Souhayl regarda. De l'autre côté du ravin, un chemin de lumière dorée s'enfonçait dans la forêt. C'était clairement la bonne direction. Mais le pont... le pont semblait sur le point de s'effondrer.`,
-      `— « Attends ici, dit le Shaykh. Je vais de l'autre côté. Ne traverse pas avant que je t'appelle. » Et il disparut, traversant le pont avec une agilité déconcertante pour un homme de son âge.`,
+      `L'arbre tombé était massif — impossible à franchir directement. Le chemin principal était bloqué. Mais les deux chemins de contournement semblaient... différents. Celui de gauche sentait l'humidité et la mousse. Celui de droite était sec, couvert de feuilles mortes.`,
     ],
     mood: 'darkness',
-    next: 'ch3-3',
-  },
-
-  'ch3-3': {
-    id: 'ch3-3',
-    chapter: 3,
-    chapterTitle: 'La Forêt des Épreuves',
-    paragraphs: [
-      `Souhayl resta seul. Le silence de la forêt pesait sur lui comme une couverture de plomb. Le pont grinçait doucement, comme si le vent le testait. Ou comme si quelque chose d'autre le testait.`,
-      `Les murmures revinrent, plus forts cette fois. — « Traverse maintenant... » — « Pourquoi attendre ? » — « Tu es assez fort... » — « Il ne reviendra pas... » — « Ne fais pas confiance... »`,
-      `Les minutes passèrent. Ou étaient-ce des heures ? Souhayl ne savait plus. Le Shaykh ne revenait pas. Le pont grinçait de plus en plus. Les murmures devenaient des voix — des voix qu'il reconnaissait. La voix de son meilleur ami qui lui disait « Vas-y, t'inquiète pas ! » La voix d'un camarade de classe : « T'es pas courageux ou quoi ? » La voix de son propre ego, murmure persistant : « Il t'a abandonné, Souhayl. Il t'a abandonné comme tout le monde. »`,
-      `La tentation de traverser était immense. Chaque seconde d'attente était une torture. Ses jambes tremblaient, non pas de peur, mais d'impatience — l'impatience, cette sœur de l'ego qui pousse à agir avant d'avoir compris.`,
-      `Mais quelque chose en lui — un souvenir de la leçon du désert — lui murmurait : « Patience. Patience. La patience est la clé du paradis. »`,
+    choices: [
+      {
+        id: 'tree-climb',
+        text: 'Essayer de grimper sur l\'arbre et passer par-dessus — c\'est un obstacle, pas un mur. On peut toujours trouver un moyen de traverser.',
+        nextPage: 'ch3-a1-climb',
+        tag: 'perseverance',
+        emoji: '🧗',
+      },
+      {
+        id: 'tree-left',
+        text: 'Prendre le chemin de gauche, humide et vert — ça semble plus long mais plus sûr. Les choses qui poussent ont plus de vie.',
+        nextPage: 'ch3-a2-left',
+        tag: 'caution',
+        emoji: '🌿',
+      },
+      {
+        id: 'tree-right',
+        text: 'Prendre le chemin de droite, sec et direct — le plus court est souvent le meilleur. Pas de temps à perdre.',
+        nextPage: 'ch3-a3-right',
+        tag: 'efficiency',
+        emoji: '🍂',
+      },
     ],
-    mood: 'danger',
-    next: 'ch3-4',
   },
 
-  'ch3-4': {
-    id: 'ch3-4',
+  'ch3-a1-climb': {
+    id: 'ch3-a1-climb',
     chapter: 3,
     chapterTitle: 'La Forêt des Épreuves',
     paragraphs: [
-      `Et puis, au moment où Souhayl pensait qu'il allait céder, la voix du Shaykh résonna de l'autre côté du ravin :`,
-      `— « Souhayl ! Tu peux traverser maintenant ! »`,
-      `Souhayl sursauta. Il regarda le pont. Les planques manquantes étaient toujours là. Le ravin était toujours profond. Mais la voix du Shaykh était là, et c'était tout ce qui comptait.`,
-      `Il posa un pied sur le pont. Le bois cria sous son poids. Il avança, une planche à la fois, chaque pas un acte de confiance. Les planques qui semblaient fragiles soutenaient son poids — comme si la forêt elle-même le portait. Et à chaque pas, les murmures s'éloignaient un peu plus, jusqu'à disparaître complètement.`,
-      `Quand il atteignit l'autre côté, le Shaykh l'attendait, debout dans le chemin de lumière dorée. Son visage était souriant, mais ses yeux étaient sérieux.`,
-      `— « Tu as passé le premier test, dit-il. La patience. C'est l'une des vertus les plus difficiles à maîtriser, car elle va contre la nature humaine. L'ego veut tout, tout de suite. Le cœur sage sait attendre. »`,
-    ],
-    mood: 'wisdom',
-    shaykhSpeaks: 'La patience ne signifie pas attendre passivement. La patience, c\'est continuer d\'avancer avec confiance, même quand la destination n\'est pas visible. C\'est la foi faite marche.',
-    next: 'ch3-5',
-  },
-
-  'ch3-5': {
-    id: 'ch3-5',
-    chapter: 3,
-    chapterTitle: 'La Forêt des Épreuves',
-    paragraphs: [
-      `Ils continuèrent à traverser la forêt, et les épreuves se succédèrent. Souhayl dut traverser un lac d'eau noire en marchant sur des feuilles flottantes — chaque feuille représentant un bon souvenir qu'il devait lâcher pour avancer. Il dut grimper un arbre dont les branches étaient faites de ses propres peurs, chaque noue une angoisse différente à surmonter.`,
-      `Et puis il y eut l'épreuve du Tawakkul — la confiance en Allah. Un précipice sans pont, sans escalier, sans aucune façon apparente de le traverser. Le Shaykh pointa le vide et dit simplement : — « Saute. »`,
-      `— « Mais il n'y a rien en dessous ! s'exclama Souhayl. Je vais mourir ! »`,
-      `— « La confiance, répondit le Shaykh, ce n'est pas savoir ce qui va arriver. C'est sauter en sachant que Celui qui t'a créé ne te laissera pas tomber. »`,
-      `Souhayl regarda le vide. Ses genoux tremblaient. Mais il se rappela la lampe qu'il portait depuis le début — cette petite flamme qui n'avait jamais vacillé, même dans les moments les plus sombres. Si elle tenait, pourquoi pas lui ?`,
-      `Il sauta. Et le vide le porta. Pas comme un sol dur — comme de l'eau, comme de l'air, comme une force invisible qui le soutint et le déposa doucement de l'autre côté. Son cœur débordait de gratitude.`,
+      `Souhayl s'agrippa à l'écorce et commença à grimper. L'arbre gémit sous son poids mais tint bon. Arrivé en haut, il découvrit quelque chose d'étonnant : une cache creusée dans le tronc, contenant un petit sachet en soie rouge.`,
+      `Il l'ouvrit. À l'intérieur, une médaille dorée avec une inscription : « La patience est la clé du Paradis. » — « Tu as été récompensé pour ton effort, murmura le Shaykh. Dans le Tassawuf, chaque difficulté surmontée porte un cadeau. »`,
     ],
     mood: 'wonder',
-    shaykhSpeaks: 'Le Tawakkul n\'est pas de la passivité. C\'est l\'action accompagnée de la certitude qu\'Allah est le meilleur des pourvoyeurs. Agis comme si tout dépendait de toi, et crois comme si tout dépendait d\'Allah.',
-    next: 'ch3-6',
+    next: 'ch3-creature',
   },
 
-  'ch3-6': {
-    id: 'ch3-6',
+  'ch3-a2-left': {
+    id: 'ch3-a2-left',
     chapter: 3,
     chapterTitle: 'La Forêt des Épreuves',
     paragraphs: [
-      `La forêt devint plus sombre. Les arbres se rapprochèrent, leurs branches s'entremêlant au-dessus pour former un plafond presque hermétique. Seuls quelques rayons de lumière perçaient, créant des puits de clarté dans l'obscurité ambiante.`,
-      `Et c'est dans cette obscurité que Souhayl sentit quelque chose changer. L'air devint plus froid, plus lourd. Les murmures revinrent, mais cette fois ils étaient différents — plus organisés, plus intelligents, plus dangereux. Ce n'étaient plus les chuchotements vagues de son esprit — c'était une véritable conversation, menée par une intelligence qui n'était pas la sienne.`,
-      `Les ombres entre les arbres commencèrent à bouger. Pas les ombres normales, projetées par la lumière — non, des ombres vivantes, des silhouettes autonomes qui se détachaient des troncs et glissaient entre les feuilles. Et elles convergeaient vers Souhayl.`,
-      `Le Shaykh s'arrêta. Son visage, habituellement serein, prit une expression grave. — « Souhayl, murmura-t-il, ils sont là. Les sbires de Shaytan. Prépare-toi. »`,
-      `— « Les sbires de... » Souhayl n'eut pas le temps de finir sa phrase. Les ombres étaient là, formant un cercle autour de lui et du Shaykh. Et au centre du cercle, une silhouette se matérialisa.`,
+      `Le chemin de gauche était plus long mais magnifique. Des fleurs lumineuses poussaient sur les bords, des papillons dorés voletaient autour de lui. Et au milieu du chemin, une petite fontaine d'eau claire. Souhayl but — l'eau était douce et fraîche.`,
+      `— « Le chemin le plus sûr n'est pas toujours le plus court, dit le Shaykh. Mais il donne souvent plus que le chemin rapide. La fontaine de la patience n'apparaît que sur les chemins de ceux qui prennent le temps. »`,
+    ],
+    mood: 'peace',
+    next: 'ch3-creature',
+  },
+
+  'ch3-a3-right': {
+    id: 'ch3-a3-right',
+    chapter: 3,
+    chapterTitle: 'La Forêt des Épreuves',
+    paragraphs: [
+      `Le chemin de droite était rapide mais rude. Des racines affleurantes le firent trébucher trois fois. Des branches basses lui fouettaient le visage. Mais il avançait vite — peut-être trop vite.`,
+      `Il arriva de l'autre côté essoufflé, les genoux écorchés. — « La vitesse est utile, dit le Shaykh, mais elle a un prix. Celui qui court trop vite ne voit pas les panneaux sur la route. Prends le temps de regarder, même quand tu as envie de courir. »`,
+    ],
+    mood: 'darkness',
+    next: 'ch3-creature',
+  },
+
+  'ch3-creature': {
+    id: 'ch3-creature',
+    chapter: 3,
+    chapterTitle: 'La Forêt des Épreuves',
+    paragraphs: [
+      `Au détour d'un arbre, Souhayl s'arrêta net. Un petit être était assis sur le chemin, les jambes pendantes, la tête baissée. Pas un monstre — un enfant. Ou plutôt, quelque chose qui ressemblait à un enfant, avec des yeux trop grands et une peau d'un bleu pâle, presque transparent.`,
+      `— « S'il te plaît... murmura l'être sans lever la tête. Je suis perdu. Je cherche le chemin de la rivière de lumière, mais je ne le trouve pas. Peux-tu m'aider ? »`,
+    ],
+    mood: 'wonder',
+    next: 'ch3-choice-help',
+  },
+
+  // ─── CHOICE 9: Aider la créature ───
+  'ch3-choice-help': {
+    id: 'ch3-choice-help',
+    chapter: 3,
+    chapterTitle: 'La Forêt des Épreuves',
+    paragraphs: [
+      `L'être le regardait avec ses yeux immenses, remplis d'une tristesse ancienne. Souhayl sentit quelque chose dans sa poitrine — un appel à l'aide qu'il ne pouvait pas ignorer. Mais le chemin était long, et il avait ses propres épreuves à affronter.`,
+    ],
+    mood: 'wonder',
+    choices: [
+      {
+        id: 'help-guide',
+        text: '« Viens avec moi, je vais t\'aider à trouver la rivière. On ira ensemble. » Le guider personnellement, même si ça le ralentit.',
+        nextPage: 'ch3-b1-guide',
+        tag: 'generosity',
+        emoji: '🤝',
+      },
+      {
+        id: 'help-directions',
+        text: '« La rivière ? Continue tout droit, puis tourne à gauche au grand chêne. Tu ne peux pas la manquer. » Lui donner des indications sans s\'arrêter.',
+        nextPage: 'ch3-b2-directions',
+        tag: 'kindness',
+        emoji: '🗺️',
+      },
+      {
+        id: 'help-question',
+        text: '« Qui es-tu ? D\'où tu viens ? Pourquoi tu cherches cette rivière ? » Poser des questions d\'abord — comprendre avant d\'agir.',
+        nextPage: 'ch3-b3-question',
+        tag: 'wisdom',
+        emoji: '❓',
+      },
+    ],
+  },
+
+  'ch3-b1-guide': {
+    id: 'ch3-b1-guide',
+    chapter: 3,
+    chapterTitle: 'La Forêt des Épreuves',
+    paragraphs: [
+      `Souhayl tendit la main à l'être. — « Viens. » Ils marchèrent ensemble pendant ce qui semblut être des heures. L'être tremblait de froid — Souhayl lui donna sa lampe. L'être avait peur des bruits — Souhayl chanta pour le rassurer.`,
+      `Quand ils atteignirent la rivière, l'être se transforma. Sa peau bleue devint dorée. — « Merci, Souhayl. Tu m'as donné ta lumière, ta chaleur, ton temps. Sache que dans le monde intérieur, chaque acte de bonté nettoie une couche de poussière sur ton cœur. » Le Shaykh approuva silencieusement.`,
+    ],
+    mood: 'peace',
+    next: 'ch3-waswas',
+  },
+
+  'ch3-b2-directions': {
+    id: 'ch3-b2-directions',
+    chapter: 3,
+    chapterTitle: 'La Forêt des Épreuves',
+    paragraphs: [
+      `Souhayl s'arrêta, réfléchit aux directions que Moulay lui avait décrites, et donna les meilleures indications qu'il put. L'être le remercia et s'éloigna en boitant.`,
+      `Le Shaykh apparut à côté de lui. — « La bonté est une graine, Souhayl. Tu en as planté une. Mais une graine seule ne fait pas un jardin. La générosité qui prend le temps de s'asseoir à côté de l'autre est plus forte que la bonté pressée. Ne sois pas avare de ton temps — c'est la monnaie la plus précieuse. »`,
+    ],
+    mood: 'wisdom',
+    next: 'ch3-waswas',
+  },
+
+  'ch3-b3-question': {
+    id: 'ch3-b3-question',
+    chapter: 3,
+    chapterTitle: 'La Forêt des Épreuves',
+    paragraphs: [
+      `— « Je suis la Sadda — la tristesse, répondit l'être. Je nais quand quelqu'un fait du mal à un autre. Et je cherche la rivière de lumière parce que seule la lumière peut me transformer en quelque chose de beau. »`,
+      `Souhayl comprit. La tristesse n'était pas un ennemi — elle cherchait la guérison. Il s'assit à côté d'elle et dit : « Je ne connais pas le chemin de la rivière. Mais on peut la chercher ensemble. » Et c'est ensemble qu'ils la trouvèrent.`,
+    ],
+    mood: 'peace',
+    next: 'ch3-waswas',
+  },
+
+  'ch3-waswas': {
+    id: 'ch3-waswas',
+    chapter: 3,
+    chapterTitle: 'La Forêt des Épreuves',
+    paragraphs: [
+      `Les arbres devinrent plus sombres. Les branches s'entremêlaient, bloquant le ciel. Et dans les ténèbres entre les troncs, des ombres vivantes apparurent — les sbires de Shaytan. Elles convergèrent vers Souhayl.`,
+      `Une silhouette se matérialisa devant lui. Jeune, beau, souriant. Des vêtements élégants, un parfum enivrant. — « Salam, Souhayl ! Je suis Waswās — le Chuchoteur. Je suis ton ami. Je veux juste t'aider. »`,
+      `Derrière lui, un festin apparut — fruits, coussins moelleux, boissons dorées. — « Prends. Repose-toi. Tu mérites le confort. Pourquoi souffrir quand tu peux être heureux maintenant ? »`,
     ],
     mood: 'danger',
-    next: 'ch3-7',
+    next: 'ch3-choice-waswas',
   },
 
-  'ch3-7': {
-    id: 'ch3-7',
+  // ─── CHOICE 10: Face à Waswās ───
+  'ch3-choice-waswas': {
+    id: 'ch3-choice-waswas',
     chapter: 3,
     chapterTitle: 'La Forêt des Épreuves',
     paragraphs: [
-      `La silhouette n'était pas effrayante — au contraire. C'était un homme jeune, beau, aux vêtements élégants et au sourire charmant. Ses yeux brillaient d'une intelligence malsaine, comme des bijoux dans l'obscurité. Il se tenait avec l'aisance de quelqu'un qui est chez lui partout.`,
-      `— « Salam, petit Souhayl, dit-il d'une voix douce comme du miel. Je m'appelle Waswās — le Chuchoteur. Je suis... comment dire... un ami. Un guide. Quelqu'un qui veut t'aider. »`,
-      `Le Shaykh ne bougea pas, mais Souhayl sentit son énergie changer — comme un bouclier invisible qui se levait entre lui et la silhouette.`,
-      `— « Ne l'écoute pas, Souhayl, dit le Shaykh. C'est un envoyé de Shaytan. Ses paroles sont du poison enveloppé de sucre. »`,
-      `Waswās sourit — un sourire parfait, calculé pour inspirer confiance. — « Votre Shaykh est bien sévère, n'est-ce pas ? Toujours à dire « ne fais pas ceci, ne fais pas cela ». Mais moi, je suis différent. Je veux juste te proposer un marché. Rien de méchant. Juste... un petit arrangement qui pourrait te faciliter la vie. »`,
-    ],
-    mood: 'danger',
-    next: 'ch3-8',
-  },
-
-  'ch3-8': {
-    id: 'ch3-8',
-    chapter: 3,
-    chapterTitle: 'La Forêt des Épreuves',
-    paragraphs: [
-      `Waswās fit un geste gracieux, et la forêt autour d'eux se transforma. Les arbres sombres devinrent des colonnes de marbre blanc. Le sol boueux se changea en mosaïques dorées. Des fruits succulents apparurent sur des tables dressées comme par magie.`,
-      `— « Regarde tout ce que je peux t'offrir, dit Waswās en désignant le festin. Tu n'as qu'à accepter mon aide. Tu n'as plus besoin de souffrir, de patienter, de lutter. Je peux rendre ton voyage facile, agréable, même amusant. »`,
-      `Il s'approcha de Souhayl, s'accroupit à sa hauteur, et murmura : — « Tu sais, tout ce que ton Shaykh te demande est trop difficile pour un enfant. Le jeûne, la prière, la patience, l'humilité... C'est pour les moines, les ermites, les gens qui n'ont pas de vie. Toi, tu mérites mieux. Tu mérites le bonheur. Maintenant. Pas dans un futur lointain. »`,
-      `Les ombres autour d'eux applaudissaient doucement, comme un public invisible. La tentation était réelle — physiquement, viscéralement réelle. Les fruits sentaient divinement bons. Les coussins moelleux invitaient au repos. Le chemin facile s'étendait devant lui, pavé de promesses dorées.`,
-      `Le Shaykh, immobile, attendait. Son silence était plus éloquent que n'importe quel discours. Il observait Souhayl avec des yeux qui disaient : « Je ne peux pas choisir pour toi. Mais je crois en toi. »`,
-    ],
-    mood: 'danger',
-    next: 'ch3-choice-3',
-  },
-
-  // ─── CHOICE 3: Dealing with Shaytan's deception ───
-  'ch3-choice-3': {
-    id: 'ch3-choice-3',
-    chapter: 3,
-    chapterTitle: 'La Forêt des Épreuves',
-    paragraphs: [
-      `Waswās tendit sa main à Souhayl, un sourire rassurant aux lèvres. Le festin brillait, le chemin facile luisait, et chaque fibre du corps de Souhayl était tentée de dire oui. Pourquoi souffrir quand on peut être heureux ? Pourquoi lutter quand on peut se reposer ?`,
-      `Mais dans son cœur — au-delà de la tentation, au-delà de la douceur des promesses — la petite lumière de la fitra pulsait. Faiblement, mais fermement. Comme un phare dans la brume. Comme un rappel : « Tu es plus grand que cela, Souhayl. Tu es plus fort que cela. »`,
-      `C'était le moment de choisir. L'épreuve la plus importante jusqu'ici.`,
+      `Waswās tendait sa main avec un sourire parfait. Les fruits sentaient divinement bons. Tout en Souhayl voulait dire oui. Mais au fond de son cœur, la petite flamme de la fitra pulsait faiblement, comme un rappel.`,
     ],
     mood: 'danger',
     choices: [
       {
-        id: 'firmness',
-        text: 'Rejeter Waswās fermement — « Je ne veux pas de tes mensonges ! Mon chemin est difficile, mais il est vrai. Va-t\'en ! »',
-        nextPage: 'ch3-a1',
+        id: 'waswas-reject',
+        text: 'Repousser la main — « Non ! Tes mensonges ne me tromperont pas ! Mon chemin est difficile mais il est vrai ! Va-t\'en ! »',
+        nextPage: 'ch3-c1-reject',
         tag: 'firmness',
         emoji: '🛡️',
       },
       {
-        id: 'wisdom-listen',
-        text: 'Écouter Waswās avec détachement — écouter ses promesses sans y croire, observer les mensonges pour mieux les reconnaître à l\'avenir.',
-        nextPage: 'ch3-a2',
-        tag: 'wisdom',
+        id: 'waswas-question',
+        text: 'Poser des questions — « Si tu es mon ami, pourquoi tu es apparu dans l\'obscurité ? Pourquoi tes fruits sont-ils si parfaits ? Que me caches-tu ? »',
+        nextPage: 'ch3-c2-question',
+        tag: 'discernment',
         emoji: '🧠',
       },
       {
-        id: 'dhikr',
-        text: 'Se tourner vers le dhikr — fermer les yeux, invoquer Allah, réciter la formule de protection. La prière comme bouclier.',
-        nextPage: 'ch3-a3',
+        id: 'waswas-dhikr',
+        text: 'Fermer les yeux et invoquer Allah — réciter « A\'udhu billahi min ash-shaytan ar-rajim ». La prière comme bouclier.',
+        nextPage: 'ch3-c3-dhikr',
         tag: 'dhikr',
         emoji: '📿',
       },
     ],
   },
 
-  'ch3-a1': {
-    id: 'ch3-a1',
+  'ch3-c1-reject': {
+    id: 'ch3-c1-reject',
     chapter: 3,
     chapterTitle: 'La Forêt des Épreuves',
     paragraphs: [
-      `Souhayl recula d'un pas et leva la main, paume ouverte, vers Waswās. — « Non ! cria-t-il avec une force qui le surprit lui-même. Je ne veux pas de tes mensonges ! Mon chemin est difficile, mais il est vrai ! Va-t'en ! »`,
-      `La voix de Souhayl résonna dans la forêt comme un coup de tonnerre. Les colonnes de marbre se fissurèrent. Les tables de festin se renversèrent. Les fruits se transformèrent en cailloux noirs qui roulèrent sur le sol.`,
-      `Waswās tressaillit. Son sourire se brisa comme du verre, révélant derrière une expression de rage froide. — « Tu vas le regretter, gamin, siffla-t-il. Le chemin difficile ne mène nulle part. Tu souffriras, et personne ne viendra te sauver. »`,
-      `Mais Souhayl ne céda pas. Il sentait la force de sa certitude — une certitude qui ne venait pas de son intellect, mais de son cœur. Et cette certitude était plus puissante que n'importe quelle promesse de confort.`,
-      `Waswās et ses ombres se dissipèrent comme de la fumée au vent, et la forêt redevint ce qu'elle était — sombre, difficile, mais authentique. Le Shaykh posa sa main sur l'épaule de Souhayl. — « Tu as montré de la force, mon enfant. Mais n'oublie pas : la force sans sagesse est une épée sans fourreau. Elle coupe, mais elle ne protège pas toujours. »`,
+      `Waswās grimça. Son sourire se brisa comme du verre, révélant une expression de rage froide. — « Tu vas le regretter, gamin. » L'illusion explosa — les fruits devinrent des cailloux, les coussins de la cendre. Waswās disparut dans les ténèbres.`,
+      `Le Shaykh apparut. — « La force est utile contre Shaytan. Mais n'oublie pas : la fermeté sans douceur peut devenir de la dureté du cœur. Le meilleur des boucliers est celui qui protège sans blesser. »`,
     ],
     mood: 'triumph',
-    next: 'ch3-14',
+    next: 'ch3-path-choice',
   },
 
-  'ch3-a2': {
-    id: 'ch3-a2',
+  'ch3-c2-question': {
+    id: 'ch3-c2-question',
     chapter: 3,
     chapterTitle: 'La Forêt des Épreuves',
     paragraphs: [
-      `Souhayl ne recula pas. Il ne cria pas. Il fit quelque chose que Waswās ne s'attendait pas : il s'assit. En tailleur, au milieu du festin illusoire, comme un élève attentif devant son maître.`,
-      `— « Continue, dit Souhayl calmement. Dis-m'en plus. Qu'est-ce que tu offres exactement ? »`,
-      `Waswās fut déstabilisé. — « Je... je t'offre le bonheur, murmura-t-il, moins sûr de lui. La facilité. Le plaisir. »`,
-      `— « Et en échange de quoi ? » demanda Souhayl.`,
-      `Un long silence. Waswās essaya de maintenir son sourire, mais ses yeux trahissaient sa confusion. — « En échange de... rien. Juste ton alliance. »`,
-      `— « Mon alliance ? répéta Souhayl. Tu veux que je me lie à toi. Que je dépende de toi. Que je t'obéisse au lieu d'obéir à Allah. C'est ça ? »`,
-      `Waswās ouvrit la bouche, la referma, puis poussa un cri de rage. L'illusion explosa — les colonnes, le festin, les coussins, tout disparut dans un nuage de poussière noire. Waswās et ses ombres s'enfuirent dans les ténèbres de la forêt, vaincus non pas par la force, mais par la compréhension.`,
-      `Le Shaykh acquiesça. — « La sagesse est le plus puissant des boucliers. Celui qui comprend le piège ne peut pas y tomber. »`,
+      `Waswās bégaya. Ses mots perdirent leur mordant. — « Je... je t'offre le bonheur... » — « Le bonheur ne se vend pas, dit Souhayl. Et s'il est gratuit, il y a un piège. Qui es-tu vraiment ? »`,
+      `Waswās poussa un cri de rage et l'illusion explosa. — « Tu as utilisé l'intelligence, dit le Shaykh. Et l'intelligence est l'arme la plus puissante contre le mensonge. Celui qui comprend le piège ne peut pas y tomber. »`,
     ],
     mood: 'wisdom',
-    shaykhSpeaks: 'Connais ton ennemi, et tu connaîtras sa faiblesse. Le mensonge ne peut survivre à la lumière de la compréhension.',
-    next: 'ch3-14',
+    next: 'ch3-path-choice',
   },
 
-  'ch3-a3': {
-    id: 'ch3-a3',
+  'ch3-c3-dhikr': {
+    id: 'ch3-c3-dhikr',
     chapter: 3,
     chapterTitle: 'La Forêt des Épreuves',
     paragraphs: [
-      `Souhayl ferma les yeux. Le monde extérieur disparut — les tentations, les promesses, les ombres, Waswās, tout s'effaça. Et dans le silence de son cœur, il commença à réciter :`,
-      `— « A'udhu billahi min ash-shaytan ar-rajim... Je cherche refuge auprès d'Allah contre Shaytan le lapidé... »`,
-      `Sa voix était faible au début, tremblante. Mais à chaque mot, elle prenait de la force. Comme une rivière qui commence par un filet d'eau et devient un fleuve puissant. — « La ilaha illa Allah, Muhammadun rasulullah... Il n'y a de divinité qu'Allah, Muhammad est le messager d'Allah... »`,
-      `Et la lumière apparut. Pas une lumière ordinaire — une lumière qui venait de l'intérieur, de son propre cœur, de la fitra cette petite étincelle qu'il avait vue dans le miroir du désert. Sauf qu'elle n'était plus petite. Elle grandissait, irradiant, emplissant tout son être.`,
-      `Waswās poussa un cri perçant. Les ombres se consumèrent comme du papier dans le feu. L'illusion se désintégra, et la forêt redevint sombre, authentique, difficile — mais pure. Le dhikr, la remembrance d'Allah, avait brûlé toutes les impuretés.`,
-      `Quand Souhayl ouvrit les yeux, le Shaykh avait les larmes aux yeux. — « Tu as compris la plus grande des armes, mon enfant. Le dhikr — le souvenir d'Allah — est le bouclier dont parle le Coran. Chaque fois que tu te sentiras faible, rappelle-toi de ce moment. »`,
+      `Souhayl ferma les yeux : « A'udhu billahi min ash-shaytan ar-rajim... » Sa voix tremblait au début, puis grossit, portée par quelque chose de plus grand que lui. « La ilaha illa Allah... »`,
+      `Une lumière explosive jaillit de son cœur. Waswās et ses ombres se consumèrent comme du papier dans le feu. Le dhikr — le souvenir d'Allah — avait brûlé toutes les impuretés. Le Shaykh avait les larmes aux yeux. — « Le dhikr est le bouclier dont parle le Coran, Souhayl. Rappelle-toi d'Allah, et Il se souviendra de toi. »`,
     ],
     mood: 'peace',
-    shaykhSpeaks: 'Le dhikr est le remède des cœurs et la lumière des âmes. Rappelle-toi d\'Allah, et Il se souviendra de toi. C\'est la promesse la plus sûre.',
-    next: 'ch3-14',
+    shaykhSpeaks: 'Le dhikr est le remède des cœurs et la lumière des âmes. Plus tu te souviens d\'Allah, plus Il se souvient de toi.',
+    next: 'ch3-path-choice',
   },
 
-  'ch3-14': {
-    id: 'ch3-14',
+  'ch3-path-choice': {
+    id: 'ch3-path-choice',
     chapter: 3,
     chapterTitle: 'La Forêt des Épreuves',
     paragraphs: [
-      `Après la disparition de Waswās, la forêt changea d'aspect. Les arbres s'espacèrent, la lumière revint, et un chemin se dessina devant eux — un chemin qui menait vers une clairière. L'air était plus pur, comme après un orage, et les oiseaux — des oiseaux qu'il n'avait pas remarqués avant — se mirent à chanter.`,
-      `— « Tu te demandes peut-être pourquoi Shaytan t'a envoyé son sbire maintenant, dit le Shaykh en marchant à côté de Souhayl. La réponse est simple : tu t'approches de quelque chose d'important. Plus tu avances sur le chemin, plus les forces de l'obscurité se mobilisent. Elles ne veulent pas que tu atteignes la vérité. »`,
-      `— « Mais... pourquoi moi ? demanda Souhayl. Je ne suis qu'un enfant. Il y a des adultes bien plus forts que moi. »`,
-      `— « C'est justement pour cela, répondit le Shaykh avec un sourire. L'ego des adultes est comme une forteresse — difficile à attaquer, mais aussi difficile à changer. Le tien est comme une tente — plus vulnérable, mais aussi plus facile à transformer. Et surtout... » Il se pencha vers Souhayl. « Tu as quelque chose que beaucoup d'adultes ont perdu : la sincérité. Tu ne cherches pas la gloire, ni le pouvoir, ni la reconnaissance. Tu cherches simplement à comprendre. Et c'est la meilleure des intentions. »`,
-    ],
-    mood: 'wisdom',
-    next: 'ch3-15',
-  },
-
-  'ch3-15': {
-    id: 'ch3-15',
-    chapter: 3,
-    chapterTitle: 'La Forêt des Épreuves',
-    paragraphs: [
-      `Ils atteignirent la clairière au crépuscule — un crépuscule perpétuel, car le soleil de ce monde ne se couchait jamais vraiment. La clairière était circulaire, bordée de fleurs lumineuses qui pulsaient doucement comme des cœurs. Et au centre, trois chemins partaient dans trois directions différentes.`,
-      `Chaque chemin avait une apparence distincte :`,
-      `Le premier était étroit, rocailleux, difficile — il montait raide entre des rochers coupants. Pas de végétation, pas d'ombre, juste la roche nue et le ciel. C'était le chemin de la rigueur.`,
-      `Le deuxième était large, sinueux, bordé d'arbres fruitiers et de ruisseaux chantants. Il serpentait doucement à travers des collines verdoyantes. C'était le chemin de la miséricorde.`,
-      `Le troisième était droit, ardent, bordé de flammes qui ne brûlaient pas mais illuminaient. Il rayonnait d'une énergie intense, presque insoutenable. C'était le chemin de la passion.`,
-      `Le Shaykh s'arrêta au carrefour et regarda Souhayl. — « Ces trois chemins mènent tous au même endroit : la Montagne de la Vérité. Mais la façon dont tu y arriveras — et l'état dans lequel tu y arriveras — dépendra du chemin que tu choisiras. »`,
-      `— « Lequel choisir ? demanda Souhayl. »`,
-      `Le Shaykh secoua la tête. — « Je ne peux pas choisir pour toi. Mais souviens-toi de ce que tu as appris. Souviens-toi du courage, de l'humilité, de la patience, de la confiance, du dhikr. Et écoute ton cœur. »`,
+      `La forêt s'ouvrit sur une clairière. Trois chemins partaient vers la montagne lointaine : un étroit et rocailleux, un large et verdoyant, un droit et ardent comme du feu.`,
+      `Le Shaykh s'arrêta. — « Ces trois chemins mènent tous à la Montagne de la Vérité. Mais la façon d'y arriver dépendra du chemin que tu choisiras. Écoute ton cœur, Souhayl. »`,
     ],
     mood: 'wonder',
-    next: 'ch3-choice-4',
+    next: 'ch3-choice-path',
   },
 
-  // ─── CHOICE 4: The path of the heart ───
-  'ch3-choice-4': {
-    id: 'ch3-choice-4',
+  // ─── CHOICE 11: Le chemin de la montagne ───
+  'ch3-choice-path': {
+    id: 'ch3-choice-path',
     chapter: 3,
     chapterTitle: 'La Forêt des Épreuves',
     paragraphs: [
-      `Les trois chemins s'étendaient devant Souhayl, chacun promettant une expérience différente. Le vent soufflait doucement, portant des parfums différents depuis chaque direction — la roche chaude du premier, les fruits sucrés du deuxième, la chaleur vivante du troisième.`,
-      `Le Shaykh se tenait en retrait. Cette fois encore, le choix appartenait à Souhayl. C'était son voyage, son apprentissage, son cœur.`,
+      `Chaque chemin avait une allure différente. Le rocheux semblait difficile mais honnête. Le verdoyant promettait douceur. Le ardent brillait d'une énergie presque magnétique. Souhayl sentait que ce choix allait façonner la suite de son voyage.`,
     ],
     mood: 'wonder',
     choices: [
       {
-        id: 'discipline',
-        text: 'Le chemin étroit et rocailleux — la rigueur. Le chemin le plus difficile mais peut-être le plus pur. Seul contre les éléments, comme les ascètes d\'autrefois.',
-        nextPage: 'ch3-b1',
+        id: 'path-rock',
+        text: 'Le chemin rocailleux — difficile, exigeant, mais chaque pas est concret. Comme l\'effort dans la prière quand on n\'en a pas envie.',
+        nextPage: 'ch3-d1-rock',
         tag: 'discipline',
         emoji: '⛰️',
       },
       {
-        id: 'mercy',
-        text: 'Le chemin large et verdoyant — la miséricorde. Un chemin plus doux, bordé de ruisseaux et d\'arbres. La douceur plutôt que la rigueur.',
-        nextPage: 'ch3-b2',
+        id: 'path-green',
+        text: 'Le chemin verdoyant — doux, bordé de fleurs et de ruisseaux. La miséricorde plutôt que la rigueur. L\'amour plutôt que la peur.',
+        nextPage: 'ch3-d2-green',
         tag: 'mercy',
-        emoji: '🌿',
+        emoji: '🌸',
       },
       {
-        id: 'passion',
-        text: 'Le chemin droit et ardent — la passion. Un chemin d\'énergie et d\'intensité. Le feu de l\'amour divin qui consume tout.',
-        nextPage: 'ch3-b3',
+        id: 'path-fire',
+        text: 'Le chemin ardent — droit, puissant, brûlant. Le feu de l\'amour divin qui consume tout ce qui n\'est pas essentiel.',
+        nextPage: 'ch3-d3-fire',
         tag: 'passion',
         emoji: '🔥',
       },
     ],
   },
 
-  'ch3-b1': {
-    id: 'ch3-b1',
+  'ch3-d1-rock': {
+    id: 'ch3-d1-rock',
     chapter: 3,
     chapterTitle: 'La Forêt des Épreuves',
     paragraphs: [
-      `Souhayl choisit le chemin étroit. Ses pieds trouvèrent le rocher, et il commença à grimper. Chaque pas demandait un effort conscient — placer le pied, tester la prise, se hisser. Pas de distraction, pas de confort, juste l'essentiel : la montée.`,
-      `La rigueur du chemin lui rappelait les ascètes dont le Shaykh avait parlé — ces hommes et ces femmes qui avaient renoncé à tout pour se consacrer à Allah. Ils vivaient dans des grottes, mangeaient peu, dormaient peu, parlaient peu. Leur vie entière était un acte d'adoration.`,
-      `Souhayl comprit quelque chose en grimpant : la difficulté n'était pas un obstacle — c'était un enseignant. Chaque rocher qui le faisait trébucher lui apprenait l'humilité. Chaque montée raide lui apprenait la persévérance. Chaque instant de solitude lui apprenait la reliance — cette certitude profonde qu'il n'était jamais vraiment seul.`,
-      `Quand il atteignit le sommet du sentier, haletant, les mains écorchées, il découvrit la vue : au loin, dominant toute la forêt, une montagne immense s'élevait vers le ciel. La Montagne de la Vérité. Elle était là, majestueuse, intimidante, et magnifiquement belle.`,
-      `Le Shaykh apparut à côté de lui. — « Le chemin de la rigueur forge des âmes fortes. Mais n'oublie pas : la rigidité sans compassion est comme un arbre sans feuilles — il survit, mais il ne donne rien. »`,
+      `Le chemin rocailleux demandait chaque pas. Chaque marche était un acte de volonté. Souhayl transpirait, ses muscles brûlaient, mais son esprit était étrangement clair — comme si la difficulté physique nettoyait ses pensées.`,
+      `Quand il atteignit le sommet du sentier, la Montagne de la Vérité se dressait devant lui, majestueuse. — « La discipline forge des âmes solides, dit le Shaykh. Mais la rigidité sans compassion est un arbre sans feuilles — il survit mais ne donne rien. »`,
     ],
     mood: 'triumph',
     next: 'ch4-start',
   },
 
-  'ch3-b2': {
-    id: 'ch3-b2',
+  'ch3-d2-green': {
+    id: 'ch3-d2-green',
     chapter: 3,
     chapterTitle: 'La Forêt des Épreuves',
     paragraphs: [
-      `Souhayl choisit le chemin verdoyant. Ses pieds enfoncèrent dans la mousse tendre, et une sensation de douceur l'envahit. Des papillons de lumière voletaient autour de lui, et les arbres fruitiers murmuraient des secrets anciens.`,
-      `Le long du chemin, il croisa des créatures — pas des monstres, mais des êtres fragiles : un oiseau blessé, un renardeau perdu, un vieil arbre penché sous le poids de ses souvenirs. Et chaque fois, Souhayl s'arrêtait. Il soignait l'oiseau, guidait le renardeau, soutenait l'arbre.`,
-      `— « La miséricorde, murmura une voix — pas celle du Shaykh, une voix plus douce, plus féminine, venue des arbres eux-mêmes, est la plus puissante des forces. Elle ne conquiert pas — elle transforme. Elle ne détruit pas — elle guérit. »`,
-      `Quand il arriva au bout du chemin, essoré mais heureux, la Montagne de la Vérité se dressait devant lui, auréolée de nuages dorés. Il l'avait atteinte non pas par la force, mais par la douceur.`,
-      `Le Shaykh l'attendait. — « Le chemin de la miséricorde ouvre les cœurs — le tien et celui des autres. Mais n'oublie pas : la miséricorde sans justice est comme un océan sans rives — elle se perd dans l'infini. »`,
+      `Sur le chemin verdoyant, Souhayl croisa des créatures blessées — un oiseau, un renardeau, un vieil arbre. Et chaque fois, il s'arrêtait pour aider. La miséricorde devenait son mode de navigation.`,
+      `La montagne apparut, auréolée de nuages dorés. — « La miséricorde ouvre les cœurs — le tien et celui des autres, dit le Shaykh. Mais la miséricorde sans justice est un océan sans rives — elle se perd dans l'infini. »`,
     ],
     mood: 'peace',
     next: 'ch4-start',
   },
 
-  'ch3-b3': {
-    id: 'ch3-b3',
+  'ch3-d3-fire': {
+    id: 'ch3-d3-fire',
     chapter: 3,
     chapterTitle: 'La Forêt des Épreuves',
     paragraphs: [
-      `Souhayl choisit le chemin de feu. Dès son premier pas, une énergie incroyable l'envahit. Les flammes bordant le chemin ne brûlaient pas — elles illuminaient, purifiaient, transformaient. Chaque pas qu'il faisait brûlait une couche de sa fatigue, de ses doutes, de ses peurs.`,
-      `Il courut. Pas parce qu'il le devait — parce qu'il le voulait. Le feu en lui brûlait d'un désir insatiable : le désir de connaître Allah, de se rapprocher de Lui, de fusionner avec Sa lumière. C'était le feu de l'amour divin — le 'ishq dont parlaient les poètes soufis.`,
-      `Les mots de Rûmî résonnaient dans son esprit comme s'il les lisait : « L'amour est le feu qui brûle tout ce qui n'est pas l'essentiel. » Et Souhayl comprenait maintenant — le Tassawuf n'était pas seulement un chemin de discipline. C'était un chemin d'amour. L'amour le plus pur, le plus profond, le plus consumeur.`,
-      `Quand il arriva au bout du chemin, le cœur battant, les yeux brillants, la Montagne de la Vérité apparut. Elle semblait plus proche que jamais, comme si le feu l'avait purifié et rendu capable de voir ce que les yeux ordinaires ne pouvaient pas voir.`,
-      `Le Shaykh attendait, son visage radieux. — « Le feu de la passion est le plus dangereux et le plus beau des chemins. Mais n'oublie pas : un feu sans contrôle consume celui qui le porte aussi bien que ce qu'il espère atteindre. »`,
+      `Le chemin de feu brûlait. Pas de douleur — de l'intensité pure. Chaque pas consumait une peur, un doute, une attache. Souhayl courait, poussé par un désir insatiable de se rapprocher d'Allah. C'était le 'ishq — l'amour divin des poètes soufis.`,
+      `La montagne semblait plus proche que jamais. — « Le feu de la passion est le plus beau et le plus dangereux des chemins, dit le Shaykh. Un feu sans contrôle consume celui qui le porte autant que ce qu'il espère atteindre. »`,
     ],
     mood: 'triumph',
     next: 'ch4-start',
@@ -853,107 +1013,136 @@ export const storyPages: Record<string, StoryPage> = {
     chapter: 4,
     chapterTitle: 'La Montagne de la Vérité',
     paragraphs: [
-      `La Montagne de la Vérité se dressait devant Souhayl comme un géant de pierre et de lumière. Elle était si haute que son sommet se perdait dans les nuages — ou peut-être que son sommet était les nuages, ou peut-être qu'il n'y avait pas de sommet du tout, juste une ascension infinie vers quelque chose qui ne pouvait pas être atteint mais seulement approché.`,
-      `Ses flancs étaient parcourus de sentiers — des centaines, des milliers de sentiers qui s'entrecroisaient, se séparaient, fusionnaient, formant un labyrinthe vertical. Chaque sentier avait été tracé par un voyageur différent, et chaque pierre portait l'empreinte de pas anciens — des pas de ceux qui étaient venus avant Souhayl, depuis des siècles, depuis des millénaires.`,
-      `Au pied de la montagne, une plaque de pierre gravée indiquait : « Ici commence le dernier voyage. Celui qui gravit cette montagne ne sera plus jamais le même. »`,
-      `Le Shaykh s'arrêta et regarda Souhayl longuement. — « Ce qui t'attend là-haut, mon enfant, est ton épreuve finale. Je ne peux pas monter avec toi — pas jusqu'au bout. Le dernier pas t'appartient à toi seul. Mais je serai là, à chaque instant, dans ton cœur. Souviens-toi : le Shaykh n'est pas une personne — c'est la sagesse qui vit en toi. »`,
+      `La Montagne de la Vérité se dressait comme un géant de pierre et de lumière, si haute que son sommet se perdait dans les nuages. Des centaines de sentiers la parcouraient, tracés par des voyageurs depuis des siècles.`,
+      `— « Le dernier voyage t'appartient, Souhayl. Je ne peux pas monter avec toi jusqu'au bout. Souviens-toi de tout ce que tu as appris. Et n'oublie pas : le Shaykh n'est pas une personne — c'est la sagesse qui vit en toi. »`,
     ],
     mood: 'wonder',
-    next: 'ch4-2',
+    next: 'ch4-climb',
     isChapterStart: true,
   },
 
-  'ch4-2': {
-    id: 'ch4-2',
+  'ch4-climb': {
+    id: 'ch4-climb',
     chapter: 4,
     chapterTitle: 'La Montagne de la Vérité',
     paragraphs: [
-      `Souhayl commença l'ascension. Les premières marches étaient faciles — un sentier bien tracé, des marches taillées dans la roche, des rampes pour se tenir. Mais très vite, le chemin devint plus sauvage. Les marches disparurent, remplacées par des fissures dans la roche, des passages étroits, des surplombs vertigineux.`,
-      `À chaque pas, un souvenir remontait. Pas des souvenirs innocents — des souvenirs douloureux. Le jour où il avait trahi la confiance de son ami. La fois où il avait menti à sa mère et qu'elle l'avait découvert. Le moment où il avait ri d'un enfant plus faible que lui. Chaque souvenir était une pierre sur le chemin, et chaque pierre demandait d'être reconnue avant de pouvoir avancer.`,
-      `Souhayl comprit : on ne pouvait pas gravir la Montagne de la Vérité en ignorant son passé. Chaque erreur, chaque faute, chaque moment de faiblesse devait être regardé en face, accepté, et transformé en un pas vers le haut. Le repentir n'était pas de la culpabilité — c'était de la croissance.`,
-      `Plus il montait, plus l'air devenait rare — non pas physiquement, mais spirituellement. Les pensées superficielles s'évaporaient. Les préoccupations mondaines disparaissaient. Il ne restait que l'essentiel : lui, la montagne, et la quête de la vérité.`,
-    ],
-    mood: 'darkness',
-    next: 'ch4-3',
-  },
-
-  'ch4-3': {
-    id: 'ch4-3',
-    chapter: 4,
-    chapterTitle: 'La Montagne de la Vérité',
-    paragraphs: [
-      `À mi-chemin, Souhayl atteignit un plateau. Un plateau circulaire, nu, balayé par un vent glacial. Et au centre du plateau, assis sur un trône de cristal noir, le Nafs l'attendait.`,
-      `Mais ce n'était plus le Nafs du désert — celui-ci était différent. Plus grand, plus puissant, plus séduisant. Il portait des vêtements royaux, une couronne de pierres noires, et son visage — le visage de Souhayl — était celui d'un roi autoritaire, sûr de lui, invincible.`,
-      `— « Tu es de retour, dit le Nafs d'une voix qui résonnait comme un écho dans une cathédrale. J'ai grandi, Souhayl. Chaque fois que tu m'as nourri — par la colère, par l'orgueil, par l'envie — j'ai grandi. Et maintenant, je suis plus fort que jamais. »`,
-      `Souhayl s'arrêta. Son cœur battait si fort qu'il résonnait dans toute la montagne. Le Nafs se leva de son trône, grand — immense — et ses yeux brillèrent d'un éclat sombre.`,
-      `— « Vas-y, continua le Nafs en écartant les bras. Affronte-moi si tu en as le courage. Mais sache que cette fois, je ne serai pas si facile à vaincre. Cette fois, je suis TOI. Toute ta force, toute ton intelligence, toute ta volonté — elles sont à moi. Sans moi, tu n'es rien. »`,
+      `À mi-chemin, le sentier se rétrécit dangereusement. D'un côté, une paroi rocheuse. De l'autre, un vide vertigineux. Et au milieu, un passage si étroit qu'un seul pied à la fois pouvait y avancer.`,
+      `Le vent soufflait, essayant de le déséquilibrer. Souhayl regarda le vide, puis regarda la paroi, puis regarda le passage étroit. Son cœur battait à tout rompre.`,
     ],
     mood: 'danger',
-    next: 'ch4-4',
+    next: 'ch4-choice-cliff',
   },
 
-  'ch4-4': {
-    id: 'ch4-4',
+  // ─── CHOICE 12: Le passage étroit ───
+  'ch4-choice-cliff': {
+    id: 'ch4-choice-cliff',
     chapter: 4,
     chapterTitle: 'La Montagne de la Vérité',
     paragraphs: [
-      `Le Nafs dit la vérité — du moins, une partie de la vérité. Sans l'ego, Souhayl ne pourrait pas survivre dans ce monde. L'ego est ce qui te pousse à manger quand tu as faim, à te protéger quand tu es en danger, à te défendre quand on t'attaque. Le problème n'est pas l'ego lui-même — c'est son excès, son déséquilibre, sa prise de pouvoir.`,
-      `Souhayl sentit le doute l'envahir. Comment combattre quelque chose qui fait partie de lui ? Comment détruire une forteresse construite avec ses propres briques ?`,
-      `Et c'est à ce moment précis que la voix du Shaykh résonna dans son cœur — pas de l'extérieur, mais de l'intérieur, comme un écho venu du plus profond de son âme :`,
-      `— « Ne le combats pas, Souhayl. Ne le détruis pas. Transmute-le. Transforme son énergie en quelque chose de meilleur. Le lion ne perd pas sa force quand il se soumet au dompteur — il la canalise. »`,
-      `Souhayl ferma les yeux. Il respira. Et quand il les rouvrit, il ne regardait plus le Nafs avec la colère du guerrier. Il le regardait avec la compréhension du sage.`,
-      `— « Tu as raison, dit Souhayl calmement. Tu es une partie de moi. Mais tu n'es pas la totalité de moi. Il y a autre chose — quelque chose que tu ne pourras jamais atteindre, parce que ça ne t'appartient pas. Ça appartient à Allah. »`,
+      `Le passage était terrifiant mais inévitable. Pas de contournement possible. Souhayl devait traverser. Comment allait-il gérer cette peur ?`,
     ],
-    mood: 'wisdom',
-    shaykhSpeaks: 'Ne cherche pas à détruire ton ego — cherche à le maîtriser. Le lion apprivoisé est plus puissant que le lion sauvage, car sa force est dirigée par la sagesse plutôt que par l\'instinct.',
-    next: 'ch4-5',
+    mood: 'danger',
+    choices: [
+      {
+        id: 'cliff-focus',
+        text: 'Fixer un point au loin et avancer sans regarder en bas — une respiration après l\'autre. Contrôler sa peur par la concentration.',
+        nextPage: 'ch4-a1-focus',
+        tag: 'tawakkul',
+        emoji: '🎯',
+      },
+      {
+        id: 'cliff-trust',
+        text: 'Fermer les yeux, avancer à l\'aveugle, et faire confiance — « Ya Allah, Tu es mon guide. Mène-moi. » Se remettre totalement à Allah.',
+        nextPage: 'ch4-a2-trust',
+        tag: 'surrender',
+        emoji: '🙈',
+      },
+      {
+        id: 'cliff-back',
+        text: 'Faire demi-tour et chercher un autre chemin — il doit bien y en avoir un autre. Ce passage est trop dangereux pour un enfant.',
+        nextPage: 'ch4-a3-back',
+        tag: 'prudence',
+        emoji: '↩️',
+      },
+    ],
   },
 
-  'ch4-5': {
-    id: 'ch4-5',
+  'ch4-a1-focus': {
+    id: 'ch4-a1-focus',
     chapter: 4,
     chapterTitle: 'La Montagne de la Vérité',
     paragraphs: [
-      `Le Nafs hésita. Pour la première fois depuis le début du voyage, il ne savait pas comment réagir. L'approche de Souhayl était différente — ni combat, ni fuite, ni soumission. Quelque chose de nouveau. Quelque chose qu'il n'avait pas prévu.`,
-      `Le plateau trembla. La montagne gronda. Et dans un dernier effort désespéré, le Nafs se transforma. Ses vêtements royaux tombèrent, révélant une armure noire. Il poussa un cri de guerre et chargea Souhayl — non pas physiquement, mais spirituellement. Une vague de doutes, de peurs, de désirs assaillit l'esprit du jeune garçon comme un tsunami.`,
-      `Souhayl vacilla. Ses genoux fléchirent. Les ténèbres l'enveloppèrent. Et dans les ténèbres, une voix murmura : « Abandonne. C'est trop difficile. Tu es trop jeune. Tu n'y arriveras jamais. Personne ne t'a jamais cru capable. Pourquoi commencer maintenant ? »`,
-      `La tentation de s'asseoir, de fermer les yeux, de laisser tomber — elle était immense. Plus forte que tout ce qu'il avait ressenti jusque-là. Le poids de chaque choix, de chaque effort, de chaque sacrifice pesait sur ses épaules comme le monde entier.`,
-      `Et dans ce moment de vulnérabilité totale, Souhayl fit ce que tout voyageur fait quand il ne peut plus avancer par lui-même : il demanda de l'aide.`,
+      `Souhayl fixa un point lumineux au loin — le sommet, peut-être — et avança. Un pas. Puis un autre. Son cœur cognait contre ses côtes, mais ses pieds étaient précis. La peur était là, mais elle ne le contrôlait plus. Il l'observait comme on observe un orage — de loin.`,
+      `Quand il atteignit l'autre côté, il sentit quelque chose de nouveau en lui : la maîtrise. Pas la disparition de la peur — la capacité de marcher malgré elle. — « C'est ça, le vrai courage, murmura une voix. Pas l'absence de peur, mais la décision d'avancer quand même. »`,
+    ],
+    mood: 'triumph',
+    next: 'ch4-plateau',
+  },
+
+  'ch4-a2-trust': {
+    id: 'ch4-a2-trust',
+    chapter: 4,
+    chapterTitle: 'La Montagne de la Vérité',
+    paragraphs: [
+      `Souhayl ferma les yeux. — « Ya Allah... » Ses pieds trouvèrent le passage seuls, comme guidés par une force invisible. Le vent s'apaisa. Le vide sous ses pieds semblait se combler. Il avançait dans une paix totale.`,
+      `Quand il rouvrit les yeux, il était de l'autre côté. Le tawakkul — la confiance en Allah — l'avait porté. — « Celui qui fait confiance à Allah ne sera jamais déçu, dit la voix. Car la confiance, c'est la certitude qu'Allah fait ce qu'il y a de meilleur pour toi. »`,
+    ],
+    mood: 'peace',
+    next: 'ch4-plateau',
+  },
+
+  'ch4-a3-back': {
+    id: 'ch4-a3-back',
+    chapter: 4,
+    chapterTitle: 'La Montagne de la Vérité',
+    paragraphs: [
+      `Souhayl fit demi-tour. Il chercha — un autre sentier, une échelle, un pont, n'importe quoi. Mais plus il cherchait, plus les sentiers s'effaçaient derrière lui. Bientôt, il n'y eut plus qu'un seul chemin : le passage étroit.`,
+      `Il comprit : il n'y avait pas d'autre voie. Le passage était le seul chemin. Avec le cœur lourd, il revint et le traversa — tremblant, pleurant, mais traversant. — « La prudence est bonne, dit la voix. Mais parfois, ce que nous fuyons est exactement ce dont nous avons besoin. »`,
     ],
     mood: 'darkness',
-    next: 'ch4-choice-5',
+    next: 'ch4-plateau',
   },
 
-  // ─── CHOICE 5: The final choice ───
-  'ch4-choice-5': {
-    id: 'ch4-choice-5',
+  'ch4-plateau': {
+    id: 'ch4-plateau',
     chapter: 4,
     chapterTitle: 'La Montagne de la Vérité',
     paragraphs: [
-      `Au cœur de l'obscurité, au sommet de la montagne, au bord du précipice entre la lumière et les ténèbres, Souhayl sentit quelque chose se fissurer en lui — mais pas de manière négative. C'était comme une coquille qui se brisait, révélant ce qu'elle contenait.`,
-      `Et dans ce moment de vérité absolue, trois chemins s'ouvrirent devant son âme. Non pas des chemins physiques — des chemins du cœur. Trois façons de répondre à l'appel final. Trois façons de terminer son voyage.`,
-      `La lumière de la fitra pulsait en lui, faible mais présente. Le vent de la montagne soufflait, portant avec lui des milliers de prières anciennes. Et Souhayl, le garçon de dix ans qui avait ouvert un livre interdit et avait osé pénétrer dans son propre monde intérieur, devait faire le dernier choix.`,
-      `Ce choix définirait qui il était. Qui il serait. Pour toujours.`,
+      `Au sommet du sentier, un plateau circulaire. Et là, assis sur un trône de cristal noir, le Nafs l'attendait — transformé, plus grand, plus puissant, en armure sombre.`,
+      `— « Tu es de retour, dit le Nafs. J'ai grandi, Souhayl. Chaque fois que tu m'as nourri — par la colère, l'orgueil, l'envie — j'ai grandi. Et maintenant... » Il se leva, immense. « ...je suis toi. »`,
+      `Les ténèbres l'enveloppèrent. Le Nafs chargea, et Souhayl s'effondra sous le poids de ses propres doutes. Au cœur de l'obscurité, une voix demanda : « Que vas-tu faire, Souhayl ? »`,
+    ],
+    mood: 'danger',
+    next: 'ch4-choice-final',
+  },
+
+  // ─── CHOICE 13: Le choix ultime ───
+  'ch4-choice-final': {
+    id: 'ch4-choice-final',
+    chapter: 4,
+    chapterTitle: 'La Montagne de la Vérité',
+    paragraphs: [
+      `Au cœur de l'obscurité, trois voies s'ouvrirent dans l'âme de Souhayl. Pas des chemins physiques — des réponses du cœur. Ce dernier choix définirait qui il était devenu. Pour toujours.`,
     ],
     mood: 'wonder',
     choices: [
       {
-        id: 'surrender',
-        text: 'L\'abandon total — « Ya Allah, je me rends. Je ne suis rien et Tu es tout. Prends ce qui reste de moi et fais-en ce que Tu veux. Je suis Ton serviteur. »',
+        id: 'final-surrender',
+        text: 'L\'abandon total — « Ya Allah, je me rends. Je ne suis rien et Tu es tout. Prends ce qui reste de moi. Je suis Ton serviteur. »',
         nextPage: 'ending-light',
         tag: 'surrender',
         emoji: '🤲',
       },
       {
-        id: 'seek-guidance',
-        text: 'La quête de guidance — « Ya Allah, je ne sais pas. Guide-moi encore. Montre-moi le chemin. Je veux apprendre, je veux comprendre, mais j\'ai besoin de Toi. »',
+        id: 'final-seek',
+        text: 'La demande sincère — « Ya Allah, guide-moi encore. Je veux comprendre, pas seulement croire. Montre-moi la voie de la sagesse. »',
         nextPage: 'ending-wisdom',
         tag: 'guidance',
         emoji: '📖',
       },
       {
-        id: 'face-alone',
-        text: 'L\'affrontement solitaire — « Non. Je me battrai seul. J\'ai appris assez. Je suis fort maintenant. Je vais vaincre mon ego par ma propre volonté. »',
+        id: 'final-struggle',
+        text: 'Se relever et livrer bataille — « Non. Je ne me rendrai pas. Je vais me battre contre mon ego jusqu\'à mon dernier souffle. »',
         nextPage: 'ending-shadow',
         tag: 'independence',
         emoji: '🗡️',
@@ -965,89 +1154,51 @@ export const storyPages: Record<string, StoryPage> = {
   // ENDINGS
   // ═══════════════════════════════════════════
 
-  // Ending 1: La Lumière de l'Âme
   'ending-light': {
     id: 'ending-light',
     chapter: 4,
     chapterTitle: 'La Montagne de la Vérité',
     paragraphs: [
-      `Souhayl tomba à genoux. Non pas de faiblesse — d'abandon. Un abandon total, absolu, magnifique. Il ouvrit les mains, leva la tête vers un ciel qu'il ne pouvait pas voir, et dit les mots les plus vrais qu'il ait jamais prononcés :`,
-      `— « Ya Allah... je me rends. Je ne suis rien et Tu es tout. Prends ce qui reste de moi et fais-en ce que Tu veux. Je suis Ton serviteur. Je suis Ta créature. Je suis Ton esclave. Fais de moi ce que Tu veux. »`,
-      `Et à ce moment précis, tout changea. Les ténèbres ne se dissipèrent pas — elles se transformèrent. L'armure du Nafs se brisa en mille morceaux qui devinrent des étoiles. Le plateau du sommet s'illumina d'une lumière si pure, si intense, que Souhayl dut fermer les yeux — non pas de douleur, mais de béatitude.`,
-      `Quand il les rouvrit, le Nafs était là — mais transformé. Plus une armure sombre, plus un roi tyrannique. Il était debout, nu, vulnérable, les yeux baissés. Et pour la première fois, il ne ressemblait pas à un ennemi. Il ressemblait à un enfant perdu.`,
-      `— « Souhayl, murmura le Nafs d'une voix brisée, pardonnes-moi. »`,
-      `Souhayl le regarda, et il ne vit plus son ennemi. Il vit une partie de lui-même — blessée, égarée, mais capable de guérison. Il posa sa main sur l'épaule du Nafs, et dit :`,
-      `— « Je te pardonne. Parce qu'Allah m'a pardonné. Et si Lui, le Créateur des mondes, peut pardonner, qui suis-je pour refuser la même grâce ? »`,
-      `Le sommet de la montagne s'ouvrit. Pas physiquement — spirituellement. Un passage apparut, fait non pas de pierre mais de lumière, et Souhayl comprit : ce passage n'était pas la fin du voyage. C'était le commencement d'un autre voyage — un voyage qui durerait toute sa vie, chaque jour un pas de plus vers Allah.`,
-      `La voix du Shaykh — douce, fière, infiniment aimante — murmura dans son cœur : « Bienvenue, Souhayl. Bienvenue sur le chemin. Tu as compris ce que beaucoup ne comprennent jamais : la plus grande force n'est pas de vaincre, mais de se rendre. À Celui qui est le plus digne de recevoir notre abandon. »`,
+      `Souhayl tomba à genoux. — « Ya Allah... je me rends. Je ne suis rien et Tu es tout. »`,
+      `Et à ce moment, tout changea. Les ténèbres se transformèrent en lumière. L'armure du Nafs se brisa en étoiles. Son ego apparut, nu et vulnérable, et pour la première fois, il n'était plus un ennemi — il était une partie de lui qui avait besoin de guérison.`,
+      `— « Je te pardonne, dit Souhayl en posant sa main sur l'épaule du Nafs. Car si Allah le Très Haut peut pardonner, qui suis-je pour refuser la même grâce ? »`,
+      `Le sommet de la montagne s'ouvrit sur une lumière infinie. Le Shaykh murmura : « Bienvenue, Souhayl. L'abandon est la plus grande des forces. Celui qui se rend à Allah trouve la liberté. »`,
     ],
     mood: 'ending',
     isEnding: true,
     endingType: 'light',
   },
 
-  // Ending 2: La Sagesse du Chemin
   'ending-wisdom': {
     id: 'ending-wisdom',
     chapter: 4,
     chapterTitle: 'La Montagne de la Vérité',
     paragraphs: [
-      `Souhayl ne tomba pas à genoux. Il resta debout, tremblant mais stable, et leva les mains vers le ciel — non pas en abandon, mais en demande sincère :`,
-      `— « Ya Allah... je ne sais pas. Je suis un enfant, et je ne comprends pas tout. Mais je veux apprendre. Guide-moi encore. Montre-moi le chemin. Je veux comprendre, pas seulement croire. Je veux savoir, pas seulement obéir. »`,
-      `Le silence qui suivit dura une éternité — ou un instant. Puis, lentement, la lumière se fit. Pas la lumière éblouissante d'une révélation explosive — une lumière douce, modérée, comme celle du matin qui se lève. Une lumière qui n'éblouit pas mais illumine. Qui ne détruit pas les ténèbres mais les repousse doucement.`,
-      `Le Nafs recula. Pas vaincu — apaisé. Il regarda Souhayl avec des yeux qui n'étaient plus hostiles, mais curieux. Comme si la sincérité de la demande avait touché quelque chose en lui aussi.`,
-      `Le Shaykh apparut — non pas comme une apparition spirituelle, mais comme un vieil homme debout sur la montagne, sa barbe blanche flottant dans le vent. Il sourit et dit :`,
-      `— « Tu as choisi la voie de la sagesse, Souhayl. Et c'est peut-être la plus difficile de toutes, car elle demande de vivre avec des questions plutôt que des réponses. Le chemin du Tassawuf n'a pas de fin — chaque réponse ouvre dix nouvelles questions. Et c'est magnifique. Car c'est dans la recherche que l'âme grandit. »`,
-      `Souhayl regarda l'horizon. La montagne s'étendait devant lui, infinie. Et il comprit qu'il n'avait pas atteint le sommet — il avait simplement atteint le point d'où il pouvait voir plus loin. Le vrai voyage commençait maintenant.`,
-      `— « Retourne dans ton monde, Souhayl, dit le Shaykh. Vis ta vie. Fais tes erreurs. Apprends de tes chutes. Et chaque fois que tu doutes, chaque fois que tu as peur, souviens-toi de ce moment : tu as demandé la guidance, et elle t'a été accordée. Il te suffit de continuer à demander. »`,
+      `— « Ya Allah... guide-moi encore. Je veux comprendre. »`,
+      `Une lumière douce se fit — pas éblouissante, mais illuminante. Comme l'aube. Le Nafs recula, apaisé, et le Shaykh apparut, rayonnant : « Tu as choisi la sagesse, Souhayl. La sagesse de savoir que l'on ne sait pas tout. »`,
+      `— « Retourne dans ton monde, continua le Shaykh. Vis, fais des erreurs, apprends. Chaque jour est un pas vers Allah. Le Tassawuf n'a pas de fin — chaque réponse ouvre de nouvelles questions. Et c'est magnifique. Car c'est dans la recherche que l'âme grandit. »`,
     ],
     mood: 'ending',
     isEnding: true,
     endingType: 'wisdom',
   },
 
-  // Ending 3: L'Ombre Révélée
   'ending-shadow': {
     id: 'ending-shadow',
     chapter: 4,
     chapterTitle: 'La Montagne de la Vérité',
     paragraphs: [
-      `Souhayl serra les poings. Sa mâchoire se crispa. Ses yeux brillèrent d'une détermination farouche. — « Non, dit-il. Je me battrai seul. J'ai appris assez. Je suis fort maintenant. Je vais vaincre mon ego par ma propre volonté. »`,
-      `Il chargea le Nafs. Les deux versions de lui-même s'affrontèrent sur le plateau, dans un combat qui n'était pas physique mais spirituel — une bataille de volonté, de détermination, d'orgueil aussi, car Souhayl ne s'en rendait pas compte, mais en refusant l'aide d'Allah, il nourrissait précisément l'ego qu'il voulait détruire.`,
-      `Le combat dura longtemps. Souhayl donna des coups qui auraient fait reculer n'importe qui. Mais le Nafs — nourri par l'orgueil de son adversaire — grandissait. Plus Souhayl luttait, plus son ego devenait fort. C'était un paradoxe cruel : la volonté de se débarrasser de l'ego est elle-même un acte de l'ego.`,
-      `Finalement, Souhayl s'effondra. Épuisé, vaincu, mais pas brisé. Il gisait sur le plateau, le souffle court, le corps tremblant. Le Nafs se tenait au-dessus de lui, grand, sombre, victorieux.`,
-      `Mais alors, quelque chose d'inattendu se produisit. Le Nafs... pleurait. Des larmes coulaient sur ses joues — les joues de Souhayl — et sa voix, quand il parla, n'était plus celle d'un ennemi.`,
-      `— « Pourquoi ne demandes-tu pas de l'aide ? murmura le Nafs. Pourquoi refuses-tu de reconnaître que tu ne peux pas tout seul ? C'est ça, mon pouvoir — te convaincre que tu n'as besoin de personne. Et tu tombes dans le panneau à chaque fois. »`,
-      `Souhayl ferma les yeux. Et pour la première fois, il comprit. L'indépendance n'était pas la force — c'était la plus grande des faiblesses. Le vrai courage n'était pas de se battre seul — c'était d'avoir l'humilité de demander de l'aide.`,
-      `Le Shaykh apparut et s'agenouilla à côté de lui. — « Tu n'as pas perdu, Souhayl. Tu as appris la leçon la plus difficile de toutes : la limite de soi-même. Celui qui sait qu'il ne peut rien sans Allah a compris plus que celui qui croit pouvoir tout. Va en paix, mon enfant. Et reviens quand tu seras prêt à demander. »`,
+      `Souhayl se releva. — « Je ne me rendrai pas. Je vais me battre ! » Il chargea le Nafs avec toute sa force. Mais plus il luttait, plus l'ego grandissait — car la volonté de détruire l'ego est elle-même un acte de l'ego.`,
+      `Finalement, il s'effondra. Le Nafs se pencha sur lui — et pleura. — « Pourquoi ne demandes-tu pas de l'aide ? » murmura l'ego blessé.`,
+      `Le Shaykh apparut. — « Tu n'as pas perdu. Tu as appris la leçon la plus difficile : la limite de soi-même. La vraie force, ce n'est pas de se battre seul — c'est d'avoir l'humilité de demander de l'aide. Va en paix, Souhayl. Et reviens quand tu seras prêt. »`,
     ],
     mood: 'ending',
     isEnding: true,
     endingType: 'shadow',
   },
 
-  // Ending 4: La Lutte Éternelle
-  'ending-struggle': {
-    id: 'ending-struggle',
-    chapter: 4,
-    chapterTitle: 'La Montagne de la Vérité',
-    paragraphs: [
-      `Souhayl tomba à genoux. Pas un abandon total — pas encore. Une lutte. Son cœur se déchirait entre deux forces : la certitude qu'il ne pouvait rien seul, et l'orgueil tenace qui refusait de l'admettre.`,
-      `— « Ya Allah... murmura-t-il d'une voix brisée. Je veux me rendre... mais je n'y arrive pas. Mon ego est trop fort. Ma volonté est trop faible. Je suis un enfant, et cette montagne est trop haute pour moi. »`,
-      `Le silence qui suivit dura une éternité. Puis, doucement, le Nafs s'approcha. Pas en armure — en vêtements simples. Pas en tyran — en compagnon. Il s'assit à côté de Souhayl et regarda le sommet avec lui.`,
-      `— « Tu sais, dit le Nafs, je ne suis pas ton ennemi. Pas vraiment. Je suis ton moteur. Sans moi, tu ne mangerais pas quand tu as faim, tu ne te protègerais pas quand tu es en danger. Le problème, c'est que tu m'as laissé prendre trop de place. »`,
-      `Souhayl regarda son Nafs — sans colère, sans peur, avec une compréhension nouvelle. — « Et maintenant ? demanda-t-il. »`,
-      `— « Maintenant, dit le Nafs, nous apprenons à coexister. Pas à combattre — à danser. À trouver l'équilibre. C'est un travail de toute une vie, Souhayl. Pas un voyage d'un jour. Mais chaque jour, tu feras un pas de plus vers cet équilibre. »`,
-      `La montagne ne s'ouvrit pas. Il n'y eut pas de lumière éblouissante. Mais quelque chose changea en Souhayl — un changement subtil, comme le premier jour du printemps quand la nature se réveille. Il comprit que le Tassawuf n'était pas une destination — c'était un processus. Un effort quotidien. Une lutte noble contre la pire des guerres : la guerre contre soi-même.`,
-      `Le Shaykh apparut, un sourire triste mais profond sur son visage. — « Voici peut-être la plus sage des leçons, Souhayl. Il n'y a pas de fin au chemin. Il n'y a que des étapes. Et chaque étape te rapproche un peu plus d'Allah. La lutte n'est pas un échec — c'est la preuve que tu es vivant, que tu es sincère, que tu refuses d'abandonner. Continue. Un jour après l'autre. Une prière après l'autre. Un repentir après l'autre. C'est ça, le Tassawuf. »`,
-    ],
-    mood: 'ending',
-    isEnding: true,
-    endingType: 'struggle',
-  },
-
 };
 
 export const firstPageId = 'prologue';
 export const totalChapters = 4;
-export const totalEndings = 4;
+export const totalEndings = 3;

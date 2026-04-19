@@ -106,7 +106,7 @@ export default function ChoiceJournal({ isOpen, onClose }: ChoiceJournalProps) {
                 </div>
                 <div className="bg-amber-950/20 rounded-lg p-3 border border-amber-800/10">
                   <p className="text-amber-500/50 text-xs font-serif mb-1">Fins trouvées</p>
-                  <p className="text-amber-100 text-2xl font-bold font-serif">{endingsFound.length}/4</p>
+                  <p className="text-amber-100 text-2xl font-bold font-serif">{endingsFound.length}/3</p>
                 </div>
               </div>
 
@@ -190,7 +190,6 @@ export default function ChoiceJournal({ isOpen, onClose }: ChoiceJournalProps) {
                           {ending === 'light' && '🌟 La Lumière de l\'Âme'}
                           {ending === 'wisdom' && '📖 La Sagesse du Chemin'}
                           {ending === 'shadow' && '🌙 L\'Ombre Révélée'}
-                          {ending === 'struggle' && '⚔️ La Lutte Éternelle'}
                         </span>
                       </div>
                     ))}
