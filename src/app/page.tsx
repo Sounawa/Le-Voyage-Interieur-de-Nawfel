@@ -37,7 +37,7 @@ export default function Home() {
   const handleStart = useCallback(() => {
     setView('reading');
     const startPage = storyPages[currentPageId] || storyPages[firstPageId];
-    if (startPage?.isChapterStart) {
+    if (startPage?.isChapterStart && startPage.chapter >= 1) {
       setTransitioningChapter({ chapter: startPage.chapter, title: startPage.chapterTitle });
       setView('chapter-transition');
     }

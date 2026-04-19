@@ -10,42 +10,83 @@ interface ChoiceJournalProps {
 }
 
 const tagLabels: Record<string, { label: string; emoji: string; chapter: string }> = {
+  // Prologue
+  reactive: { label: 'Répondre par l\'insulte', emoji: '😤', chapter: 'Prologue' },
+  avoidance: { label: 'Éviter le conflit', emoji: '🚶', chapter: 'Prologue' },
+  'seeking-help': { label: 'Demander de l\'aide', emoji: '🙋', chapter: 'Prologue' },
+  obedience: { label: 'Obéir immédiatement', emoji: '🕌', chapter: 'Prologue' },
+  negotiation: { label: 'Négocier un délai', emoji: '⚽', chapter: 'Prologue' },
+  deceit: { label: 'Mentir pour se protéger', emoji: '🤥', chapter: 'Prologue' },
+  honesty: { label: 'Dire la vérité malgré la peur', emoji: '💛', chapter: 'Prologue' },
+  // Chapter 1
   courage: { label: 'Entrer avec courage', emoji: '🦁', chapter: 'Chapitre 1' },
   humility: { label: 'Entrer avec humilité', emoji: '🕯️', chapter: 'Chapitre 1' },
-  curiosity: { label: 'Entrer avec curiosité', emoji: '🔮', chapter: 'Chapitre 1' },
+  sensitivity: { label: 'Toucher avec douceur', emoji: '✨', chapter: 'Chapitre 1' },
+  boldness: { label: 'Visiter le marchand de Colère', emoji: '🔥', chapter: 'Chapitre 1' },
+  impulse: { label: 'Accepter la colère', emoji: '🧤', chapter: 'Chapitre 1' },
+  discernment: { label: 'Questionner les apparences', emoji: '🧐', chapter: 'Chapitre 1' },
+  vulnerability: { label: 'Accepter la tristesse', emoji: '🧪', chapter: 'Chapitre 1' },
+  resilience: { label: 'Refuser la tristesse', emoji: '🛡️', chapter: 'Chapitre 1' },
+  empathy: { label: 'Demander à la marchande', emoji: '💙', chapter: 'Chapitre 1' },
+  joy: { label: 'Visiter la tente de Joie', emoji: '☀️', chapter: 'Chapitre 1' },
+  kindness: { label: 'Aider le marchand tombé', emoji: '🤝', chapter: 'Chapitre 1' },
+  // Chapter 2
+  gentleness: { label: 'Tendre la main au renard', emoji: '🤲', chapter: 'Chapitre 2' },
+  patience: { label: 'Attendre en silence', emoji: '🧘', chapter: 'Chapitre 2' },
+  generosity: { label: 'Accepter Zaki comme compagnon', emoji: '🦊', chapter: 'Chapitre 2' },
+  pride: { label: 'La justice ou l\'ego ?', emoji: '⚖️', chapter: 'Chapitre 2' },
+  awareness: { label: 'Reconnaître son ignorance', emoji: '💭', chapter: 'Chapitre 2' },
   confrontation: { label: 'Affronter le Nafs directement', emoji: '⚔️', chapter: 'Chapitre 2' },
-  patience: { label: 'Écouter avec patience', emoji: '🤲', chapter: 'Chapitre 2' },
-  detachment: { label: 'Se détourner vers la lumière', emoji: '✨', chapter: 'Chapitre 2' },
+  detachment: { label: 'Ignorer le Nafs', emoji: '👁️', chapter: 'Chapitre 2' },
+  // Chapter 3
+  perseverance: { label: 'Grimper par-dessus', emoji: '🧗', chapter: 'Chapitre 3' },
+  caution: { label: 'Prendre le chemin sûr', emoji: '🌿', chapter: 'Chapitre 3' },
+  efficiency: { label: 'Prendre le chemin rapide', emoji: '🍂', chapter: 'Chapitre 3' },
+  forgiveness: { label: 'Pardonner à Yassine', emoji: '😤', chapter: 'Chapitre 3' },
+  family: { label: 'Affronter le souvenir d\'Amina', emoji: '😢', chapter: 'Chapitre 3' },
+  repentance: { label: 'Confesser au miroir', emoji: '💝', chapter: 'Chapitre 3' },
+  resolve: { label: 'Faire une promesse', emoji: '🤞', chapter: 'Chapitre 3' },
+  'self-compassion': { label: 'S\'accepter imparfait', emoji: '🌟', chapter: 'Chapitre 3' },
   firmness: { label: 'Rejeter Waswās fermement', emoji: '🛡️', chapter: 'Chapitre 3' },
-  wisdom: { label: 'Écouter avec détachement', emoji: '🧠', chapter: 'Chapitre 3' },
   dhikr: { label: 'Se tourner vers le dhikr', emoji: '📿', chapter: 'Chapitre 3' },
-  discipline: { label: 'Le chemin de la rigueur', emoji: '⛰️', chapter: 'Chapitre 3' },
-  mercy: { label: 'Le chemin de la miséricorde', emoji: '🌿', chapter: 'Chapitre 3' },
-  passion: { label: 'Le chemin de la passion', emoji: '🔥', chapter: 'Chapitre 3' },
+  discipline: { label: 'Le chemin rocailleux', emoji: '⛰️', chapter: 'Chapitre 3' },
+  mercy: { label: 'Le chemin verdoyant', emoji: '🌸', chapter: 'Chapitre 3' },
+  passion: { label: 'Le chemin ardent', emoji: '🔥', chapter: 'Chapitre 3' },
+  // Chapter 4
+  tawakkul: { label: 'Avancer malgré la peur', emoji: '🎯', chapter: 'Chapitre 4' },
   surrender: { label: "L'abandon total à Allah", emoji: '🤲', chapter: 'Chapitre 4' },
   guidance: { label: 'La quête de guidance', emoji: '📖', chapter: 'Chapitre 4' },
   independence: { label: "L'affrontement solitaire", emoji: '🗡️', chapter: 'Chapitre 4' },
+  integration: { label: 'Intégrer l\'enseignement', emoji: '🌍', chapter: 'Chapitre 4' },
 };
 
 function getVirtueProfile(tags: string[]): { virtues: string[]; challenges: string[] } {
   const virtues: string[] = [];
   const challenges: string[] = [];
   
-  if (tags.includes('humility')) virtues.push('Humilité');
-  if (tags.includes('patience')) virtues.push('Patience');
+  if (tags.includes('humility') || tags.includes('obedience')) virtues.push('Humilité');
+  if (tags.includes('patience') || tags.includes('caution')) virtues.push('Patience');
   if (tags.includes('dhikr')) virtues.push('Dévotion');
-  if (tags.includes('mercy')) virtues.push('Miséricorde');
-  if (tags.includes('courage')) virtues.push('Bravoure');
-  if (tags.includes('wisdom')) virtues.push('Sagesse');
+  if (tags.includes('mercy') || tags.includes('kindness') || tags.includes('generosity')) virtues.push('Miséricorde');
+  if (tags.includes('courage') || tags.includes('boldness') || tags.includes('perseverance')) virtues.push('Bravoure');
+  if (tags.includes('discernment') || tags.includes('wisdom')) virtues.push('Sagesse');
   if (tags.includes('detachment')) virtues.push('Détachement');
-  if (tags.includes('discipline')) virtues.push('Discipline');
+  if (tags.includes('discipline') || tags.includes('resolve')) virtues.push('Discipline');
   if (tags.includes('surrender')) virtues.push('Abandon');
   if (tags.includes('passion')) virtues.push('Passion');
+  if (tags.includes('honesty') || tags.includes('repentance')) virtues.push('Honnêteté');
+  if (tags.includes('empathy') || tags.includes('vulnerability')) virtues.push('Empathie');
+  if (tags.includes('integration')) virtues.push('Intégration');
+  if (tags.includes('gentleness') || tags.includes('sensitivity')) virtues.push('Douceur');
+  if (tags.includes('self-compassion')) virtues.push('Bienveillance envers soi');
 
-  if (tags.includes('confrontation')) challenges.push('Impulsivité');
+  if (tags.includes('confrontation') || tags.includes('reactive')) challenges.push('Impulsivité');
   if (tags.includes('independence')) challenges.push('Indépendance excessive');
-  if (tags.includes('curiosity') && !tags.includes('wisdom')) challenges.push('Curiosité non canalisée');
   if (tags.includes('firmness') && !tags.includes('dhikr')) challenges.push('Rigueur sans compassion');
+  if (tags.includes('deceit')) challenges.push('Tendance au mensonge');
+  if (tags.includes('avoidance') && !tags.includes('honesty')) challenges.push('Évitement');
+  if (tags.includes('impulse')) challenges.push('Impulsivité émotionnelle');
+  if (tags.includes('efficiency') && !tags.includes('caution')) challenges.push('Précipitation');
   
   if (virtues.length === 0) virtues.push('Courage initial');
   if (challenges.length === 0) challenges.push('À découvrir');
@@ -106,7 +147,7 @@ export default function ChoiceJournal({ isOpen, onClose }: ChoiceJournalProps) {
                 </div>
                 <div className="bg-amber-950/20 rounded-lg p-3 border border-amber-800/10">
                   <p className="text-amber-500/50 text-xs font-serif mb-1">Fins trouvées</p>
-                  <p className="text-amber-100 text-2xl font-bold font-serif">{endingsFound.length}/3</p>
+                  <p className="text-amber-100 text-2xl font-bold font-serif">{endingsFound.length}/4</p>
                 </div>
               </div>
 
@@ -190,6 +231,7 @@ export default function ChoiceJournal({ isOpen, onClose }: ChoiceJournalProps) {
                           {ending === 'light' && '🌟 La Lumière de l\'Âme'}
                           {ending === 'wisdom' && '📖 La Sagesse du Chemin'}
                           {ending === 'shadow' && '🌙 L\'Ombre Révélée'}
+                          {ending === 'pure' && '🪞 Le Miroir Pur'}
                         </span>
                       </div>
                     ))}

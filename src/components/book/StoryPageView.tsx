@@ -10,6 +10,8 @@ interface StoryPageViewProps {
 }
 
 export default function StoryPageView({ page, onContinue }: StoryPageViewProps) {
+  const baseDelay = page.paragraphs.length * 0.15 + 0.3;
+
   return (
     <motion.div
       key={page.id}
@@ -47,12 +49,34 @@ export default function StoryPageView({ page, onContinue }: StoryPageViewProps) 
           ))}
         </div>
 
+        {/* Zaki's speech bubble */}
+        {page.zakiSpeaks && (
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: baseDelay + 0.3, duration: 0.8 }}
+            className="mt-6 relative ml-8 sm:ml-16"
+          >
+            {/* Fox avatar */}
+            <div className="absolute -left-10 sm:-left-12 top-0 w-8 h-8 rounded-full bg-gradient-to-br from-amber-600 to-amber-800 flex items-center justify-center text-sm shadow-lg shadow-amber-900/30 border border-amber-700/30">
+              🦊
+            </div>
+            {/* Speech bubble */}
+            <div className="bg-gradient-to-br from-amber-900/30 to-amber-950/40 border border-amber-700/20 rounded-2xl rounded-tl-none px-5 py-3.5">
+              <p className="text-amber-200/80 text-sm sm:text-base italic leading-relaxed font-serif">
+                {page.zakiSpeaks}
+              </p>
+              <p className="text-amber-600/50 text-[10px] mt-1.5 tracking-wider uppercase">— Zaki</p>
+            </div>
+          </motion.div>
+        )}
+
         {/* Shaykh's wisdom quote */}
         {page.shaykhSpeaks && (
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.5 + page.paragraphs.length * 0.15, duration: 0.8 }}
+            transition={{ delay: baseDelay + (page.zakiSpeaks ? 0.6 : 0), duration: 0.8 }}
             className="mt-8 relative"
           >
             <div className="absolute -left-1 top-0 bottom-0 w-0.5 bg-gradient-to-b from-amber-500/60 via-amber-400/40 to-amber-500/60 rounded-full" />
@@ -75,7 +99,7 @@ export default function StoryPageView({ page, onContinue }: StoryPageViewProps) 
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 + page.paragraphs.length * 0.15, duration: 0.6 }}
+            transition={{ delay: baseDelay + 0.8, duration: 0.6 }}
             className="mt-10 flex justify-center"
           >
             <button
