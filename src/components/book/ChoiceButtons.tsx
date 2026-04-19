@@ -111,7 +111,7 @@ export default function ChoiceButtons({ choices, onChoose }: ChoiceButtonsProps)
               x: 4,
               transition: { duration: 0.25 },
             }}
-            whileTap={{ scale: 0.98 }}
+            whileTap={{ scale: 0.97 }}
             onClick={(e) => handleClick(e, choice)}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => {
@@ -119,7 +119,7 @@ export default function ChoiceButtons({ choices, onChoose }: ChoiceButtonsProps)
               handleMouseLeave(index);
             }}
             onMouseMove={(e) => handleMouseMove(e, index)}
-            className={`group relative w-full text-left px-6 py-5 rounded-xl overflow-hidden transition-all duration-400
+            className={`group relative w-full text-left px-5 py-4 sm:px-6 sm:py-5 rounded-xl overflow-hidden transition-all duration-400 active:scale-[0.98]
               ${hoveredIndex === index ? 'glass-card gradient-border' : 'glass-card'}`}
           >
             {/* Animated gradient shimmer sweep on hover */}

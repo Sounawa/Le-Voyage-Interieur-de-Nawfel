@@ -98,7 +98,7 @@ export default function StoryPageView({ page, onContinue }: StoryPageViewProps) 
         exit={{ opacity: 0, x: -30 }}
         transition={{ duration: 0.8, ease: 'easeInOut' }}
         onClick={handlePageClick}
-        className={`flex items-start justify-center min-h-screen px-4 py-20 sm:py-24 ${isLinear ? 'cursor-pointer' : ''}`}
+        className={`flex items-start justify-center min-h-screen px-4 py-20 sm:py-24 ${isLinear ? 'cursor-pointer active:scale-[0.99]' : ''}`}
       >
         <div className="max-w-2xl w-full">
           {/* Illustration (if available) */}
@@ -231,7 +231,7 @@ export default function StoryPageView({ page, onContinue }: StoryPageViewProps) 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: baseDelay + 0.8, duration: 0.6 }}
-              className="mt-10 flex flex-col items-center gap-3"
+              className="mt-10 flex flex-col items-center gap-3 py-4"
             >
               {/* Continue button with underline animation and bouncing arrow */}
               <button
@@ -239,7 +239,7 @@ export default function StoryPageView({ page, onContinue }: StoryPageViewProps) 
                   e.stopPropagation();
                   onContinue();
                 }}
-                className="continue-underline group inline-flex items-center gap-2 px-6 py-3 text-amber-400/70 hover:text-amber-300 font-serif text-sm transition-colors duration-300"
+                className="continue-underline group inline-flex items-center gap-2 px-6 py-3 text-amber-400/70 hover:text-amber-300 font-serif text-sm transition-all duration-300 active:scale-[0.98]"
               >
                 <span>Continuer</span>
                 <ChevronRight className="w-4 h-4 bounce-arrow" />

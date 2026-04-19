@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BookOpen, X, ChevronRight, Share2, Clock, Gauge, Compass, Flame } from 'lucide-react';
 import { useStoryStore } from '@/store/story-store';
@@ -104,6 +104,107 @@ function formatReadingTime(totalSeconds: number): string {
   if (hours > 0 && minutes > 0) return `${hours} h ${minutes} min`;
   if (hours > 0) return `${hours} h`;
   return `${Math.max(1, minutes)} min`;
+}
+
+const endingEmoji: Record<string, string> = {
+  light: '🌟',
+  wisdom: '📖',
+  shadow: '🌙',
+  pure: '🪞',
+};
+
+const endingTitleMap: Record<string, string> = {
+  light: "La Lumière de l'Âme",
+  wisdom: 'La Sagesse du Chemin',
+  shadow: "L'Ombre Révélée",
+  pure: 'Le Miroir Pur',
+};
+
+async function copyToClipboard(text: string): Promise<boolean> {
+  // Modern Clipboard API
+  if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      // Fall through to fallback
+    }
+  }
+  // Fallback: textarea + execCommand
+  try {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    textarea.style.pointerEvents = 'none';
+    document.body.appendChild(textarea);
+    textarea.select();
+    const ok = document.execCommand('copy');
+    document.body.removeChild(textarea);
+    return ok;
+  } catch {
+    return false;
+  }
+}
+
+interface ShareJourneyButtonProps {
+  visitedCount: number;
+  choicesCount: number;
+  chaptersCount: number;
+  endingsCount: number;
+  virtues: string[];
+  endingsFound: string[];
+}
+
+function ShareJourneyButton({ visitedCount, choicesCount, chaptersCount, endingsCount, virtues, endingsFound }: ShareJourneyButtonProps) {
+  const [copied, setCopied] = useState(false);
+
+  const handleShare = useCallback(async () => {
+    const topVirtues = virtues.slice(0, 3);
+    const virtuesStr = topVirtues.map((v) => `  ✦ ${v}`).join('\n');
+
+    let endingStr = '';
+    if (endingsFound.length > 0) {
+      const lastEnding = endingsFound[endingsFound.length - 1];
+      const emoji = endingEmoji[lastEnding] || '⭐';
+      const title = endingTitleMap[lastEnding] || lastEnding;
+      endingStr = `\n✦ Fin atteinte: ${emoji} ${title}`;
+    }
+
+    const text = [
+      `📖 Le Voyage Intérieur de Souhayl — Mon Voyage`,
+      ``,
+      `✦ Pages visitées: ${visitedCount}/${TOTAL_PAGES}`,
+      `✦ Choix effectués: ${choicesCount}`,
+      `✦ Chapitres complétés: ${chaptersCount}/4`,
+      `✦ Fins découvertes: ${endingsCount}/4`,
+      ``,
+      `Mes vertus:`,
+      virtuesStr,
+      `${endingStr}`,
+      ``,
+      `Découvrez votre propre voyage spirituel!`,
+    ].join('\n');
+
+    const ok = await copyToClipboard(text);
+    if (ok) {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  }, [visitedCount, choicesCount, chaptersCount, endingsCount, virtues, endingsFound]);
+
+  return (
+    <motion.button
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.3 }}
+      onClick={handleShare}
+      className="share-button w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-amber-950/20 border border-amber-800/15 text-amber-500/50 hover:text-amber-400/70 hover:border-amber-700/25 transition-all duration-300 font-serif text-sm cursor-pointer"
+    >
+      <Share2 className="w-4 h-4" />
+      <span>{copied ? '✓ Copié !' : 'Partager le voyage'}</span>
+    </motion.button>
+  );
 }
 
 export default function ChoiceJournal({ isOpen, onClose }: ChoiceJournalProps) {
@@ -351,18 +452,16 @@ export default function ChoiceJournal({ isOpen, onClose }: ChoiceJournalProps) {
                 </div>
               )}
 
-              {/* Share button (decorative) */}
+              {/* Share button */}
               {chosenTags.length > 0 && (
-                <motion.button
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                  className="share-button w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-amber-950/20 border border-amber-800/15 text-amber-500/50 hover:text-amber-400/70 hover:border-amber-700/25 transition-all duration-300 font-serif text-sm"
-                  disabled
-                >
-                  <Share2 className="w-4 h-4" />
-                  <span>Partager le voyage</span>
-                </motion.button>
+                <ShareJourneyButton
+                  visitedCount={visitedPages.length}
+                  choicesCount={chosenTags.length}
+                  chaptersCount={chaptersCompleted.length}
+                  endingsCount={endingsFound.length}
+                  virtues={virtues}
+                  endingsFound={endingsFound}
+                />
               )}
             </div>
           </motion.div>

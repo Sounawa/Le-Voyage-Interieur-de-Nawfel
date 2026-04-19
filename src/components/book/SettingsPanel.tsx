@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Settings, Volume2, VolumeX, Type, Play } from 'lucide-react';
+import { X, Settings, Volume2, VolumeX, Volume1, Type, Play, Trophy } from 'lucide-react';
 import { useStoryStore } from '@/store/story-store';
 import { Switch } from '@/components/ui/switch';
 import { Separator } from '@/components/ui/separator';
@@ -9,15 +9,19 @@ import { Separator } from '@/components/ui/separator';
 interface SettingsPanelProps {
   isOpen: boolean;
   onClose: () => void;
+  onOpenAchievements: () => void;
 }
 
-export default function SettingsPanel({ isOpen, onClose }: SettingsPanelProps) {
+export default function SettingsPanel({ isOpen, onClose, onOpenAchievements }: SettingsPanelProps) {
   const {
     fontSize,
     soundEnabled,
+    soundVolume,
     autoContinue,
+    achievements,
     setFontSize,
     setSoundEnabled,
+    setSoundVolume,
     setAutoContinue,
   } = useStoryStore();
 
@@ -26,6 +30,13 @@ export default function SettingsPanel({ isOpen, onClose }: SettingsPanelProps) {
     { value: 'md', label: 'Moyen' },
     { value: 'lg', label: 'Grand' },
   ];
+
+  const effectiveVolume = soundEnabled ? soundVolume : 0;
+  const VolumeIcon = effectiveVolume === 0 ? VolumeX : soundVolume < 40 ? Volume1 : Volume2;
+
+  // Volume bar visualization
+  const volumeBars = 5;
+  const activeBars = Math.ceil((effectiveVolume / 100) * volumeBars);
 
   return (
     <AnimatePresence>
@@ -46,7 +57,7 @@ export default function SettingsPanel({ isOpen, onClose }: SettingsPanelProps) {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed right-0 top-0 bottom-0 z-50 w-full max-w-xs bg-[#0d0c14]/95 backdrop-blur-md border-l border-amber-800/20 overflow-y-auto"
+            className="fixed right-0 top-0 bottom-0 z-50 w-full max-w-xs bg-[#0d0c14]/95 backdrop-blur-md border-l border-amber-800/20 overflow-y-auto custom-scrollbar"
           >
             {/* Header */}
             <div className="sticky top-0 z-10 bg-[#0d0c14]/90 backdrop-blur-md px-6 py-4 border-b border-amber-800/15 flex items-center justify-between">
@@ -91,11 +102,7 @@ export default function SettingsPanel({ isOpen, onClose }: SettingsPanelProps) {
               {/* Sound Toggle */}
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
-                  {soundEnabled ? (
-                    <Volume2 className="w-4 h-4 text-amber-500/60" />
-                  ) : (
-                    <VolumeX className="w-4 h-4 text-amber-500/40" />
-                  )}
+                  <VolumeIcon className={`w-4 h-4 ${effectiveVolume === 0 ? 'text-amber-500/40' : 'text-amber-500/60'}`} />
                   <h3 className="text-amber-200/80 text-sm font-serif font-semibold">Son</h3>
                 </div>
                 <p className="text-amber-500/40 text-xs font-serif">
@@ -114,6 +121,59 @@ export default function SettingsPanel({ isOpen, onClose }: SettingsPanelProps) {
                     Activé
                   </span>
                 </div>
+
+                {/* Volume Slider — only shows when sound is enabled */}
+                <AnimatePresence>
+                  {soundEnabled && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pt-3 space-y-2.5">
+                        <div className="flex items-center justify-between">
+                          <span className="text-amber-400/50 text-xs font-serif">Volume</span>
+                          <div className="flex items-center gap-1.5">
+                            {/* Volume bars visualization */}
+                            <div className="flex items-end gap-0.5 h-3.5">
+                              {Array.from({ length: volumeBars }).map((_, i) => (
+                                <div
+                                  key={i}
+                                  className="w-1 rounded-sm transition-all duration-150"
+                                  style={{
+                                    height: `${40 + (i + 1) * 12}%`,
+                                    background:
+                                      i < activeBars
+                                        ? 'linear-gradient(180deg, #e8c87a, #d4a574)'
+                                        : 'rgba(212, 165, 116, 0.15)',
+                                    boxShadow:
+                                      i < activeBars
+                                        ? '0 0 4px rgba(212, 165, 116, 0.3)'
+                                        : 'none',
+                                  }}
+                                />
+                              ))}
+                            </div>
+                            <span className="text-amber-400/50 text-[10px] font-mono w-7 text-right">
+                              {soundVolume}%
+                            </span>
+                          </div>
+                        </div>
+                        <input
+                          type="range"
+                          min={0}
+                          max={100}
+                          value={soundVolume}
+                          onChange={(e) => setSoundVolume(Number(e.target.value))}
+                          className="ambient-slider"
+                          aria-label="Volume du son ambiant"
+                        />
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
 
               <Separator className="bg-amber-800/10" />
@@ -141,6 +201,32 @@ export default function SettingsPanel({ isOpen, onClose }: SettingsPanelProps) {
                   </span>
                 </div>
               </div>
+
+              <Separator className="bg-amber-800/10" />
+
+              {/* Achievements Button */}
+              <button
+                onClick={() => {
+                  onClose();
+                  setTimeout(onOpenAchievements, 200);
+                }}
+                className="w-full flex items-center gap-3 p-3 rounded-xl bg-amber-950/20 border border-amber-800/10 hover:bg-amber-900/15 hover:border-amber-700/25 transition-all duration-300 group"
+              >
+                <div className="p-1.5 rounded-lg bg-amber-900/20 group-hover:bg-amber-800/30 transition-colors">
+                  <Trophy className="w-4 h-4 text-amber-400/70 group-hover:text-amber-400/90 transition-colors" />
+                </div>
+                <div className="flex-1 text-left">
+                  <h3 className="text-amber-200/80 text-sm font-serif font-semibold">Succès</h3>
+                  <p className="text-amber-500/40 text-[11px] font-serif">
+                    {achievements.length} / 12 débloqués
+                  </p>
+                </div>
+                {achievements.length > 0 && (
+                  <span className="px-2 py-0.5 rounded-full bg-amber-700/20 text-amber-400/70 text-[10px] font-mono font-bold">
+                    {achievements.length}
+                  </span>
+                )}
+              </button>
             </div>
           </motion.div>
         </>

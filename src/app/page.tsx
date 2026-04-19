@@ -1,8 +1,8 @@
 'use client';
 
-import { AnimatePresence } from 'framer-motion';
-import { useCallback, useEffect, useState } from 'react';
-import { BookOpen, BookMarked, Bookmark, Moon, Scroll, Settings, Star } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { BookOpen, BookMarked, Bookmark, Moon, Scroll, Settings, Star, Trophy } from 'lucide-react';
 import { useStoryStore } from '@/store/story-store';
 import { storyPages, firstPageId } from '@/data/story-data';
 import type { Choice, MoodType } from '@/lib/story-types';
@@ -24,6 +24,11 @@ import SpiritualGlossary from '@/components/book/SpiritualGlossary';
 import AmbientSound from '@/components/book/AmbientSound';
 import BookmarkButton from '@/components/book/BookmarkButton';
 import BookmarksPanel from '@/components/book/BookmarksPanel';
+import MoodIndicator from '@/components/book/MoodIndicator';
+import PageTurnSound from '@/components/book/PageTurnSound';
+import AchievementNotification from '@/components/book/AchievementNotification';
+import AchievementsPanel from '@/components/book/AchievementsPanel';
+import type { PageTurnSoundHandle } from '@/components/book/PageTurnSound';
 
 type AppView = 'cover' | 'reading' | 'chapter-transition' | 'ending';
 
@@ -41,8 +46,17 @@ export default function Home() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [glossaryOpen, setGlossaryOpen] = useState(false);
   const [bookmarkOpen, setBookmarkOpen] = useState(false);
+  const [achievementsOpen, setAchievementsOpen] = useState(false);
+  const [isAppReady, setIsAppReady] = useState(false);
+  const pageTurnSoundRef = useRef<PageTurnSoundHandle>(null);
 
   const currentPage = storyPages[currentPageId];
+
+  // Simulate asset loading with a brief delay
+  useEffect(() => {
+    const timer = setTimeout(() => setIsAppReady(true), 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleStart = useCallback(() => {
     setView('reading');
@@ -65,6 +79,8 @@ export default function Home() {
     const nextPage = storyPages[currentPage.next];
     if (!nextPage) return;
 
+    pageTurnSoundRef.current?.playPageTurn();
+
     if (nextPage.isChapterStart && nextPage.chapter !== previousChapter) {
       setTransitioningChapter({ chapter: nextPage.chapter, title: nextPage.chapterTitle });
       setView('chapter-transition');
@@ -79,6 +95,8 @@ export default function Home() {
   const handleChoice = useCallback((choice: Choice) => {
     const nextPage = storyPages[choice.nextPage];
     if (!nextPage) return;
+
+    pageTurnSoundRef.current?.playPageTurn();
 
     if (choice.tag) {
       if (nextPage.isChapterStart && nextPage.chapter !== previousChapter) {
@@ -104,6 +122,7 @@ export default function Home() {
     // We need to set the view back to 'reading' if it was in chapter-transition.
     setView('reading');
     setTransitioningChapter(null);
+    pageTurnSoundRef.current?.playPageTurn();
   }, []);
 
   useEffect(() => {
@@ -168,6 +187,29 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      {/* Loading / Splash Screen */}
+      {!isAppReady && (
+        <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#0a0a0f]">
+          {/* Rotating Islamic octagram */}
+          <svg className="loading-octagram" width="64" height="64" viewBox="0 0 100 100" fill="none">
+            <polygon
+              points="50,2 61.8,22.7 88.9,22.7 67.7,38.2 76.4,60.2 50,47.5 23.6,60.2 32.3,38.2 11.1,22.7 38.2,22.7"
+              stroke="rgba(212, 165, 116, 0.6)"
+              strokeWidth="1.5"
+              fill="none"
+            />
+            <polygon
+              points="50,15 57.3,28.6 73.6,28.6 61.2,38.2 65.9,52.3 50,43.5 34.1,52.3 38.8,38.2 26.4,28.6 42.7,28.6"
+              stroke="rgba(212, 165, 116, 0.3)"
+              strokeWidth="1"
+              fill="none"
+            />
+          </svg>
+          <p className="mt-6 text-amber-500/60 text-sm font-serif tracking-widest animate-pulse">
+            Chargement...
+          </p>
+        </div>
+      )}
       <main className="flex-1 text-amber-100/90 transition-colors duration-1000">
         {/* Background layers */}
         <div className="fixed inset-0 -z-10">
@@ -178,9 +220,16 @@ export default function Home() {
         <IslamicPattern />
         <VignetteOverlay />
         <AmbientSound mood={currentMood} />
+        <PageTurnSound ref={pageTurnSoundRef} />
 
-        {view === 'cover' && (
-          <BookCover onStart={handleStart} />
+        {isAppReady && view === 'cover' && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            <BookCover onStart={handleStart} />
+          </motion.div>
         )}
 
         {view !== 'cover' && view !== 'ending' && (
@@ -222,6 +271,18 @@ export default function Home() {
                   aria-label="Ouvrir l'abécédaire spirituel"
                 >
                   <BookMarked className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
+                </button>
+              )}
+
+              {/* Achievements / Trophy button */}
+              {showSettingsButton && (
+                <button
+                  onClick={() => setAchievementsOpen(true)}
+                  className="p-2.5 rounded-lg bg-[#0d0c14]/80 backdrop-blur-sm border border-amber-800/15 hover:bg-amber-900/20 hover:border-amber-700/30 transition-all duration-300 group"
+                  title="Succès"
+                  aria-label="Ouvrir les succès"
+                >
+                  <Trophy className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
                 </button>
               )}
             </div>
@@ -283,6 +344,9 @@ export default function Home() {
         {/* Bookmark Button — bottom right */}
         {showReadingUI && <BookmarkButton pageId={currentPageId} />}
 
+        {/* Mood Indicator Widget — bottom center */}
+        {showReadingUI && <MoodIndicator mood={currentMood} />}
+
         {/* Virtue Meter */}
         {showVirtueMeter && <VirtueMeter />}
 
@@ -290,7 +354,17 @@ export default function Home() {
         <ChoiceJournal isOpen={journalOpen} onClose={() => setJournalOpen(false)} />
 
         {/* Settings Panel */}
-        <SettingsPanel isOpen={settingsOpen} onClose={() => setSettingsOpen(false)} />
+        <SettingsPanel
+          isOpen={settingsOpen}
+          onClose={() => setSettingsOpen(false)}
+          onOpenAchievements={() => setAchievementsOpen(true)}
+        />
+
+        {/* Achievement Notification Toast */}
+        <AchievementNotification />
+
+        {/* Achievements Panel */}
+        <AchievementsPanel isOpen={achievementsOpen} onClose={() => setAchievementsOpen(false)} />
 
         {/* Spiritual Glossary */}
         <SpiritualGlossary isOpen={glossaryOpen} onClose={() => setGlossaryOpen(false)} />
@@ -319,6 +393,12 @@ export default function Home() {
               Le Voyage Intérieur de Souhayl — Tome 1
             </span>
             <Star className="w-2.5 h-2.5 text-amber-700/20" />
+          </div>
+          {/* Keyboard shortcut hint — desktop only */}
+          <div className="hidden md:flex items-center justify-center gap-1.5 mt-1">
+            <span className="text-amber-700/20 text-[9px] font-serif">
+              ⌨️ Espace pour continuer • 1-2-3 pour choisir • Échap pour revenir
+            </span>
           </div>
         </footer>
       )}

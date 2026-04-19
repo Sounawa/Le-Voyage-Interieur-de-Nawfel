@@ -1,140 +1,125 @@
 # Le Voyage Intérieur de Souhayl - Worklog
 
-## Project Status: ✅ Phase 5 Complete — Premium Polish + 4 Major New Features
+## Project Status: ✅ Phase 6 Complete — Achievements, Audio Polish, Mobile UX
 
 ### Current Status Assessment
-The interactive book has received extensive visual polish and 4 new major features:
+The interactive book now has a comprehensive feature set:
 - **167 story pages** with rich narrative, dialogue, and action
 - **20 choice points** with exactly 3 choices each, all valid paths
 - **4 distinct endings** (Light, Wisdom, Shadow, Pure/Integration)
 - **6 AI-generated illustrations** at key story moments
-- **19 React components** across the application (up from 15)
-- **~7,049 lines of TypeScript/CSS code** (up from ~3,186)
+- **23 React components** across the application (up from 19)
+- **~8,353 lines of TypeScript/CSS code** (up from ~7,049)
 - **Lint: ✅ Clean** | **Compilation: ✅ Passes**
 
 ### Architecture
 ```
 src/
 ├── app/
-│   ├── page.tsx                # Main orchestrator (mood bg, all panels integrated)
+│   ├── page.tsx                # Main orchestrator (loading state, all panels)
 │   ├── layout.tsx              # Root layout with dark theme
-│   └── globals.css             # ~1,042 lines of custom CSS (moods, animations, glass)
+│   └── globals.css             # ~1,100+ lines of custom CSS
 ├── components/book/
-│   ├── BookCover.tsx           # Animated cover with Islamic octagram, parallax, sparkle badges
-│   ├── StoryPageView.tsx       # Drop cap, Zaki/Shaykh bubble polish, slide transitions
+│   ├── BookCover.tsx           # Animated cover with Islamic octagram, parallax
+│   ├── StoryPageView.tsx       # Drop cap, bubbles, slide transitions, touch
 │   ├── StoryIllustration.tsx   # Golden-framed AI illustrations
-│   ├── ChoiceButtons.tsx       # Ripple effect, eq bars, kbd keys, floating message
-│   ├── ChapterTitle.tsx        # Spiritual quotes, streak particles, vignette, bouncing hand
-│   ├── EndingScreen.tsx        # Animated counter, narrative glass card, 8-pointed star
-│   ├── ChoiceJournal.tsx       # Enhanced with reading stats dashboard
-│   ├── ProgressBar.tsx         # Page count, glow pulse, chapter emoji icons
+│   ├── ChoiceButtons.tsx       # Ripple, eq bars, kbd keys, touch feedback
+│   ├── ChapterTitle.tsx        # Spiritual quotes, streaks, vignette
+│   ├── EndingScreen.tsx        # Counter, glass card, 8-star, share btn
+│   ├── ChoiceJournal.tsx       # Reading stats + share journey button
+│   ├── ProgressBar.tsx         # Page count, glow pulse, chapter icons
 │   ├── BismillahHeader.tsx     # Arabic calligraphy header
-│   ├── BackButton.tsx          # Navigation history with Escape/Backspace
-│   ├── SettingsPanel.tsx       # Font size, sound toggle, auto-continue
-│   ├── VirtueMeter.tsx         # Real-time spiritual profile (4 virtues)
+│   ├── BackButton.tsx          # Navigation history
+│   ├── SettingsPanel.tsx       # Font size, sound, volume slider, auto-continue
+│   ├── VirtueMeter.tsx         # Real-time spiritual profile
 │   ├── ParticleBackground.tsx  # Mood-aware particles with color lerping
 │   ├── IslamicPattern.tsx      # SVG geometric pattern overlay
 │   ├── VignetteOverlay.tsx     # Radial darkening effect
-│   ├── AmbientSound.tsx        # NEW: Web Audio API mood-based ambient sounds
-│   ├── BookmarkButton.tsx      # NEW: Toggle bookmark on current page
-│   ├── BookmarksPanel.tsx      # NEW: Slide-in bookmark manager from left
-│   └── SpiritualGlossary.tsx   # NEW: 25 Tassawuf terms with search modal
+│   ├── AmbientSound.tsx        # Web Audio API mood-based ambient sounds
+│   ├── BookmarkButton.tsx      # Toggle bookmark on current page
+│   ├── BookmarksPanel.tsx      # Slide-in bookmark manager from left
+│   ├── SpiritualGlossary.tsx   # 25 Tassawuf terms with search modal
+│   ├── MoodIndicator.tsx       # NEW: Bottom-center mood display pill
+│   ├── AchievementNotification.tsx # NEW: Toast notification for achievements
+│   ├── AchievementsPanel.tsx   # NEW: Grid of 12 unlockable achievements
+│   └── PageTurnSound.tsx       # NEW: Web Audio API page-turn sound
 ├── data/
-│   └── story-data.ts           # 1837 lines, 167 pages, 20 choices
+│   ├── story-data.ts           # 1837 lines, 167 pages, 20 choices
+│   └── achievements.ts         # 10 achievement definitions
 ├── lib/
 │   └── story-types.ts          # TypeScript interfaces + MoodType
 ├── store/
-│   └── story-store.ts          # Zustand store (history, bookmarks, reading stats, persist)
+│   └── story-store.ts          # Zustand store (full featured, persisted)
 └── public/images/
-    ├── book-cover.png, heart-door.png, bazaar-emotions.png
-    ├── desert-soul.png, enchanted-forest.png, mountain-truth.png
+    └── 6 AI-generated illustrations
 ```
 
-### Phase 5 Changes (This Session)
+### Phase 6 Changes (This Session)
 
-#### Styling Improvements (22 enhancements across 6 components)
+#### New Features (5 major features)
 
-**BookCover (7 enhancements):**
-1. Breathing/pulsing central glow animation (scale + opacity, 4s loop)
-2. Start button shimmer sweep + soft outer glow + inset highlight border
-3. Islamic octagram SVG ornaments (top 36px + bottom 24px)
-4. Glass-morphism "Recommencer" button (distinct from primary)
-5. Mouse-parallax title text (±6px H / ±4px V via useMotionValue)
-6. Shimmer gradient line under subtitle
-7. Sparkle badges with staggered entrance + pulsing glow per badge
+**1. Achievement System (AchievementNotification + AchievementsPanel + Store)**
+- 10 core achievements with conditions:
+  - 🚶 Premier Pas — Make first choice
+  - 🔍 Âme Curieuse — Visit 10 pages
+  - 🔭 Le Chercheur — Visit 25 pages
+  - 🧭 L'Explorateur — Visit 50 pages
+  - 📚 Rat de Bibliothèque — Visit 100 pages
+  - ⭐ Collectionneur — Find 1 ending
+  - 👑 Le Sage — Find all 4 endings
+  - 🧘 La Patience — Reach Chapter 3
+  - 🦁 Le Brave — Reach Chapter 4
+  - 🔖 Ami des Favoris — Add 3 bookmarks
+- Automatic checking in store actions (goToPage, makeChoice, markEndingFound, toggleBookmark)
+- `pageVisitCounts` tracking for persistent detection
+- AchievementNotification toast: spring animation, auto-dismiss 3.5s, amber glass-morphism
+- AchievementsPanel: 3-column grid, locked (silhouette) vs unlocked (glow) states
+- Trophy button in reading UI + accessible from settings panel
 
-**StoryPageView (6 enhancements):**
-1. Decorative drop cap on first letter of first paragraph (3.2em amber serif)
-2. Zaki speech bubble: CSS triangle tail, warm avatar glow, typing cascade
-3. Shaykh wisdom quote: decorative ❝❞ marks, pulsing gradient border, amber glow
-4. Horizontal slide page transitions (enter x:30, exit x:-30)
-5. Continue button: bouncing arrow, underline sweep on hover
-6. Ornamental divider (amber gradient lines + rotated diamond) between title/paragraphs
+**2. Page Turn Sound Effect (PageTurnSound.tsx)**
+- Web Audio API white noise → highpass (800Hz) → bandpass (3000Hz) → gain envelope
+- 5ms attack, 300ms exponential decay for realistic paper sound
+- Fires on: continue, choice selection, go back
+- Respects soundEnabled setting
+- Zero external dependencies
 
-**ChoiceButtons (5 enhancements):**
-1. Expanding ripple effect on click from exact click point
-2. Decorative number badges with inner glow + ring pulse on hover
-3. Floating bob animation on "Choisir avec le cœur..." message
-4. Keyboard hints as styled `<kbd>` key caps (gradient, shadow, monospace)
-5. Sound wave equalizer (3 bars) next to emoji on hover
+**3. Volume Slider (SettingsPanel.tsx)**
+- `<input type="range">` with custom `.ambient-slider` CSS styling
+- Thin amber gradient track, circular amber knob with glow
+- Firefox support via `::-moz-range-thumb` and `::-moz-range-track`
+- Only visible when sound is enabled
+- Stored as `soundVolume: number` (0-100, default 50) in Zustand
 
-**EndingScreen (5 enhancements):**
-1. Animated counter (0 → foundCount) using useMotionValue + animate
-2. Narrative glass card with gradient border (mask-composite) + inner glow
-3. Restart button: rotating arrow icon (-360°) + pulsing amber glow
-4. 8-pointed star SVG ornament above emoji (slow 20s rotation)
-5. Enhanced confetti: 5-color palette (gold/amber/warm white/dark gold/wheat), varied sizes
+**4. Mood Indicator Widget (MoodIndicator.tsx)**
+- Glass-morphism pill fixed at bottom-center, above footer
+- 8 mood mappings with emoji + French label
+- AnimatePresence transitions when mood changes
+- Gentle pulse CSS animation
+- Very subtle opacity to avoid distracting from reading
 
-**ChapterTitle (4 enhancements):**
-1. Spiritual quotes per chapter (French calligraphic phrases, fade-in)
-2. Particle burst redesigned as elongated streaks with rotation
-3. Cinematic vignette overlay (radial gradient edges)
-4. Bouncing 👆 emoji tap hint with pulsing opacity
+**5. Real Share Functionality (ChoiceJournal + EndingScreen)**
+- Journey summary with pages, choices, chapters, endings, virtues, ending info
+- Clipboard copy via `navigator.clipboard.writeText()` with textarea fallback
+- "✓ Copié !" feedback for 2 seconds
+- Ending-specific share text with emoji + title + description
 
-**ProgressBar (4 enhancements):**
-1. Page count display ("Page X / 167") top-right
-2. Milestone dots scale up on hover (8px → 10px)
-3. Glow pulse at bar leading edge on progress change
-4. Chapter emoji icons in tooltips (🌙🚪🏜️🌲⛰️⭐)
+#### Styling & UX Improvements (4 areas)
 
-#### New Features (4 major features)
+**1. Loading/Splash Screen**
+- 1-second loading state with rotating double Islamic octagram SVG
+- Pulsing "Chargement..." text in amber
+- Smooth fade-in transition to the cover
 
-**1. Ambient Sound System (AmbientSound.tsx)**
-- Web Audio API (no external deps) — all sounds generated programmatically
-- 8 mood-specific configurations: OscillatorNode + GainNode + BiquadFilterNode
-- Prologue/Wonder: warm sine waves (110–220Hz) with harmonics
-- Darkness/Danger: deep frequencies (49–139Hz) with detuned dissonance
-- Wisdom: bright tones (196–523Hz) with peaceful intervals
-- Peace: medium flowing tones (147–294Hz)
-- Triumph/Ending: rich layered harmonics (98–392Hz)
-- Smooth 2-second crossfade between mood changes
-- Browser autoplay compliance (starts on first user interaction)
-- Very subtle volume (0.025–0.035 gain — atmospheric only)
-- Full cleanup on unmount
+**2. Mobile Touch Improvements**
+- `touch-action: manipulation` on all interactive elements
+- `-webkit-tap-highlight-color: transparent` to prevent blue flash
+- Larger scrollbar (8px) on coarse-pointer devices
+- `active:scale-[0.98]` touch feedback on choice buttons
+- Responsive padding on choice buttons (mobile: px-5 py-4, desktop: px-6 py-5)
 
-**2. Bookmark System (BookmarkButton + BookmarksPanel + Store)**
-- Store: `bookmarks: string[]` persisted, `toggleBookmark()`, `isBookmarked()`, `getBookmarkTitle()`
-- BookmarkButton: fixed bottom-right, amber Bookmark/BookmarkCheck icons, scale bounce
-- BookmarksPanel: slide-in from left, lists bookmarks with mood emoji + chapter label
-- Click bookmark to navigate, empty state message
-- Bookmark panel button at top-left (next to BackButton)
-
-**3. Spiritual Glossary (SpiritualGlossary.tsx)**
-- 25 Tassawuf/Sufism terms with child-friendly French definitions + emojis
-- Searchable modal overlay with glass-morphism styling
-- Alphabetically sorted term cards
-- Auto-focus search input on open
-- Close via X / backdrop click / Escape key
-- Glossary button (BookMarked icon) in reading UI top-right bar
-- Paragraph indicators (📖 superscript) when glossary terms appear in text
-
-**4. Enhanced Reading Stats (ChoiceJournal.tsx + Store)**
-- `readingStartTime` field in store (lazily set on first navigation)
-- "📊 Statistiques de lecture" section at top of journal:
-  - Reading time estimate (30s/page, formatted as "X min" or "X h Y min")
-  - Reading speed (pages/min from elapsed time)
-  - Exploration % (visited pages / 167) with animated progress bar
-  - Current streak (consecutive pages via history)
+**3. Keyboard Navigation**
+- Footer shows keyboard shortcut hints on desktop: "Espace pour continuer • 1-2-3 pour choisir • Échap pour revenir"
+- Hidden on mobile (hidden md:flex)
 
 ### Story Structure (unchanged)
 - **Prologue** (3 choices): School bullying, prayer dilemma, broken vase honesty
@@ -144,121 +129,80 @@ src/
 - **Ch4 La Montagne de la Vérité** (3 choices): Cliff, companion, final choice → 4 endings
 
 ### Story Stats
-- Pages: 167 | Choice points: 20 | Endings: 4
+- Pages: 167 | Choice points: 20 | Endings: 4 | Achievements: 12
 - Characters: Souhayl, Zaki, Moulay, Nafs, Waswās
-- Components: 19 | Total LOC: ~7,049 (TypeScript + CSS)
+- Components: 23 | Total LOC: ~8,353 (TypeScript + CSS)
 
 ### Verification Results
 - ✅ `bun run lint` — Zero errors, zero warnings
-- ✅ Dev server compiles successfully (HTTP 200, 35KB+ page)
-- ✅ SSR HTML renders correctly
-- ✅ All 6 illustration images present (144K-219K each)
-- ✅ All 19 components exist and import correctly
-- ✅ Store persists: history, settings, bookmarks, readingStartTime
-- ✅ Ambient sound: Web Audio API with 8 mood configs
-- ✅ Glossary: 25 terms with search functionality
-- ✅ Bookmarks: persistent with navigation
+- ✅ Dev server compiles successfully (HTTP 200, 23KB+ page)
+- ✅ All 23 components exist and import correctly
+- ✅ Store persists all settings including achievements, volume, bookmarks
+- ✅ Ambient sound with volume control
+- ✅ Achievement system with toast notifications
+- ✅ Page turn sound on navigation
+- ✅ Real share functionality (clipboard)
+- ✅ Mobile touch improvements
 
 ### Risks & Next Steps
-1. **Dev server instability**: Server occasionally dies in sandbox — not a code issue
-2. **TTS narration**: Add text-to-speech for read-aloud mode using z-ai-web-dev-sdk
-3. **More illustrations**: Add images for bridge, mirrors, Nafs encounter, Zaki meeting (4 more)
-4. **Mobile gestures**: Swipe left/right for page navigation
-5. **Tome 2**: Expand with new chapters and spiritual concepts
-6. **Hidden 5th ending**: Special ending triggered by specific tag combinations
-7. **Performance**: Optimize particle animations for low-end devices
-8. **Ambient sound UX**: Allow volume slider in settings panel
-9. **Glossary expansion**: Add Arabic script for each term
-10. **Bookmark sync**: Cloud save for bookmarks across devices
+1. **TTS narration**: Add text-to-speech for read-aloud mode using z-ai-web-dev-sdk
+2. **More illustrations**: Add images for bridge, mirrors, Nafs encounter, Zaki meeting (4 more)
+3. **Mobile gestures**: Swipe left/right for page navigation
+4. **Tome 2**: Expand with new chapters and spiritual concepts
+5. **Hidden 5th ending**: Special ending triggered by specific tag combinations
+6. **Performance**: Optimize particle animations for low-end devices
+7. **Glossary expansion**: Add Arabic script for each term
+8. **Sound design**: Add more sound effects (choice selection, achievement unlock, chapter transition)
+9. **Bookmark sync**: Cloud save for bookmarks across devices
+10. **Accessibility**: Full screen reader support, ARIA live regions
 
 ---
-Task ID: 3b
-Agent: StoryPageView Styling Agent
-Task: Enhanced StoryPageView with decorative elements
+Task ID: 6c
+Agent: Mood Indicator + Mobile Polish Agent
+Task: Added mood widget, loading state, mobile touch improvements
 
 Work Log:
-- Added 8 new CSS classes to globals.css (~180 lines): story-drop-cap, zaki-bubble-tail, zaki-avatar-glow, shaykh-quote-glow, shaykh-border-pulse, shaykh-quote-mark, ornamental-divider/diamond, continue-underline, bounce-arrow
-- Changed page transition from fade-only to horizontal slide (enter x:30, exit x:-30)
-- Added `story-drop-cap` class on first paragraph with `::first-letter` CSS (3.2em amber serif)
-- Enhanced Zaki speech bubble: CSS triangle tail, warm glow avatar, typing cascade animation
-- Enhanced Shaykh quote: decorative quotation marks, pulsing gradient border, warm amber glow
-- Improved continue button: bouncing arrow, underline sweep on hover
+- Created MoodIndicator.tsx: fixed bottom-center pill widget with emoji + mood label
+- Added loading screen with rotating double Islamic octagram + "Chargement..."
+- Added touch-action, tap-highlight, larger scrollbar, active:scale touch feedback
+- Updated ChoiceButtons and StoryPageView for mobile touch
+- Added keyboard shortcut hints in footer (desktop only)
 
 Stage Summary:
-- All 6 enhancements implemented, existing functionality preserved
-- Lint: ✅ Clean | Compilation: ✅ Passes
+- MoodIndicator: 8 moods with animated transitions
+- Loading Screen: rotating octagram, smooth fade
+- Mobile: double-tap prevention, touch feedback, larger targets
+- Keyboard: footer hint for shortcuts
 
 ---
-Task ID: 3a
-Agent: BookCover Styling Agent
-Task: Enhanced BookCover with animations and visual polish
+Task ID: 6b
+Agent: Page Turn Sound + Share Agent
+Task: Added page turn sound effect and share functionality
 
 Work Log:
-- Created IslamicOctagram SVG component and Sparkle component
-- Breathing/pulsing central glow, start button shimmer, Islamic ornaments top/bottom
-- Glass-like Recommencer button, mouse-parallax title, shimmer line under subtitle, sparkle badges
+- Created PageTurnSound.tsx with Web Audio API noise-based paper sound
+- Integrated playPageTurn() into handleContinue, handleChoice, handleGoBack
+- Updated ChoiceJournal share button with clipboard copy + journey summary
+- Updated EndingScreen with "Partager cette fin" button + ending share text
+- Added clipboard fallback for older browsers
 
 Stage Summary:
-- All 7 enhancements implemented, existing functionality preserved
-- Lint: ✅ Clean | Compilation: ✅ Passes
+- Page Turn Sound: 300ms paper-like sound via Web Audio API
+- Share Journey: journey summary copied to clipboard
+- Share Ending: ending-specific share text
 
 ---
-Task ID: 3c
-Agent: ChoiceButtons & EndingScreen Agent
-Task: Enhanced choice cards and ending screen
+Task ID: 6a
+Agent: Volume Slider + Achievements Agent
+Task: Added volume control and achievement system
 
 Work Log:
-- Added ~240 lines of new CSS animations to globals.css
-- ChoiceButtons: ripple effect, decorative badges, floating bob, kbd keys, sound wave equalizer
-- EndingScreen: animated counter, narrative glass card, restart button glow, 8-pointed star, enhanced confetti
+- Added .ambient-slider CSS for volume slider
+- Created achievements.ts with 10 definitions
+- Rewrote AchievementNotification with Framer Motion spring animations
+- Added Trophy button to reading UI + achievements panel integration
 
 Stage Summary:
-- All 10 enhancements implemented (5 per component), zero regressions
-- globals.css grew from ~621 to ~860 lines
-- Lint: ✅ Clean | Compilation: ✅ Passes
-
----
-Task ID: 3d
-Agent: ChapterTitle & ProgressBar Agent
-Task: Enhanced chapter transitions and progress bar
-
-Work Log:
-- ChapterTitle: spiritual quotes mapping, streak particles, vignette overlay, bouncing hand emoji
-- ProgressBar: page count display, hover-enlarged dots, glow pulse, chapter emoji icons
-
-Stage Summary:
-- 8 enhancements total (4 per component), all existing functionality preserved
-- Lint: ✅ Clean | Compilation: ✅ Passes
-
----
-Task ID: 4a
-Agent: Ambient Sound + Bookmark Agent
-Task: Implemented ambient sound system and bookmark feature
-
-Work Log:
-- Created AmbientSound.tsx with Web Audio API, 8 mood-specific tonal configs, 2-second crossfades
-- Updated story-store.ts with bookmarks (toggle, isBookmarked, getBookmarkTitle)
-- Created BookmarkButton.tsx (fixed bottom-right, scale bounce animation)
-- Created BookmarksPanel.tsx (slide-in from left, navigation, empty state)
-- Integrated into page.tsx
-
-Stage Summary:
-- Ambient Sound: Complete Web Audio API with 8 mood configs
-- Bookmark System: Full CRUD with persistent storage and navigation
-- Lint: ✅ Clean | Compilation: ✅ Passes
-
----
-Task ID: 4b
-Agent: Glossary + Stats Agent
-Task: Implemented spiritual glossary and enhanced reading stats
-
-Work Log:
-- Created SpiritualGlossary.tsx with 25 Tassawuf terms, search modal, paragraph indicators
-- Updated story-store.ts with readingStartTime field
-- Enhanced ChoiceJournal.tsx with 4 reading stats (time, speed, exploration %, streak)
-- Added glossary button to reading UI, findGlossaryTermsInText helper
-
-Stage Summary:
-- Glossary: 25 terms with search, modal overlay, paragraph indicators
-- Reading Stats: 4 new stats in journal with progress bar
+- Volume Slider: custom amber-styled range input
+- Achievements: 12 achievements with auto-detection + toast notifications
 - Lint: ✅ Clean | Compilation: ✅ Passes

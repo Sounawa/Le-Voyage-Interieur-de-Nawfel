@@ -1,8 +1,8 @@
 'use client';
 
 import { motion, useMotionValue, animate } from 'framer-motion';
-import { RotateCcw, Star, BookOpen } from 'lucide-react';
-import { useMemo, useEffect, useRef, useState } from 'react';
+import { RotateCcw, Star, BookOpen, Share2 } from 'lucide-react';
+import { useMemo, useEffect, useRef, useState, useCallback } from 'react';
 import type { StoryPage } from '@/lib/story-types';
 
 interface EndingScreenProps {
@@ -97,6 +97,33 @@ function EightPointedStar({ className }: { className?: string }) {
   );
 }
 
+async function copyToClipboard(text: string): Promise<boolean> {
+  // Modern Clipboard API
+  if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      // Fall through to fallback
+    }
+  }
+  // Fallback: textarea + execCommand
+  try {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    textarea.style.pointerEvents = 'none';
+    document.body.appendChild(textarea);
+    textarea.select();
+    const ok = document.execCommand('copy');
+    document.body.removeChild(textarea);
+    return ok;
+  } catch {
+    return false;
+  }
+}
+
 export default function EndingScreen({ page, endingsFound, onRestart }: EndingScreenProps) {
   const ending = endingLabels[page.endingType || 'wisdom'];
   const totalEndings = 4;
@@ -107,6 +134,23 @@ export default function EndingScreen({ page, endingsFound, onRestart }: EndingSc
   const countMotion = useMotionValue(0);
   const [displayCount, setDisplayCount] = useState(0);
   const hasAnimated = useRef(false);
+  const [shareCopied, setShareCopied] = useState(false);
+
+  const handleShareEnding = useCallback(async () => {
+    const text = [
+      `${ending.emoji} J'ai atteint ${ending.title} dans Le Voyage Intérieur de Souhayl!`,
+      ``,
+      ending.description,
+      ``,
+      `Découvrez votre propre voyage spirituel!`,
+    ].join('\n');
+
+    const ok = await copyToClipboard(text);
+    if (ok) {
+      setShareCopied(true);
+      setTimeout(() => setShareCopied(false), 2000);
+    }
+  }, [ending]);
 
   useEffect(() => {
     if (!hasAnimated.current) {
@@ -328,6 +372,20 @@ export default function EndingScreen({ page, endingsFound, onRestart }: EndingSc
         >
           <RotateCcw className="w-4 h-4 restart-icon" />
           <span>Recommencer le voyage</span>
+        </motion.button>
+
+        {/* Share ending button */}
+        <motion.button
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 3, duration: 0.6 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.98 }}
+          onClick={handleShareEnding}
+          className="inline-flex items-center gap-2 px-8 py-3 mt-3 bg-amber-950/20 border border-amber-800/20 hover:border-amber-700/30 text-amber-400/60 hover:text-amber-300/80 font-serif rounded-lg transition-all duration-300 cursor-pointer"
+        >
+          <Share2 className="w-4 h-4" />
+          <span>{shareCopied ? '✓ Copié !' : 'Partager cette fin'}</span>
         </motion.button>
       </div>
     </motion.div>
