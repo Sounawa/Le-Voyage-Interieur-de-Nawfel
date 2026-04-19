@@ -63,6 +63,8 @@ export default function SettingsPanel({ isOpen, onClose, onOpenAchievements }: S
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             className="fixed right-0 top-0 bottom-0 z-50 w-full max-w-xs bg-[#0d0c14]/95 backdrop-blur-md border-l border-amber-800/20 overflow-y-auto custom-scrollbar"
           >
+            {/* Subtle edge glow on left edge */}
+            <div className="edge-glow-left" />
             {/* Header */}
             <div className="sticky top-0 z-10 bg-[#0d0c14]/90 backdrop-blur-md px-6 py-4 border-b border-amber-800/15 flex items-center justify-between">
               <div className="flex items-center gap-3">

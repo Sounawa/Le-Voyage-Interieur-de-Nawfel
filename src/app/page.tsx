@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { BarChart3, BookOpen, BookMarked, Bookmark, GitBranch, HelpCircle, MapIcon, Moon, Scroll, Settings, Star, Trophy } from 'lucide-react';
+import { BarChart3, BookOpen, BookMarked, Bookmark, GitBranch, HelpCircle, MapIcon, Moon, Scroll, Search, Settings, Star, Trophy } from 'lucide-react';
 import { useStoryStore } from '@/store/story-store';
 import { storyPages, firstPageId } from '@/data/story-data';
 import type { Choice, MoodType } from '@/lib/story-types';
@@ -38,6 +38,8 @@ import StoryPathMap from '@/components/book/StoryPathMap';
 import FocusModeToggle from '@/components/book/FocusModeToggle';
 import StoryHint from '@/components/book/StoryHint';
 import ReadingStats from '@/components/book/ReadingStats';
+import ReadingTimer from '@/components/book/ReadingTimer';
+import PageSearch from '@/components/book/PageSearch';
 import { useSwipeNavigation } from '@/hooks/useSwipeNavigation';
 import type { PageTurnSoundHandle } from '@/components/book/PageTurnSound';
 import type { ChoiceSoundHandle } from '@/components/book/ChoiceSound';
@@ -65,6 +67,7 @@ export default function Home() {
   const [quizOpen, setQuizOpen] = useState(false);
   const [storyPathOpen, setStoryPathOpen] = useState(false);
   const [readingStatsOpen, setReadingStatsOpen] = useState(false);
+  const [pageSearchOpen, setPageSearchOpen] = useState(false);
   const [isAppReady, setIsAppReady] = useState(false);
   const pageTurnSoundRef = useRef<PageTurnSoundHandle>(null);
   const choiceSoundRef = useRef<ChoiceSoundHandle>(null);
@@ -303,6 +306,18 @@ export default function Home() {
                 </button>
               )}
 
+              {/* Page Search button */}
+              {showSettingsButton && (
+                <button
+                  onClick={() => setPageSearchOpen(true)}
+                  className="p-2.5 rounded-lg bg-[#0d0c14]/80 backdrop-blur-sm border border-amber-800/15 hover:bg-amber-900/20 hover:border-amber-700/30 transition-all duration-300 group"
+                  title="Rechercher"
+                  aria-label="Rechercher dans l'histoire"
+                >
+                  <Search className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
+                </button>
+              )}
+
               {/* Journal button */}
               {showJournalButton && (
                 <button
@@ -500,6 +515,20 @@ export default function Home() {
         {/* Reading Stats Panel */}
         <ReadingStats isOpen={readingStatsOpen} onClose={() => setReadingStatsOpen(false)} />
 
+        {/* Page Search Panel */}
+        <PageSearch
+          isOpen={pageSearchOpen}
+          onClose={() => setPageSearchOpen(false)}
+          onNavigate={(pageId) => {
+            setView('reading');
+            setTransitioningChapter(null);
+            const page = storyPages[pageId];
+            if (page) {
+              goToPage(pageId, page.chapter);
+            }
+          }}
+        />
+
         {/* Story Path Map */}
         <StoryPathMap isOpen={storyPathOpen} onClose={() => setStoryPathOpen(false)} />
 
@@ -516,18 +545,23 @@ export default function Home() {
             }
           }}
         />
+
+        {/* Reading Timer — visible during reading */}
+        {showReadingUI && <ReadingTimer />}
       </main>
 
       {/* Sticky footer — only during reading, hidden in focus mode */}
       {showFooter && !focusMode && (
-        <footer className="enhanced-footer relative z-20 mt-auto py-3 px-4 text-center bg-gradient-to-t from-[#0a0a0f]/80 to-transparent backdrop-blur-sm border-t border-amber-900/10">
+        <footer className="enhanced-footer footer-bottom-fade relative z-20 mt-auto py-3 px-4 text-center bg-gradient-to-t from-[#0a0a0f]/80 to-transparent backdrop-blur-sm border-t border-amber-900/10">
+          {/* Shimmer line above footer text */}
+          <div className="footer-shimmer-line" />
           <div className="flex items-center justify-center gap-2">
-            <span className="text-amber-700/25" style={{ fontSize: '12px' }}>✦</span>
-            <Moon className="w-3 h-3 text-amber-700/30" />
+            <span className="icon-breathe text-amber-700/25" style={{ fontSize: '12px', '--delay': '0s' } as React.CSSProperties}>✦</span>
+            <Moon className="icon-breathe footer-icon w-3 h-3 text-amber-700/30" style={{ '--delay': '0.5s' } as React.CSSProperties} />
             <span className="text-amber-700/30 text-[11px] font-serif tracking-wide">
               Le Voyage Intérieur de Souhayl — Tome 1
             </span>
-            <Star className="w-2.5 h-2.5 text-amber-700/20" />
+            <Star className="icon-breathe footer-icon w-2.5 h-2.5 text-amber-700/20" style={{ '--delay': '1.2s' } as React.CSSProperties} />
           </div>
           {/* Keyboard shortcut hint — desktop only */}
           <div className="hidden md:flex items-center justify-center gap-1.5 mt-1">

@@ -50,8 +50,8 @@ function AnimatedStatNumber({ value, duration = 800 }: { value: number; duration
     const startTime = performance.now();
 
     if (value === 0) {
-      setDisplayed(0);
-      return;
+      const raf = requestAnimationFrame(() => setDisplayed(0));
+      return () => cancelAnimationFrame(raf);
     }
 
     let rafId: number;
@@ -89,8 +89,8 @@ function CircularProgress({
 
   useEffect(() => {
     if (percentage === 0) {
-      setDisplayedPercent(0);
-      return;
+      const raf = requestAnimationFrame(() => setDisplayedPercent(0));
+      return () => cancelAnimationFrame(raf);
     }
     const startTime = performance.now();
     let rafId: number;
@@ -371,7 +371,7 @@ export default function ReadingStats({ isOpen, onClose }: ReadingStatsProps) {
                     </span>
                   </div>
                   <p className="text-amber-100 text-xl font-serif font-bold">
-                    <AnimatedStatNumber value={stats.chaptersCompleted}{' '}
+                    <AnimatedStatNumber value={stats.chaptersCompleted}>{' '}</AnimatedStatNumber>
                     <span className="text-amber-500/40 text-sm">/ {TOTAL_CHAPTERS}</span>
                   </p>
                   <div className="flex gap-1 mt-1.5">
@@ -405,7 +405,7 @@ export default function ReadingStats({ isOpen, onClose }: ReadingStatsProps) {
                     </span>
                   </div>
                   <p className="text-amber-100 text-xl font-serif font-bold">
-                    <AnimatedStatNumber value={stats.endingsFound}{' '}
+                    <AnimatedStatNumber value={stats.endingsFound}>{' '}</AnimatedStatNumber>
                     <span className="text-amber-500/40 text-sm">/ {TOTAL_ENDINGS}</span>
                   </p>
                   <div className="flex gap-1 mt-1.5">

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Playfair_Display, Inter, Amiri } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
@@ -12,6 +12,13 @@ const playfair = Playfair_Display({
 const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const amiri = Amiri({
+  variable: "--font-amiri",
+  subsets: ["arabic", "latin"],
+  weight: ["400", "700"],
   display: "swap",
 });
 
@@ -32,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="fr" className="dark" suppressHydrationWarning>
       <body
-        className={`${playfair.variable} ${inter.variable} antialiased`}
+        className={`${playfair.variable} ${inter.variable} ${amiri.variable} antialiased`}
         style={{
           fontFamily: 'var(--font-serif), Georgia, "Times New Roman", serif',
           backgroundColor: '#0a0a0f',

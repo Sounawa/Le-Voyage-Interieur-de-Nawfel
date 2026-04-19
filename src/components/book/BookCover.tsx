@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { BookOpen, RotateCcw, Star } from 'lucide-react';
 import { useStoryStore } from '@/store/story-store';
@@ -115,12 +115,36 @@ export default function BookCover({ onStart }: BookCoverProps) {
   const restart = useStoryStore((s) => s.restart);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const tiltRef = useRef<HTMLDivElement>(null);
 
   // Mouse tracking for parallax
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const titleX = useTransform(mouseX, [-0.5, 0.5], [-6, 6]);
   const titleY = useTransform(mouseY, [-0.5, 0.5], [-4, 4]);
+
+  // Cover tilt state for parallax
+  const [tiltStyle, setTiltStyle] = useState({ transform: 'rotateX(0deg) rotateY(0deg)' });
+
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    const container = containerRef.current;
+    if (!container) return;
+    const rect = container.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    mouseX.set(x);
+    mouseY.set(y);
+    // Apply subtle tilt
+    const rotateY = x * 4;
+    const rotateX = -y * 3;
+    setTiltStyle({ transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)` });
+  }, [mouseX, mouseY]);
+
+  const handleMouseLeave = useCallback(() => {
+    setTiltStyle({ transform: 'rotateX(0deg) rotateY(0deg)' });
+    mouseX.set(0);
+    mouseY.set(0);
+  }, [mouseX, mouseY]);
 
   const handleStart = () => {
     useStoryStore.setState({ hasStarted: true });
@@ -140,6 +164,18 @@ export default function BookCover({ onStart }: BookCoverProps) {
       size: 2 + Math.random() * 4,
       x: Math.random() * 100,
       duration: 6 + Math.random() * 8,
+    }));
+  }, []);
+
+  // Generate title sparkle particles
+  const titleSparkles = useMemo(() => {
+    return Array.from({ length: 8 }, (_, i) => ({
+      id: i,
+      x: 15 + Math.random() * 70,
+      y: -5 + Math.random() * 15,
+      delay: Math.random() * 3,
+      duration: 2.5 + Math.random() * 2,
+      drift: (Math.random() - 0.5) * 30,
     }));
   }, []);
 
@@ -215,20 +251,18 @@ export default function BookCover({ onStart }: BookCoverProps) {
     const container = containerRef.current;
     if (!container) return;
 
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = container.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      mouseX.set(x);
-      mouseY.set(y);
-    };
-
     container.addEventListener('mousemove', handleMouseMove);
-    return () => container.removeEventListener('mousemove', handleMouseMove);
-  }, [mouseX, mouseY]);
+    container.addEventListener('mouseleave', handleMouseLeave);
+    return () => {
+      container.removeEventListener('mousemove', handleMouseMove);
+      container.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, [handleMouseMove, handleMouseLeave]);
 
   return (
-    <div ref={containerRef} className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <div ref={containerRef} className="cover-tilt min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Pulsing vignette overlay */}
+      <div className="cover-vignette" />
       {/* Animated star field canvas */}
       <canvas
         ref={canvasRef}
@@ -264,10 +298,12 @@ export default function BookCover({ onStart }: BookCoverProps) {
       />
 
       <motion.div
+        ref={tiltRef}
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.5, ease: 'easeOut' }}
-        className="relative z-10 text-center px-6 max-w-lg mx-auto"
+        className="cover-tilt-inner relative z-10 text-center px-6 max-w-lg mx-auto"
+        style={tiltStyle}
       >
         {/* 3. Islamic geometric ornament — top */}
         <motion.div
@@ -282,21 +318,39 @@ export default function BookCover({ onStart }: BookCoverProps) {
         </motion.div>
 
         {/* 5. Title with parallax/float on mouse move */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 1 }}
-          style={{
-            textShadow: '0 0 40px rgba(212, 165, 116, 0.3)',
-            x: titleX,
-            y: titleY,
-          }}
-          className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-amber-100 mb-4 leading-tight will-change-transform"
-        >
-          Le Voyage Intérieur
-          <br />
-          <span className="text-amber-400">de Souhayl</span>
-        </motion.h1>
+        <div className="relative inline-block">
+          {/* Floating sparkles around title */}
+          {titleSparkles.map((s) => (
+            <span
+              key={s.id}
+              className="sparkle-float-twinkle absolute text-[8px] pointer-events-none"
+              style={{
+                left: `${s.x}%`,
+                top: `${s.y}%`,
+                '--delay': `${s.delay}s`,
+                '--duration': `${s.duration}s`,
+                color: 'rgba(218, 165, 32, 0.6)',
+              } as React.CSSProperties}
+            >
+              ✦
+            </span>
+          ))}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 1 }}
+            style={{
+              textShadow: '0 0 40px rgba(212, 165, 116, 0.3)',
+              x: titleX,
+              y: titleY,
+            }}
+            className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-amber-100 mb-4 leading-tight will-change-transform"
+          >
+            Le Voyage Intérieur
+            <br />
+            <span className="text-amber-400">de Souhayl</span>
+          </motion.h1>
+        </div>
 
         {/* Subtitle */}
         <motion.p
@@ -376,10 +430,7 @@ export default function BookCover({ onStart }: BookCoverProps) {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
             onClick={handleStart}
-            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-amber-800 to-amber-700 hover:from-amber-700 hover:to-amber-600 text-amber-100 font-serif text-lg rounded-lg transition-all duration-300 overflow-hidden"
-            style={{
-              boxShadow: '0 0 20px rgba(217, 119, 6, 0.15), 0 4px 20px rgba(0, 0, 0, 0.3)',
-            }}
+            className="breathing-glow group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-amber-800 to-amber-700 hover:from-amber-700 hover:to-amber-600 text-amber-100 font-serif text-lg rounded-lg transition-all duration-300 overflow-hidden"
           >
             {/* Shimmer sweep overlay */}
             <motion.div

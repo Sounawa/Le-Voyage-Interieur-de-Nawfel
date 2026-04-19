@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+
 
 @custom-variant dark (&:is(.dark *));
 
@@ -124,7 +124,7 @@
    ======================================== */
 
 .font-arabic {
-  font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', 'Noto Naskh Arabic', serif;
+  font-family: var(--font-amiri), 'Traditional Arabic', 'Scheherazade New', 'Noto Naskh Arabic', serif;
   direction: rtl;
   letter-spacing: 0.02em;
 }
@@ -2883,5 +2883,382 @@ a,
     max-width: 100%;
     max-height: 100vh;
     inset: 0;
+  }
+}
+
+/* ========================================
+   PHASE 10: COVER TILT (parallax perspective)
+   ======================================== */
+
+.cover-tilt {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.cover-tilt-inner {
+  transition: transform 0.15s ease-out;
+  will-change: transform;
+}
+
+/* ========================================
+   PHASE 10: SPARKLE FLOAT (golden particles)
+   ======================================== */
+
+@keyframes sparkle-float-up {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.5);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-80px) translateX(var(--drift, 15px)) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle-twinkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.3) rotate(0deg);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1) rotate(90deg);
+  }
+}
+
+.sparkle-float {
+  animation: sparkle-float-up var(--duration, 3.5s) ease-out infinite;
+  animation-delay: var(--delay, 0s);
+  pointer-events: none;
+}
+
+.sparkle-float-twinkle {
+  animation: sparkle-twinkle var(--duration, 2.5s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  pointer-events: none;
+}
+
+/* ========================================
+   PHASE 10: BREATHING GLOW (for CTA button)
+   ======================================== */
+
+@keyframes breathing-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(217, 119, 6, 0.12),
+                0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(217, 119, 6, 0.28),
+                0 0 56px rgba(218, 165, 32, 0.1),
+                0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.breathing-glow {
+  animation: breathing-glow 3.5s ease-in-out infinite;
+}
+
+/* ========================================
+   PHASE 10: COVER VIGNETTE PULSE
+   ======================================== */
+
+@keyframes vignette-pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+.cover-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    rgba(10, 10, 15, 0.3) 70%,
+    rgba(10, 10, 15, 0.7) 100%
+  );
+  animation: vignette-pulse 5s ease-in-out infinite;
+  z-index: 1;
+}
+
+/* ========================================
+   PHASE 10: PANEL BACKDROP (blur/darken)
+   ======================================== */
+
+@keyframes panel-backdrop-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes panel-backdrop-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.panel-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 5, 10, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 39;
+  animation: panel-backdrop-in 0.3s ease-out forwards;
+  pointer-events: auto;
+}
+
+.panel-backdrop-closing {
+  animation: panel-backdrop-out 0.25s ease-in forwards;
+}
+
+/* ========================================
+   PHASE 10: PANEL EDGE GLOW
+   ======================================== */
+
+@keyframes edge-glow-pulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.edge-glow-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(218, 165, 32, 0.15) 20%,
+    rgba(218, 165, 32, 0.4) 50%,
+    rgba(218, 165, 32, 0.15) 80%,
+    transparent 100%
+  );
+  animation: edge-glow-pulse 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.edge-glow-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(218, 165, 32, 0.15) 20%,
+    rgba(218, 165, 32, 0.4) 50%,
+    rgba(218, 165, 32, 0.15) 80%,
+    transparent 100%
+  );
+  animation: edge-glow-pulse 4s ease-in-out infinite;
+  animation-delay: 1s;
+  pointer-events: none;
+}
+
+/* ========================================
+   PHASE 10: FOOTER SHIMMER LINE
+   ======================================== */
+
+@keyframes footer-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.footer-shimmer-line {
+  width: 200px;
+  height: 1px;
+  max-width: 60%;
+  margin: 0 auto 0.5rem auto;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(212, 165, 116, 0.1) 15%,
+    rgba(218, 165, 32, 0.35) 35%,
+    rgba(255, 215, 0, 0.4) 50%,
+    rgba(218, 165, 32, 0.35) 65%,
+    rgba(212, 165, 116, 0.1) 85%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: footer-shimmer 4s ease-in-out infinite;
+}
+
+/* ========================================
+   PHASE 10: ICON BREATHE (gentle scale pulse)
+   ======================================== */
+
+@keyframes icon-breathe {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.15);
+  }
+}
+
+.icon-breathe {
+  animation: icon-breathe 3.5s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+/* ========================================
+   PHASE 10: STAGGER ENTER (list items)
+   ======================================== */
+
+@keyframes stagger-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stagger-enter {
+  opacity: 0;
+  animation: stagger-fade-in 0.4s ease-out forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+/* ========================================
+   PHASE 10: FOOTER BOTTOM GRADIENT FADE
+   ======================================== */
+
+.footer-bottom-fade::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(10, 10, 15, 0.4) 60%,
+    rgba(10, 10, 15, 0.8) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ========================================
+   PHASE 10: ENHANCED FOOTER
+   ======================================== */
+
+.enhanced-footer {
+  position: relative;
+}
+
+.enhanced-footer .footer-icons-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.enhanced-footer .footer-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========================================
+   PAGE SEARCH COMPONENT
+   ======================================== */
+
+/* Search input field */
+.search-input {
+  font-family: var(--font-playfair), Georgia, 'Times New Roman', serif;
+  background: rgba(15, 12, 20, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(212, 165, 116, 0.12);
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  background: rgba(20, 16, 28, 0.8);
+  border-color: rgba(212, 165, 116, 0.3);
+  box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.06),
+              0 0 16px rgba(212, 165, 116, 0.04);
+}
+
+.search-input::placeholder {
+  color: rgba(212, 165, 116, 0.3);
+  font-style: italic;
+}
+
+/* Search match highlight */
+.search-highlight {
+  color: #e8c87a;
+  text-shadow: 0 0 8px rgba(218, 165, 32, 0.25),
+               0 0 2px rgba(218, 165, 32, 0.15);
+  background: rgba(218, 165, 32, 0.08);
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+/* Search result card */
+.search-result-card {
+  transition: all 0.3s ease;
+}
+
+.search-result-card:hover {
+  transform: translateX(4px);
+}
+
+/* Search chapter badge */
+.search-chapter-badge {
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+/* ========================================
+   READING TIMER PILL (bottom-right)
+   ======================================== */
+
+.reading-timer-pill {
+  animation: timer-fade-in 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes timer-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

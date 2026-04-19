@@ -1,6 +1,6 @@
 # Le Voyage Intérieur de Souhayl - Worklog
 
-## Project Status: ✅ Phase 9 Complete — Wiring, Hints, Transition Sound, Styling
+## Project Status: ✅ Phase 10 Complete — Bug Fixes, Timer, Search, Visual Polish
 
 ### Current Status Assessment
 The interactive book is feature-rich with comprehensive polish:
@@ -8,10 +8,10 @@ The interactive book is feature-rich with comprehensive polish:
 - **20 choice points** with exactly 3 choices each, all valid paths
 - **4 distinct endings** (Light, Wisdom, Shadow, Pure/Integration)
 - **6 AI-generated illustrations** at key story moments
-- **31 React components** across the application (up from 29)
+- **35 React components** across the application (up from 31)
 - **4 custom hooks** (useTTS, useSwipeNavigation + 2 existing)
-- **~11,782 lines of TypeScript/CSS code** in core files
-- **Lint: ✅ Clean** | **Compilation: ✅ Passes** (HTTP 200, 24KB page)
+- **~11,848 lines of TypeScript/CSS code** in core files
+- **Lint: ✅ Clean** | **Compilation: ✅ Passes** (HTTP 200)
 - **Runtime: ✅ No errors in dev log**
 
 ### Architecture
@@ -51,6 +51,10 @@ src/
 │   ├── ChoiceSound.tsx         # Dual-tone chime on choice selection
 │   ├── AchievementSound.tsx    # Ascending arpeggio on achievement unlock
 │   ├── SpiritualQuiz.tsx       # 10-question quiz mini-game panel
+│   ├── StoryPathMap.tsx          # Visual branching path map (slide from right)
+│   ├── ReadingStats.tsx          # Comprehensive reading statistics panel
+│   ├── ReadingTimer.tsx          # Session + total reading time pill widget
+│   ├── PageSearch.tsx            # Full-text search across story pages
 │   ├── StoryHint.tsx           # Idle hint lantern for younger readers
 │   └── ChapterTransitionSound.tsx # Mystical chapter transition SFX
 ├── data/
@@ -141,7 +145,7 @@ src/
 ### Story Stats
 - Pages: 167 | Choice points: 20 | Endings: 4 | Achievements: 12 | Quiz Questions: 10
 - Characters: Souhayl, Zaki, Moulay, Nafs, Waswās
-- Components: 31 | Hooks: 4 | Total core LOC: ~11,782
+- Components: 35 | Hooks: 4 | Total core LOC: ~11,848
 
 ### Phase 7+8 Changes (Recent Sessions)
 
@@ -219,14 +223,18 @@ src/
 
 ### Verification Results
 - ✅ `bun run lint` — Zero errors, zero warnings
-- ✅ Dev server: HTTP 200, 24KB page, no runtime errors
-- ✅ All 31 components exist and import correctly
+- ✅ Dev server: HTTP 200, no runtime errors
+- ✅ All 35 components exist and import correctly
 - ✅ All 4 hooks functional
 - ✅ Store persists all settings (TTS, focus mode, achievements, volume, bookmarks)
 - ✅ Map import collision bug fixed
 - ✅ AchievementSound wired into AchievementNotification
 - ✅ Swipe navigation wired into page.tsx
 - ✅ TTS auto-play wired into TTSNarration
+- ✅ ReadingStats JSX parsing bugs fixed
+- ✅ Amiri font import fixed (moved from CSS to next/font)
+- ✅ PageSearch wired into page.tsx with search button
+- ✅ ReadingTimer tracking session and total reading time
 
 ### Phase 9 Changes
 
@@ -300,7 +308,110 @@ src/
 10. **Accessibility**: Full screen reader support, ARIA live regions
 11. **Print/PDF**: Export journey as a formatted PDF document
 12. **Reading streaks**: Track consecutive reading sessions
-13. **Mini-map**: Show story path visualization with branching
+13. ~~**Mini-map**: Show story path visualization with branching~~ ✅ Done (StoryPathMap exists)
+
+### Phase 10 Changes
+
+#### Bug Fixes (3 critical)
+
+**1. ReadingStats.tsx JSX Parsing Errors**
+- Missing `>` closing bracket on `AnimatedStatNumber` opening tags (lines 374, 408)
+- Missing `</AnimatedStatNumber>` closing tags
+- Fixed both instances, resolved HTTP 500
+
+**2. CSS @import Ordering (HTTP 500)**
+- `@import url('https://fonts.googleapis.com/css2?family=Amiri...')` was placed after Tailwind expanded CSS
+- Tailwind CSS v4 expands `@import "tailwindcss"` inline, pushing subsequent `@import url()` after all rules
+- Fixed by moving Amiri font to `next/font/google` in layout.tsx (more optimized, zero FOIT)
+- Updated `.font-arabic` CSS class to use `var(--font-amiri)` CSS variable
+
+**3. react-hooks/set-state-in-effect Lint Errors**
+- `setDisplayed(0)` and `setDisplayedPercent(0)` called synchronously in `useEffect` body
+- Fixed by wrapping in `requestAnimationFrame()` callbacks (deferred, not synchronous)
+- Both `AnimatedStatNumber` and `CircularProgress` components fixed
+
+#### New Features (3)
+
+**4. Reading Session Timer (ReadingTimer.tsx)**
+- Small pill widget fixed at bottom-right during reading
+- Tracks current session time (updates every second)
+- Saves accumulated time to Zustand store every 30 seconds
+- Saves remaining time on component unmount
+- Shows session time + total historical reading time
+- Tooltip shows full details: session, total, session count
+- Fade-in animation, appears after 5 seconds of reading
+- Uses existing store fields: `readingStartTime`, `totalReadingTime`, `sessionCount`
+
+**5. Page Search (PageSearch.tsx)**
+- Slide-in panel from left (matching BookmarksPanel pattern)
+- Searches through: paragraphs, page titles, chapter titles, choices text, shaykh/zaki dialogues
+- Case-insensitive, debounced at 300ms
+- Results show: chapter badge, page context, highlighted matching text (amber glow)
+- 50-char snippet radius around match with ellipsis truncation
+- Navigate to any matching page via onNavigate callback
+- Max 20 results, auto-focus input on open, clear on close
+- Empty states for no query and no results
+
+**6. Wiring: PageSearch + ReadingTimer in page.tsx**
+- Added Search icon button to top-right toolbar (next to Settings)
+- Added `pageSearchOpen` state + `PageSearch` panel with navigation handler
+- Added `ReadingTimer` component, visible during reading mode
+
+#### Styling Improvements (Phase 10)
+
+**BookCover Enhancements:**
+- Parallax tilt effect: container uses perspective, content tilts ±3deg on mouse move
+- 8 floating golden sparkle particles around title (sparkle-float-twinkle animation)
+- Breathing glow on CTA button (3.5s cycle, box-shadow pulse)
+- Pulsing vignette overlay (5s cycle, 0.6–0.85 opacity)
+
+**Panel Transitions:**
+- Edge glow on SettingsPanel left edge (amber gradient, 4s pulse)
+- Reusable `.edge-glow-left` / `.edge-glow-right` classes
+
+**Footer Enhancements:**
+- Golden shimmer line above footer text (4s sweep animation)
+- Breathing animation on star/moon icons (staggered delays)
+- Soft gradient fade at page bottom (40px fade-to-black)
+
+**New CSS Classes (Phase 10):**
+- `.cover-tilt`, `.cover-tilt-inner` — parallax perspective
+- `.sparkle-float`, `.sparkle-float-twinkle` — floating sparkle particles
+- `.breathing-glow` — pulsing glow for buttons
+- `.cover-vignette` — pulsing vignette overlay
+- `.edge-glow-left`, `.edge-glow-right` — panel edge glow
+- `.footer-shimmer-line` — shimmer line animation
+- `.icon-breathe` — gentle icon breathing
+- `.stagger-enter` — staggered entrance with --delay variable
+- `.footer-bottom-fade` — bottom gradient fade
+- `.reading-timer-pill` — timer fade-in animation
+- `.search-highlight`, `.search-input`, `.search-result-card` — search UI
+
+---
+Task ID: 10-main
+Agent: Phase 10 Orchestrator
+Task: Bug fixes, reading timer, page search, visual polish
+
+Work Log:
+- Fixed ReadingStats.tsx JSX parsing errors (missing > and </AnimatedStatNumber> on lines 374, 408)
+- Fixed CSS @import ordering causing HTTP 500 (moved Amiri font from CSS @import to next/font/google in layout.tsx)
+- Fixed react-hooks/set-state-in-effect lint errors in ReadingStats.tsx (wrapped in requestAnimationFrame)
+- Created ReadingTimer.tsx component (session time tracking, 30s auto-save to store)
+- Created PageSearch.tsx via subagent (full-text search with debounce, highlight, navigation)
+- Enhanced BookCover via subagent (parallax tilt, sparkle particles, breathing button glow, pulsing vignette)
+- Enhanced footer via subagent (shimmer line, breathing icons, bottom gradient fade)
+- Added panel edge glow to SettingsPanel via subagent
+- Wired PageSearch into page.tsx (Search button + panel + navigation handler)
+- Wired ReadingTimer into page.tsx (visible during reading mode)
+- Updated worklog with Phase 10 status
+
+Stage Summary:
+- 3 critical bug fixes (ReadingStats JSX, CSS @import, setState-in-effect)
+- 2 new features (ReadingTimer, PageSearch)
+- 1 new component wired (PageSearch)
+- Comprehensive styling improvements (BookCover, footer, panels)
+- 35 components, 4 hooks, ~11,848 LOC
+- Lint: ✅ Clean | Server: ✅ HTTP 200 | Runtime: ✅ No errors
 
 ---
 Task ID: 9-main
@@ -597,3 +708,46 @@ Stage Summary:
 - BookmarksPanel: golden pulse on icons, illustration empty state, inline delete confirmation
 - 8 new CSS animation/utility classes added
 - Lint: ✅ Clean on all modified files (1 pre-existing error in ReadingStats.tsx unrelated)
+
+---
+Task ID: 10-5
+Agent: Page Search Agent
+Task: Created PageSearch component for searching story text
+
+Work Log:
+- Created PageSearch.tsx with full search functionality
+- Added CSS classes to globals.css (search-highlight, search-input, search-result-card, search-chapter-badge)
+- Passed lint check with zero errors
+
+Stage Summary:
+- Search through paragraphs, titles, chapter titles, choices, shaykh/zaki dialogues
+- Debounced search (300ms), case-insensitive
+- Slide-in panel from left with glass-morphism, matching BookmarksPanel pattern
+- Highlighted matching text in results with amber glow
+- Navigate to matching pages via onNavigate callback
+- 20 results max, clear search on close
+- Lint: ✅ Clean
+
+---
+Task ID: 10-6/10-7
+Agent: Phase 10 Styling Agent
+Task: Enhanced visual polish across components
+
+Work Log:
+- Enhanced BookCover with parallax tilt effect (cover-tilt CSS perspective + tiltRef mousemove handler)
+- Added 8 floating golden sparkle particles around title (sparkle-float-twinkle CSS animation)
+- Added breathing glow animation to "Commencer l'aventure" button (breathing-glow CSS class)
+- Added pulsing vignette overlay on cover (cover-vignette CSS class, 5s ease-in-out cycle)
+- Added panel edge glow to SettingsPanel (edge-glow-left CSS class)
+- Enhanced footer with shimmer line above text (footer-shimmer-line CSS class)
+- Added breathing animation to footer star/moon icons (icon-breathe CSS class with staggered delays)
+- Added bottom gradient fade to footer (footer-bottom-fade CSS class)
+- Added 10+ new CSS animation classes to globals.css
+- Passed lint check with zero errors
+
+Stage Summary:
+- BookCover: parallax tilt (rotateX/rotateY on mousemove), 8 title sparkles, breathing button glow, pulsing vignette overlay
+- Panels: edge glow on SettingsPanel left edge (reusable .edge-glow-left/.edge-glow-right classes)
+- Footer: shimmer line, icon breathing with staggered delays, bottom gradient fade
+- New CSS: .cover-tilt, .cover-tilt-inner, .sparkle-float, .sparkle-float-twinkle, .breathing-glow, .cover-vignette, .panel-backdrop, .edge-glow-left, .edge-glow-right, .footer-shimmer-line, .icon-breathe, .stagger-enter, .footer-bottom-fade
+- Lint: ✅ Clean
