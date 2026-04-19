@@ -19,10 +19,18 @@ const fontSizeClasses: Record<string, string> = {
   lg: 'text-lg sm:text-xl',
 };
 
+const lineHeightClasses: Record<string, string> = {
+  compact: 'leading-relaxed',
+  normal: 'leading-loose',
+  relaxed: 'leading-[2]',
+};
+
 const AUTO_CONTINUE_DELAY = 4000;
 
 export default function StoryPageView({ page, onContinue }: StoryPageViewProps) {
   const fontSize = useStoryStore((s) => s.fontSize);
+  const lineHeight = useStoryStore((s) => s.lineHeight);
+  const fontFamily = useStoryStore((s) => s.fontFamily);
   const autoContinue = useStoryStore((s) => s.autoContinue);
   const baseDelay = page.paragraphs.length * 0.15 + 0.3;
   const isLinear = !page.choices && !!page.next;
@@ -30,6 +38,10 @@ export default function StoryPageView({ page, onContinue }: StoryPageViewProps) 
 
   // Font size class for paragraphs
   const paragraphFontClass = fontSizeClasses[fontSize] || fontSizeClasses.md;
+
+  // Line height and font family classes
+  const paragraphLineHeightClass = lineHeightClasses[lineHeight] || lineHeightClasses.normal;
+  const paragraphFontFamilyClass = fontFamily === 'sans' ? 'font-sans' : 'font-serif';
 
   // Keyboard listener for spacebar/enter to continue
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
@@ -135,7 +147,7 @@ export default function StoryPageView({ page, onContinue }: StoryPageViewProps) 
             )}
 
             {/* Narrative paragraphs */}
-            <div className="space-y-5 story-paragraphs-container">
+            <div className={`space-y-5 story-paragraphs-container ${paragraphLineHeightClass} ${paragraphFontFamilyClass}`}>
               {page.paragraphs.map((paragraph, index) => {
                 const paragraphTerms = paragraphGlossaryTerms[index];
                 const hasTerms = paragraphTerms.length > 0;
@@ -145,7 +157,7 @@ export default function StoryPageView({ page, onContinue }: StoryPageViewProps) 
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: showOrnamentalDivider ? 0.4 + index * 0.15 : 0.3 + index * 0.15, duration: 0.8 }}
-                    className={`font-serif ${paragraphFontClass} text-amber-100/80 leading-relaxed text-justify sm:text-left relative ${
+                    className={`${paragraphFontFamilyClass} ${paragraphFontClass} text-amber-100/80 text-justify sm:text-left relative ${
                       index === 0 ? 'story-drop-cap-enhanced' : ''
                     }`}
                     style={{ textShadow: '0 1px 4px rgba(0,0,0,0.35), 0 0 12px rgba(0,0,0,0.08)' }}

@@ -17,6 +17,8 @@ interface StoryStore {
 
   // Settings (persisted separately from story state)
   fontSize: 'sm' | 'md' | 'lg';
+  lineHeight: 'compact' | 'normal' | 'relaxed';
+  fontFamily: 'serif' | 'sans';
   soundEnabled: boolean;
   soundVolume: number; // 0-100, default 50
   autoContinue: boolean;
@@ -30,6 +32,9 @@ interface StoryStore {
 
   // Reading stats
   readingStartTime: number | null;
+  totalReadingTime: number;
+  sessionCount: number;
+  lastSessionDate: string | null;
 
   // Achievements
   achievements: string[];
@@ -44,6 +49,8 @@ interface StoryStore {
 
   // Settings actions
   setFontSize: (size: 'sm' | 'md' | 'lg') => void;
+  setLineHeight: (h: 'compact' | 'normal' | 'relaxed') => void;
+  setFontFamily: (f: 'serif' | 'sans') => void;
   setSoundEnabled: (enabled: boolean) => void;
   setSoundVolume: (vol: number) => void;
   setAutoContinue: (enabled: boolean) => void;
@@ -57,6 +64,9 @@ interface StoryStore {
   toggleBookmark: (pageId: string) => void;
   isBookmarked: (pageId: string) => boolean;
   getBookmarkTitle: (pageId: string) => string;
+
+  // Reading stats actions
+  addReadingTime: (ms: number) => void;
 
   // Achievement actions
   unlockAchievement: (id: string) => void;
@@ -84,6 +94,8 @@ const storyInitialState = {
 
 const settingsInitialState = {
   fontSize: 'md' as 'sm' | 'md' | 'lg',
+  lineHeight: 'normal' as const,
+  fontFamily: 'serif' as const,
   soundEnabled: true,
   soundVolume: 50 as number,
   autoContinue: false,
@@ -93,6 +105,9 @@ const settingsInitialState = {
   focusMode: false,
   bookmarks: [] as string[],
   readingStartTime: null as number | null,
+  totalReadingTime: 0,
+  sessionCount: 0,
+  lastSessionDate: null as string | null,
   achievements: [] as string[],
 };
 
@@ -285,6 +300,8 @@ export const useStoryStore = create<StoryStore>()(
       },
 
       setFontSize: (size) => set({ fontSize: size }),
+      setLineHeight: (h) => set({ lineHeight: h }),
+      setFontFamily: (f) => set({ fontFamily: f }),
       setSoundEnabled: (enabled) => set({ soundEnabled: enabled }),
       setSoundVolume: (vol) => set({ soundVolume: Math.max(0, Math.min(100, vol)) }),
       setAutoContinue: (enabled) => set({ autoContinue: enabled }),
@@ -316,6 +333,18 @@ export const useStoryStore = create<StoryStore>()(
         const page = storyPages[pageId];
         if (!page) return pageId;
         return page.title || page.chapterTitle || pageId;
+      },
+
+      addReadingTime: (ms) => {
+        set((state) => {
+          const today = new Date().toISOString().split('T')[0];
+          const isNewSession = state.lastSessionDate !== today;
+          return {
+            totalReadingTime: state.totalReadingTime + ms,
+            sessionCount: isNewSession ? state.sessionCount + 1 : state.sessionCount,
+            lastSessionDate: today,
+          };
+        });
       },
 
       unlockAchievement: (id) => {

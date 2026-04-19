@@ -59,6 +59,14 @@ export default function ChapterTitle({ chapter, title, onComplete }: ChapterTitl
 
   const quote = spiritualQuotes[chapter];
 
+  // Floating star particles positions
+  const floatingStars = useMemo(() => [
+    { left: '15%', top: '20%', delay: '0s', size: '3px' },
+    { left: '80%', top: '25%', delay: '1.2s', size: '2px' },
+    { left: '25%', top: '70%', delay: '2.4s', size: '3px' },
+    { left: '75%', top: '65%', delay: '0.6s', size: '2px' },
+  ], []);
+
   return (
     <AnimatePresence>
       {show && (
@@ -85,6 +93,21 @@ export default function ChapterTitle({ chapter, title, onComplete }: ChapterTitl
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-amber-800/8 rounded-full blur-[100px]" />
           {/* Additional circular glow specifically behind chapter number area */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[calc(50%+30px)] w-[120px] h-[120px] bg-amber-700/10 rounded-full blur-[40px]" />
+
+          {/* Floating star particles */}
+          {floatingStars.map((star, i) => (
+            <div
+              key={i}
+              className="floating-star-particle"
+              style={{
+                left: star.left,
+                top: star.top,
+                width: star.size,
+                height: star.size,
+                animationDelay: star.delay,
+              }}
+            />
+          ))}
 
           <div className="relative z-10 text-center px-6">
             {/* Top ornament with Arabic decoration */}
@@ -169,8 +192,8 @@ export default function ChapterTitle({ chapter, title, onComplete }: ChapterTitl
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.4, duration: 1.2 }}
-                className="text-amber-600/45 text-sm sm:text-base font-serif italic mt-6 max-w-md mx-auto leading-relaxed"
-                style={{ textShadow: '0 0 12px rgba(212, 165, 116, 0.08)' }}
+                className="text-amber-600/45 text-sm sm:text-base font-serif italic mt-6 max-w-md mx-auto leading-relaxed chapter-quote-warm"
+                style={{ textShadow: '0 0 20px rgba(212, 165, 116, 0.12), 0 2px 6px rgba(0,0,0,0.2)' }}
               >
                 {quote}
               </motion.p>

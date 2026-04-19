@@ -6,36 +6,37 @@ import { X, Search, BookMarked } from 'lucide-react';
 
 export interface GlossaryTerm {
   term: string;
+  arabic: string;
   definition: string;
   emoji: string;
 }
 
 export const glossaryTerms: GlossaryTerm[] = [
-  { term: 'Tassawuf', definition: "Le chemin spirituel en islam, aussi appelé soufisme. C'est la quête de la purification du cœur pour se rapprocher d'Allah.", emoji: '💫' },
-  { term: 'Qalb', definition: "Le cœur spirituel. En islam, le cœur n'est pas juste un organe, c'est le siège de la foi, de l'amour et de la conscience.", emoji: '❤️' },
-  { term: 'Nafs', definition: "L'ego, le moi inférieur. C'est la partie de nous qui nous pousse à être égoïste, orgueilleux et esclave de nos désirs.", emoji: '🎭' },
-  { term: 'Waswās', definition: "Les chuchotements du shaytan (Satan). Ce sont les pensées négatives qui nous égarent et nous font douter.", emoji: '🐍' },
-  { term: 'Dhikr', definition: "Le rappel d'Allah. C'est la pratique de répéter les noms de Dieu ou des prières pour garder le cœur éveillé.", emoji: '📿' },
-  { term: 'Tawakkul', definition: "La confiance en Allah. C'est remettre ses affaires à Dieu tout en faisant de son mieux.", emoji: '🕊️' },
-  { term: 'Sabr', definition: "La patience. En islam, c'est la capacité à supporter les épreuves avec calme et espoir.", emoji: '⏳' },
-  { term: 'Tawba', definition: "Le repentir. Revenir vers Allah après une erreur, avec sincérité et ferme intention de changer.", emoji: '🔄' },
-  { term: 'Ikhlas', definition: "La sincérité. Faire les choses uniquement pour plaire à Allah, sans chercher la reconnaissance des autres.", emoji: '✨' },
-  { term: 'Shaykh', definition: "Un maître spirituel. C'est un guide expérimenté qui accompagne les disciples sur le chemin du Tassawuf.", emoji: '🧔' },
-  { term: 'Murshid', definition: "Le guide spirituel. Un autre nom pour le maître qui montre le chemin vers Allah.", emoji: '🌟' },
-  { term: 'Suluk', definition: "Le voyage spirituel intérieur. Le parcours du cœur à travers les différentes étapes de la purification.", emoji: '🛤️' },
-  { term: 'Fana', definition: "L'anéantissement de l'ego. C'est l'état où le soi disparaît pour laisser place à la présence divine.", emoji: '🌊' },
-  { term: 'Baqa', definition: "La subsistance en Dieu. Après l'anéantissement de l'ego, c'est vivre dans la conscience permanente d'Allah.", emoji: '🌅' },
-  { term: 'Muraqaba', definition: "La méditation contemplative. Observer silencieusement son cœur et la présence d'Allah en soi.", emoji: '👁️' },
-  { term: 'Hilm', definition: "La douceur et la sagesse dans le comportement. Ne pas réagir sous le coup de la colère.", emoji: '🕊️' },
-  { term: 'Adab', definition: "La bonne éducation spirituelle. Le respect, la politesse et les bonnes manières dans tout ce qu'on fait.", emoji: '📜' },
-  { term: 'Sadaqah', definition: "La charité. Donner avec générosité, que ce soit de l'argent, du temps ou un sourire.", emoji: '🤝' },
-  { term: 'Shukr', definition: "La gratitude. Remercier Allah pour toutes Ses bénédictions, même les plus petites.", emoji: '🙏' },
-  { term: 'Khalwa', definition: "La retraite spirituelle. Se retirer du bruit du monde pour se concentrer sur Allah.", emoji: '🌙' },
-  { term: 'Nur', definition: "La lumière divine. La lumière qu'Allah place dans le cœur des croyants.", emoji: '💡' },
-  { term: 'Sirat', definition: "Le chemin droit. La voie de la vérité et de la justice en islam.", emoji: '🛤️' },
-  { term: 'Ihsan', definition: "L'excellence spirituelle. Adorer Allah comme si on Le voyait, car Lui nous voit.", emoji: '💎' },
-  { term: 'Rida', definition: "La satisfaction divine. Accepter avec joie tout ce qu'Allah nous donne, le bien comme l'épreuve.", emoji: '😊' },
-  { term: 'Wird', definition: "Les litanies quotidiennes. Des prières et invocations répétées régulièrement pour nourrir le cœur.", emoji: '📖' },
+  { term: 'Tassawuf', arabic: 'التصوف', definition: "Le chemin spirituel en islam, aussi appelé soufisme. C'est la quête de la purification du cœur pour se rapprocher d'Allah.", emoji: '💫' },
+  { term: 'Qalb', arabic: 'القلب', definition: "Le cœur spirituel. En islam, le cœur n'est pas juste un organe, c'est le siège de la foi, de l'amour et de la conscience.", emoji: '❤️' },
+  { term: 'Nafs', arabic: 'النفس', definition: "L'ego, le moi inférieur. C'est la partie de nous qui nous pousse à être égoïste, orgueilleux et esclave de nos désirs.", emoji: '🎭' },
+  { term: 'Waswās', arabic: 'الوسواس', definition: "Les chuchotements du shaytan (Satan). Ce sont les pensées négatives qui nous égarent et nous font douter.", emoji: '🐍' },
+  { term: 'Dhikr', arabic: 'الذكر', definition: "Le rappel d'Allah. C'est la pratique de répéter les noms de Dieu ou des prières pour garder le cœur éveillé.", emoji: '📿' },
+  { term: 'Tawakkul', arabic: 'التوكل', definition: "La confiance en Allah. C'est remettre ses affaires à Dieu tout en faisant de son mieux.", emoji: '🕊️' },
+  { term: 'Sabr', arabic: 'الصبر', definition: "La patience. En islam, c'est la capacité à supporter les épreuves avec calme et espoir.", emoji: '⏳' },
+  { term: 'Tawba', arabic: 'التوبة', definition: "Le repentir. Revenir vers Allah après une erreur, avec sincérité et ferme intention de changer.", emoji: '🔄' },
+  { term: 'Ikhlas', arabic: 'الإخلاص', definition: "La sincérité. Faire les choses uniquement pour plaire à Allah, sans chercher la reconnaissance des autres.", emoji: '✨' },
+  { term: 'Shaykh', arabic: 'الشيخ', definition: "Un maître spirituel. C'est un guide expérimenté qui accompagne les disciples sur le chemin du Tassawuf.", emoji: '🧔' },
+  { term: 'Murshid', arabic: 'المرشد', definition: "Le guide spirituel. Un autre nom pour le maître qui montre le chemin vers Allah.", emoji: '🌟' },
+  { term: 'Suluk', arabic: 'السلوك', definition: "Le voyage spirituel intérieur. Le parcours du cœur à travers les différentes étapes de la purification.", emoji: '🛤️' },
+  { term: 'Fana', arabic: 'الفناء', definition: "L'anéantissement de l'ego. C'est l'état où le soi disparaît pour laisser place à la présence divine.", emoji: '🌊' },
+  { term: 'Baqa', arabic: 'البقاء', definition: "La subsistance en Dieu. Après l'anéantissement de l'ego, c'est vivre dans la conscience permanente d'Allah.", emoji: '🌅' },
+  { term: 'Muraqaba', arabic: 'المراقبة', definition: "La méditation contemplative. Observer silencieusement son cœur et la présence d'Allah en soi.", emoji: '👁️' },
+  { term: 'Hilm', arabic: 'الحلم', definition: "La douceur et la sagesse dans le comportement. Ne pas réagir sous le coup de la colère.", emoji: '🕊️' },
+  { term: 'Adab', arabic: 'الأدب', definition: "La bonne éducation spirituelle. Le respect, la politesse et les bonnes manières dans tout ce qu'on fait.", emoji: '📜' },
+  { term: 'Sadaqah', arabic: 'الصدقة', definition: "La charité. Donner avec générosité, que ce soit de l'argent, du temps ou un sourire.", emoji: '🤝' },
+  { term: 'Shukr', arabic: 'الشكر', definition: "La gratitude. Remercier Allah pour toutes Ses bénédictions, même les plus petites.", emoji: '🙏' },
+  { term: 'Khalwa', arabic: 'الخلوة', definition: "La retraite spirituelle. Se retirer du bruit du monde pour se concentrer sur Allah.", emoji: '🌙' },
+  { term: 'Nur', arabic: 'النور', definition: "La lumière divine. La lumière qu'Allah place dans le cœur des croyants.", emoji: '💡' },
+  { term: 'Sirat', arabic: 'الصراط', definition: "Le chemin droit. La voie de la vérité et de la justice en islam.", emoji: '🛤️' },
+  { term: 'Ihsan', arabic: 'الإحسان', definition: "L'excellence spirituelle. Adorer Allah comme si on Le voyait, car Lui nous voit.", emoji: '💎' },
+  { term: 'Rida', arabic: 'الرضا', definition: "La satisfaction divine. Accepter avec joie tout ce qu'Allah nous donne, le bien comme l'épreuve.", emoji: '😊' },
+  { term: 'Wird', arabic: 'الورد', definition: "Les litanies quotidiennes. Des prières et invocations répétées régulièrement pour nourrir le cœur.", emoji: '📖' },
 ];
 
 // Alphabetically sorted terms (cached)
@@ -82,6 +83,7 @@ export default function SpiritualGlossary({ isOpen, onClose }: SpiritualGlossary
     return sortedTerms.filter(
       (t) =>
         t.term.toLowerCase().includes(q) ||
+        t.arabic.includes(q) ||
         t.definition.toLowerCase().includes(q)
     );
   }, [searchQuery]);
@@ -174,9 +176,14 @@ export default function SpiritualGlossary({ isOpen, onClose }: SpiritualGlossary
                           {item.emoji}
                         </span>
                         <div className="flex-1 min-w-0">
-                          <h3 className="font-serif text-base sm:text-lg font-bold text-amber-400 group-hover:text-amber-300 transition-colors duration-300">
-                            {item.term}
-                          </h3>
+                          <div className="flex items-baseline gap-3 flex-wrap">
+                            <h3 className="font-serif text-base sm:text-lg font-bold text-amber-400 group-hover:text-amber-300 transition-colors duration-300">
+                              {item.term}
+                            </h3>
+                            <span className="text-amber-300/40 text-sm font-arabic" dir="rtl">
+                              {item.arabic}
+                            </span>
+                          </div>
                           <p className="font-serif text-sm text-amber-200/50 leading-relaxed mt-1.5">
                             {item.definition}
                           </p>

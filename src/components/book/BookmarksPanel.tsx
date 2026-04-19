@@ -1,10 +1,11 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { Bookmark, X, ChevronRight, BookOpen } from 'lucide-react';
+import { Bookmark, X, ChevronRight, BookOpen, Trash2 } from 'lucide-react';
 import { useStoryStore } from '@/store/story-store';
 import { storyPages } from '@/data/story-data';
 import type { MoodType } from '@/lib/story-types';
+import { useState } from 'react';
 
 interface BookmarksPanelProps {
   isOpen: boolean;
@@ -32,7 +33,8 @@ const chapterLabels: Record<number, string> = {
 };
 
 export default function BookmarksPanel({ isOpen, onClose, onNavigate }: BookmarksPanelProps) {
-  const { bookmarks } = useStoryStore();
+  const { bookmarks, toggleBookmark } = useStoryStore();
+  const [pendingDelete, setPendingDelete] = useState<string | null>(null);
 
   const handleNavigate = (pageId: string) => {
     onNavigate(pageId);
@@ -82,7 +84,12 @@ export default function BookmarksPanel({ isOpen, onClose, onNavigate }: Bookmark
               <div className="space-y-2">
                 {bookmarks.length === 0 && (
                   <div className="py-12 text-center">
-                    <BookOpen className="w-10 h-10 text-amber-800/20 mx-auto mb-3" />
+                    <div className="relative inline-block mb-4">
+                      <BookOpen className="w-12 h-12 text-amber-800/20 mx-auto" />
+                      <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-amber-700/10 border border-amber-800/15 flex items-center justify-center">
+                        <Bookmark className="w-2 h-2 text-amber-700/25" />
+                      </div>
+                    </div>
                     <p className="text-amber-200/30 text-sm font-serif italic">
                       Aucun favori pour le moment...
                     </p>
@@ -107,9 +114,9 @@ export default function BookmarksPanel({ isOpen, onClose, onNavigate }: Bookmark
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.06 }}
                       onClick={() => handleNavigate(pageId)}
-                      className="w-full text-left flex items-center gap-3 px-4 py-3 rounded-lg bg-amber-950/15 border border-amber-800/10 hover:border-amber-700/25 hover:bg-amber-950/25 transition-all duration-300 group"
+                      className="w-full text-left flex items-center gap-3 px-4 py-3 rounded-lg glass-card-amber group"
                     >
-                      <div className="shrink-0 w-9 h-9 rounded-lg bg-amber-900/25 border border-amber-800/20 flex items-center justify-center text-sm group-hover:bg-amber-800/30 group-hover:border-amber-700/30 transition-all duration-300 group-hover:scale-105">
+                      <div className="bookmark-pulse shrink-0 w-9 h-9 rounded-lg bg-amber-900/25 border border-amber-800/20 flex items-center justify-center text-sm group-hover:bg-amber-800/30 group-hover:border-amber-700/30 transition-all duration-300 group-hover:scale-105">
                         {moodInfo.emoji}
                       </div>
                       <div className="flex-1 min-w-0">
@@ -122,6 +129,42 @@ export default function BookmarksPanel({ isOpen, onClose, onNavigate }: Bookmark
                           <span className="text-amber-500/30 text-xs font-serif">{moodInfo.label}</span>
                         </div>
                       </div>
+                      {pendingDelete === pageId ? (
+                        <div className="flex items-center gap-1 shrink-0">
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              toggleBookmark(pageId);
+                              setPendingDelete(null);
+                            }}
+                            className="p-1.5 rounded-md bg-red-900/20 border border-red-800/20 hover:bg-red-800/30 transition-colors"
+                            aria-label="Confirmer la suppression"
+                          >
+                            <Trash2 className="w-3 h-3 text-red-400/60" />
+                          </button>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setPendingDelete(null);
+                            }}
+                            className="p-1.5 rounded-md bg-amber-950/30 border border-amber-800/15 hover:bg-amber-900/20 transition-colors"
+                            aria-label="Annuler"
+                          >
+                            <X className="w-3 h-3 text-amber-400/40" />
+                          </button>
+                        </div>
+                      ) : (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setPendingDelete(pageId);
+                          }}
+                          className="bookmark-delete-btn p-1.5 rounded-md hover:bg-amber-900/20 transition-colors shrink-0"
+                          aria-label="Supprimer le favori"
+                        >
+                          <Trash2 className="w-3.5 h-3.5 text-amber-500/30 hover:text-amber-400/60 transition-colors" />
+                        </button>
+                      )}
                       <ChevronRight className="w-3.5 h-3.5 text-amber-500/30 group-hover:text-amber-500/50 shrink-0 transition-colors duration-300" />
                     </motion.button>
                   );

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Settings, Volume2, VolumeX, Volume1, Type, Play, Trophy } from 'lucide-react';
+import { X, Settings, Volume2, VolumeX, Volume1, Type, Play, Trophy, AlignJustify, CaseSensitive } from 'lucide-react';
 import { useStoryStore } from '@/store/story-store';
 import { Switch } from '@/components/ui/switch';
 import { Separator } from '@/components/ui/separator';
@@ -15,11 +15,15 @@ interface SettingsPanelProps {
 export default function SettingsPanel({ isOpen, onClose, onOpenAchievements }: SettingsPanelProps) {
   const {
     fontSize,
+    lineHeight,
+    fontFamily,
     soundEnabled,
     soundVolume,
     autoContinue,
     achievements,
     setFontSize,
+    setLineHeight,
+    setFontFamily,
     setSoundEnabled,
     setSoundVolume,
     setAutoContinue,
@@ -199,6 +203,69 @@ export default function SettingsPanel({ isOpen, onClose, onOpenAchievements }: S
                   <span className={`text-xs font-serif ${autoContinue ? 'text-amber-300/60' : 'text-amber-500/30'}`}>
                     Auto
                   </span>
+                </div>
+              </div>
+
+              <Separator className="bg-amber-800/10" />
+
+              {/* Line Height */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <AlignJustify className="w-4 h-4 text-amber-500/60" />
+                  <h3 className="text-amber-200/80 text-sm font-serif font-semibold">Espacement des lignes</h3>
+                </div>
+                <p className="text-amber-500/40 text-xs font-serif">
+                  Ajuster l&apos;interligne de lecture
+                </p>
+                <div className="flex gap-2 mt-2">
+                  {([
+                    { value: 'compact' as const, label: 'Serré' },
+                    { value: 'normal' as const, label: 'Normal' },
+                    { value: 'relaxed' as const, label: 'Large' },
+                  ]).map((option) => (
+                    <button
+                      key={option.value}
+                      onClick={() => setLineHeight(option.value)}
+                      className={`flex-1 py-2 px-3 rounded-lg text-sm font-serif transition-all duration-200 border ${
+                        lineHeight === option.value
+                          ? 'bg-amber-700/30 border-amber-600/40 text-amber-200 shadow-sm shadow-amber-900/20'
+                          : 'bg-amber-950/20 border-amber-800/10 text-amber-300/50 hover:bg-amber-900/20 hover:text-amber-200/70'
+                      }`}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <Separator className="bg-amber-800/10" />
+
+              {/* Font Family */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <CaseSensitive className="w-4 h-4 text-amber-500/60" />
+                  <h3 className="text-amber-200/80 text-sm font-serif font-semibold">Police de caractère</h3>
+                </div>
+                <p className="text-amber-500/40 text-xs font-serif">
+                  Choisir le style typographique
+                </p>
+                <div className="flex gap-2 mt-2">
+                  {([
+                    { value: 'serif' as const, label: 'Classique' },
+                    { value: 'sans' as const, label: 'Moderne' },
+                  ]).map((option) => (
+                    <button
+                      key={option.value}
+                      onClick={() => setFontFamily(option.value)}
+                      className={`flex-1 py-2 px-3 rounded-lg text-sm transition-all duration-200 border ${
+                        fontFamily === option.value
+                          ? 'bg-amber-700/30 border-amber-600/40 text-amber-200 shadow-sm shadow-amber-900/20'
+                          : 'bg-amber-950/20 border-amber-800/10 text-amber-300/50 hover:bg-amber-900/20 hover:text-amber-200/70'
+                      } ${option.value === 'serif' ? 'font-serif' : 'font-sans'}`}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
                 </div>
               </div>
 

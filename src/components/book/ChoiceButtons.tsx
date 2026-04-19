@@ -195,10 +195,10 @@ export default function ChoiceButtons({ choices, onChoose }: ChoiceButtonsProps)
             />
 
             <div className="relative flex items-start gap-4">
-              {/* Number indicator with decorative badge */}
-              <div className="choice-badge choice-badge-ring shrink-0 w-7 h-7 rounded-full border border-amber-700/30 bg-amber-950/40 flex items-center justify-center mt-0.5">
-                <span className="text-amber-500/60 text-xs font-serif font-bold group-hover:text-amber-400/80 transition-colors duration-300">
-                  {index + 1}
+              {/* Letter badge with golden ring animation on hover */}
+              <div className="choice-letter-badge choice-badge-ring shrink-0 mt-0.5">
+                <span className="text-amber-500/60 text-xs font-serif font-bold group-hover:text-amber-300/90 transition-colors duration-300">
+                  {String.fromCharCode(65 + index)}
                 </span>
               </div>
 

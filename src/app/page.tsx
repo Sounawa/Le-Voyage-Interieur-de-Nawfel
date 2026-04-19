@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { BookOpen, BookMarked, Bookmark, HelpCircle, MapIcon, Moon, Scroll, Settings, Star, Trophy } from 'lucide-react';
+import { BarChart3, BookOpen, BookMarked, Bookmark, GitBranch, HelpCircle, MapIcon, Moon, Scroll, Settings, Star, Trophy } from 'lucide-react';
 import { useStoryStore } from '@/store/story-store';
 import { storyPages, firstPageId } from '@/data/story-data';
 import type { Choice, MoodType } from '@/lib/story-types';
@@ -34,8 +34,10 @@ import AchievementsPanel from '@/components/book/AchievementsPanel';
 import TTSNarration from '@/components/book/TTSNarration';
 import ChapterMap from '@/components/book/ChapterMap';
 import SpiritualQuiz from '@/components/book/SpiritualQuiz';
+import StoryPathMap from '@/components/book/StoryPathMap';
 import FocusModeToggle from '@/components/book/FocusModeToggle';
 import StoryHint from '@/components/book/StoryHint';
+import ReadingStats from '@/components/book/ReadingStats';
 import { useSwipeNavigation } from '@/hooks/useSwipeNavigation';
 import type { PageTurnSoundHandle } from '@/components/book/PageTurnSound';
 import type { ChoiceSoundHandle } from '@/components/book/ChoiceSound';
@@ -61,6 +63,8 @@ export default function Home() {
   const [achievementsOpen, setAchievementsOpen] = useState(false);
   const [chapterMapOpen, setChapterMapOpen] = useState(false);
   const [quizOpen, setQuizOpen] = useState(false);
+  const [storyPathOpen, setStoryPathOpen] = useState(false);
+  const [readingStatsOpen, setReadingStatsOpen] = useState(false);
   const [isAppReady, setIsAppReady] = useState(false);
   const pageTurnSoundRef = useRef<PageTurnSoundHandle>(null);
   const choiceSoundRef = useRef<ChoiceSoundHandle>(null);
@@ -358,6 +362,25 @@ export default function Home() {
                   <Trophy className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
                 </button>
               )}
+
+              {/* Reading Stats button */}
+              {showSettingsButton && (
+                <button onClick={() => setReadingStatsOpen(true)} className="p-2.5 rounded-lg bg-[#0d0c14]/80 backdrop-blur-sm border border-amber-800/15 hover:bg-amber-900/20 hover:border-amber-700/30 transition-all duration-300 group" title="Statistiques" aria-label="Statistiques de lecture">
+                  <BarChart3 className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
+                </button>
+              )}
+
+              {/* Story Path Map button */}
+              {showSettingsButton && (
+                <button
+                  onClick={() => setStoryPathOpen(true)}
+                  className="p-2.5 rounded-lg bg-[#0d0c14]/80 backdrop-blur-sm border border-amber-800/15 hover:bg-amber-900/20 hover:border-amber-700/30 transition-all duration-300 group"
+                  title="Carte des chemins"
+                  aria-label="Ouvrir la carte des chemins"
+                >
+                  <GitBranch className="w-4 h-4 text-amber-500/50 group-hover:text-amber-400/70 transition-colors" />
+                </button>
+              )}
             </div>}
           </>
         )}
@@ -473,6 +496,12 @@ export default function Home() {
 
         {/* Spiritual Quiz Panel */}
         <SpiritualQuiz isOpen={quizOpen} onClose={() => setQuizOpen(false)} />
+
+        {/* Reading Stats Panel */}
+        <ReadingStats isOpen={readingStatsOpen} onClose={() => setReadingStatsOpen(false)} />
+
+        {/* Story Path Map */}
+        <StoryPathMap isOpen={storyPathOpen} onClose={() => setStoryPathOpen(false)} />
 
         {/* Bookmarks Panel */}
         <BookmarksPanel

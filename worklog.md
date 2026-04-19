@@ -295,7 +295,7 @@ src/
 5. **Tome 2**: Expand with new chapters and spiritual concepts
 6. **Hidden 5th ending**: Special ending triggered by specific tag combinations
 7. **Performance**: Optimize particle animations for low-end devices
-8. **Glossary expansion**: Add Arabic script for each term
+8. ~~**Glossary expansion**: Add Arabic script for each term~~ ✅ Done (Task ID: 1)
 9. ~~**Chapter transition sound**: Custom sound when entering new chapters~~ ✅ Done in Phase 9
 10. **Accessibility**: Full screen reader support, ARIA live regions
 11. **Print/PDF**: Export journey as a formatted PDF document
@@ -534,3 +534,66 @@ Stage Summary:
 - Small pulsing dots indicate choice count
 - Resets on any user interaction, auto-restarts timer
 - Lint: ✅ Clean (all errors resolved)
+
+---
+Task ID: 1
+Agent: Glossary Arabic Script Agent
+Task: Add Arabic script to all 25 Tassawuf terms in SpiritualGlossary
+
+Work Log:
+- Added `arabic: string` field to GlossaryTerm interface
+- Added authentic Arabic script to all 25 glossary terms (التصوف, القلب, النفس, etc.)
+- Updated glossary term card JSX: wrapped term heading in flex container with Arabic span alongside French term
+- Added `dir="rtl"` and `font-arabic` class to Arabic text for proper rendering
+- Enhanced search filter to also match against Arabic text (`t.arabic.includes(q)`)
+- Added Google Fonts import for Amiri (Naskh-style Arabic font) at top of globals.css
+- Added `.font-arabic` CSS class with Amiri + fallback fonts, RTL direction, and letter-spacing
+
+Stage Summary:
+- 25 terms now display Arabic script next to French transliteration
+- Arabic text styled with Amiri font, semi-transparent amber color, RTL direction
+- Search supports Arabic input for finding terms
+- Lint: ✅ Clean | No other components modified
+
+---
+Task ID: 4+5+6
+Agent: Settings + Styling Polish Agent
+Task: Add line-height/font-family settings + comprehensive styling polish across components
+
+Work Log:
+- Added `lineHeight` ('compact' | 'normal' | 'relaxed') and `fontFamily` ('serif' | 'sans') to Zustand store interface, initial state, and actions
+- Added two new settings sections to SettingsPanel.tsx:
+  - Espacement des lignes (Line Height): 3-option button group (Serré/Normal/Large) with AlignJustify icon
+  - Police de caractère (Font Family): 2-option toggle (Classique/Moderne) with CaseSensitive icon, font preview in button
+- Updated StoryPageView.tsx to apply lineHeight and fontFamily from store:
+  - Added `lineHeightClasses` map (compact → leading-relaxed, normal → leading-loose, relaxed → leading-[2])
+  - Applied fontFamily class (font-serif or font-sans) to paragraph container and individual paragraphs
+- Enhanced ChoiceButtons.tsx:
+  - Replaced numeric badge with letter badge (A, B, C) using `String.fromCharCode(65 + index)`
+  - Applied `.choice-letter-badge` class with golden ring animation on hover
+- Enhanced ChapterTitle.tsx:
+  - Added 4 floating star particles behind chapter title with staggered animation delays
+  - Enhanced spiritual quote with warm text-shadow (`chapter-quote-warm` class)
+- Enhanced BookmarksPanel.tsx:
+  - Added golden pulse animation on bookmark emoji icons (`.bookmark-pulse`)
+  - Enhanced empty state with overlapping bookmark icon illustration
+  - Added delete confirmation UX: click trash → confirm/cancel buttons appear inline
+  - Applied `.glass-card-amber` class to bookmark items
+  - Delete button appears on hover only (`.bookmark-delete-btn`)
+- Added new CSS classes to globals.css:
+  - `.animated-gold-border` + `@keyframes border-shimmer`
+  - `.choice-letter-badge` with hover golden ring effect
+  - `.floating-star-particle` + `@keyframes star-float`
+  - `.bookmark-pulse` + `@keyframes bookmark-glow`
+  - `.glass-card-amber` with hover lift + border animation
+  - `.chapter-quote-warm` text-shadow
+  - `.bookmark-delete-btn` hover reveal
+
+Stage Summary:
+- Settings: 2 new reading customization options (line height, font family)
+- Store: 2 new state fields + 2 new actions, persisted via Zustand
+- ChoiceButtons: letter badges (A/B/C) instead of numbers with golden ring animation
+- ChapterTitle: 4 floating star particles + enhanced quote styling
+- BookmarksPanel: golden pulse on icons, illustration empty state, inline delete confirmation
+- 8 new CSS animation/utility classes added
+- Lint: ✅ Clean on all modified files (1 pre-existing error in ReadingStats.tsx unrelated)
