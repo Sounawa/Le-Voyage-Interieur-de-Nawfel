@@ -51,7 +51,7 @@ export default function ProgressBar({ currentPageId, totalPages }: ProgressBarPr
       {/* Progress bar with shimmer */}
       <div className="h-1 w-full bg-black/30 backdrop-blur-sm relative overflow-hidden">
         <motion.div
-          className="h-full progress-bar-shimmer progress-glow relative"
+          className="h-full progress-bar-shimmer progress-shimmer-active progress-glow relative"
           initial={{ width: 0 }}
           animate={{ width: `${progress * 100}%` }}
           transition={{ duration: 1.2, ease: 'easeInOut' }}
@@ -104,9 +104,9 @@ export default function ProgressBar({ currentPageId, totalPages }: ProgressBarPr
                 <motion.div
                   className={`rounded-full transition-colors duration-500 relative
                     ${isCompleted
-                      ? 'bg-amber-500'
+                      ? 'bg-amber-500 progress-chapter-dot'
                       : isCurrent
-                        ? 'bg-amber-400 milestone-dot-current'
+                        ? 'bg-amber-400 milestone-dot-current progress-chapter-dot'
                         : 'bg-amber-900/30 border border-amber-800/20'
                     }
                   `}
@@ -115,8 +115,6 @@ export default function ProgressBar({ currentPageId, totalPages }: ProgressBarPr
                     height: isHovered ? 10 : 8,
                   }}
                   transition={{ duration: 0.2, ease: 'easeOut' }}
-                  style={isCompleted ? { boxShadow: '0 0 4px rgba(251, 191, 36, 0.4)' } :
-                    isCurrent ? { boxShadow: '0 0 6px rgba(251, 191, 36, 0.5)' } : undefined}
                 />
 
                 {/* Hover label tooltip with chapter icon */}

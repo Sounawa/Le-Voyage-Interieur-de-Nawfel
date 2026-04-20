@@ -193,7 +193,7 @@ export default function EndingScreen({ page, endingsFound, onRestart }: EndingSc
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="min-h-screen flex items-center justify-center px-4 py-20 relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center px-4 py-20 relative overflow-hidden footer-noise"
     >
       {/* Confetti particles floating up with varied colors */}
       {confettiParticles.map((p, i) => (

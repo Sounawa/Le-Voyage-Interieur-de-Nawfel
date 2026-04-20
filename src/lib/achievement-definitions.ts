@@ -78,6 +78,30 @@ export const ACHIEVEMENTS: Record<string, AchievementDef> = {
     emoji: '🔄',
     description: 'Visite la même page 2 fois ou plus',
   },
+  streak_3: {
+    id: 'streak_3',
+    title: 'Flamme Ininterrompue',
+    emoji: '🔥',
+    description: 'Série de lecture de 3 jours',
+  },
+  streak_7: {
+    id: 'streak_7',
+    title: 'Étoile Filante',
+    emoji: '⭐',
+    description: 'Série de lecture de 7 jours',
+  },
+  streak_14: {
+    id: 'streak_14',
+    title: 'Pierre Précieuse',
+    emoji: '💎',
+    description: 'Série de lecture de 14 jours',
+  },
+  streak_30: {
+    id: 'streak_30',
+    title: 'Couronne d\'Or',
+    emoji: '👑',
+    description: 'Série de lecture de 30 jours',
+  },
 };
 
 export const ACHIEVEMENT_IDS = Object.keys(ACHIEVEMENTS);

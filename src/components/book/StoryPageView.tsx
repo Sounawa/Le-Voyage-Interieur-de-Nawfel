@@ -110,10 +110,16 @@ export default function StoryPageView({ page, onContinue }: StoryPageViewProps) 
         exit={{ opacity: 0, x: -30 }}
         transition={{ duration: 0.8, ease: 'easeInOut' }}
         onClick={handlePageClick}
-        className={`page-enter flex items-start justify-center min-h-screen px-4 py-20 sm:py-24 relative ${isLinear ? 'cursor-pointer active:scale-[0.99]' : ''}`}
+        className={`page-turn-flash page-enter flex items-start justify-center min-h-screen px-4 py-20 sm:py-24 relative ${isLinear ? 'cursor-pointer active:scale-[0.99]' : ''}`}
       >
         {/* Atmospheric ambient glow */}
         <div className="page-ambient-glow" />
+
+        {/* Ink splash animation at drop cap area */}
+        <div className="ink-splash" style={{ top: '20%', left: 'max(1rem, calc(50% - 320px))' } as React.CSSProperties}>
+          <span className="ink-splash-dot-1" />
+          <span className="ink-splash-dot-2" />
+        </div>
 
         {/* Ornamental manuscript border */}
         <div className="manuscript-border">

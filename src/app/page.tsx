@@ -39,6 +39,7 @@ import FocusModeToggle from '@/components/book/FocusModeToggle';
 import StoryHint from '@/components/book/StoryHint';
 import ReadingStats from '@/components/book/ReadingStats';
 import ReadingTimer from '@/components/book/ReadingTimer';
+import ReadingStreaks from '@/components/book/ReadingStreaks';
 import PageSearch from '@/components/book/PageSearch';
 import { useSwipeNavigation } from '@/hooks/useSwipeNavigation';
 import type { PageTurnSoundHandle } from '@/components/book/PageTurnSound';
@@ -569,6 +570,9 @@ export default function Home() {
 
         {/* Reading Timer — visible during reading */}
         {showReadingUI && <ReadingTimer />}
+
+        {/* Reading Streaks — visible during reading, bottom-left */}
+        {showReadingUI && !focusMode && <ReadingStreaks />}
       </main>
 
       {/* Sticky footer — only during reading, hidden in focus mode */}

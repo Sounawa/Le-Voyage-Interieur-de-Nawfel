@@ -119,7 +119,7 @@ export default function ChoiceButtons({ choices, onChoose }: ChoiceButtonsProps)
               handleMouseLeave(index);
             }}
             onMouseMove={(e) => handleMouseMove(e, index)}
-            className={`group choice-hover-enhanced relative w-full text-left px-5 py-4 sm:px-6 sm:py-5 rounded-xl overflow-hidden transition-all duration-400 active:scale-[0.98]
+            className={`group choice-hover-enhanced choice-breathing relative w-full text-left px-5 py-4 sm:px-6 sm:py-5 rounded-xl overflow-hidden transition-all duration-400 active:scale-[0.98]
               ${hoveredIndex === index ? 'glass-card gradient-border' : 'glass-card'}`}
           >
             {/* Initial shimmer reveal animation */}
@@ -196,7 +196,7 @@ export default function ChoiceButtons({ choices, onChoose }: ChoiceButtonsProps)
 
             <div className="relative flex items-start gap-4">
               {/* Letter badge with golden ring animation on hover */}
-              <div className="choice-letter-badge choice-badge-ring shrink-0 mt-0.5">
+              <div className="choice-letter-badge choice-badge-ring choice-badge-float shrink-0 mt-0.5">
                 <span className="text-amber-500/60 text-xs font-serif font-bold group-hover:text-amber-300/90 transition-colors duration-300">
                   {String.fromCharCode(65 + index)}
                 </span>

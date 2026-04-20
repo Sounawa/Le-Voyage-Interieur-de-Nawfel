@@ -36,6 +36,12 @@ interface StoryStore {
   sessionCount: number;
   lastSessionDate: string | null;
 
+  // Streak tracking
+  currentStreak: number;
+  bestStreak: number;
+  streakDates: string[];
+  readingDates: Record<string, number>;
+
   // Achievements
   achievements: string[];
 
@@ -108,6 +114,10 @@ const settingsInitialState = {
   totalReadingTime: 0,
   sessionCount: 0,
   lastSessionDate: null as string | null,
+  currentStreak: 0,
+  bestStreak: 0,
+  streakDates: [] as string[],
+  readingDates: {} as Record<string, number>,
   achievements: [] as string[],
 };
 
@@ -339,10 +349,55 @@ export const useStoryStore = create<StoryStore>()(
         set((state) => {
           const today = new Date().toISOString().split('T')[0];
           const isNewSession = state.lastSessionDate !== today;
+
+          // Update streak dates
+          const newStreakDates = state.streakDates.includes(today)
+            ? state.streakDates
+            : [...state.streakDates, today];
+
+          // Update reading dates (pages read today)
+          const newReadingDates = { ...state.readingDates };
+          newReadingDates[today] = (newReadingDates[today] || 0) + 1;
+
+          // Calculate current streak: consecutive days ending today or yesterday
+          let currentStreak = 0;
+          const sortedDates = [...newStreakDates].sort().reverse(); // newest first
+          if (sortedDates.length > 0) {
+            // Streak must include today or yesterday
+            const mostRecent = sortedDates[0];
+            const todayDate = new Date(today);
+            const mostRecentDate = new Date(mostRecent);
+            const diffDays = Math.floor(
+              (todayDate.getTime() - mostRecentDate.getTime()) / (1000 * 60 * 60 * 24)
+            );
+
+            if (diffDays <= 1) {
+              currentStreak = 1;
+              for (let i = 1; i < sortedDates.length; i++) {
+                const prevDate = new Date(sortedDates[i - 1]);
+                const currDate = new Date(sortedDates[i]);
+                const gap = Math.floor(
+                  (prevDate.getTime() - currDate.getTime()) / (1000 * 60 * 60 * 24)
+                );
+                if (gap === 1) {
+                  currentStreak++;
+                } else {
+                  break;
+                }
+              }
+            }
+          }
+
+          const bestStreak = Math.max(state.bestStreak, currentStreak);
+
           return {
             totalReadingTime: state.totalReadingTime + ms,
             sessionCount: isNewSession ? state.sessionCount + 1 : state.sessionCount,
             lastSessionDate: today,
+            currentStreak,
+            bestStreak,
+            streakDates: newStreakDates,
+            readingDates: newReadingDates,
           };
         });
       },
