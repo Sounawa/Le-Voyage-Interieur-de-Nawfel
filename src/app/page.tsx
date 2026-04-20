@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { BarChart3, BookOpen, BookMarked, Bookmark, GitBranch, HelpCircle, MapIcon, Moon, Scroll, Search, Settings, Star, Trophy } from 'lucide-react';
+import { BarChart3, BookOpen, BookMarked, Bookmark, GitBranch, HelpCircle, Home as HomeIcon, MapIcon, Moon, Scroll, Search, Settings, Star, Trophy } from 'lucide-react';
 import { useStoryStore } from '@/store/story-store';
 import { storyPages, firstPageId } from '@/data/story-data';
 import type { Choice, MoodType } from '@/lib/story-types';
@@ -97,6 +97,11 @@ export default function Home() {
       chapterTransitionSoundRef.current?.playChapterTransition();
     }
   }, [currentPageId]);
+
+  const handleGoHome = useCallback(() => {
+    setView('cover');
+    setTransitioningChapter(null);
+  }, []);
 
   const handleRestart = useCallback(() => {
     restart();
@@ -406,6 +411,18 @@ export default function Home() {
 
         {/* Back button — hidden in focus mode */}
         {showBackButton && !focusMode && <BackButton onGoBack={handleGoBack} />}
+
+        {/* Home button — hidden in focus mode */}
+        {showReadingUI && !focusMode && (
+          <button
+            onClick={handleGoHome}
+            className="fixed top-14 left-4 z-30 p-2.5 rounded-lg bg-transparent hover:bg-amber-900/20 border border-transparent hover:border-amber-800/15 transition-all duration-300 group"
+            title="Accueil"
+            aria-label="Retourner à l'accueil"
+          >
+            <HomeIcon className="w-4 h-4 text-amber-500/40 group-hover:text-amber-400/70 transition-colors" />
+          </button>
+        )}
 
         {/* Bookmarks panel button — hidden in focus mode */}
         {showBookmarkButton && !focusMode && (

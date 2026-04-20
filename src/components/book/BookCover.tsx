@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
-import { BookOpen, RotateCcw, Star } from 'lucide-react';
+import { BookOpen, Play, RotateCcw, Star } from 'lucide-react';
 import { useStoryStore } from '@/store/story-store';
 
 interface BookCoverProps {
@@ -421,7 +421,7 @@ export default function BookCover({ onStart }: BookCoverProps) {
           grand ennemi : son propre ego.
         </motion.p>
 
-        {/* 2. Start button with shimmer sweep + outer glow */}
+        {/* 2. Start / Resume / Restart buttons */}
         {!hasStarted ? (
           <motion.button
             initial={{ opacity: 0, scale: 0.9 }}
@@ -461,41 +461,65 @@ export default function BookCover({ onStart }: BookCoverProps) {
             <span className="relative z-10">Commencer l&apos;aventure</span>
           </motion.button>
         ) : (
-          /* 4. Recommencer button — glass-like, muted, visually distinct */
-          <motion.button
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={handleRestart}
-            className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-lg font-serif text-lg transition-all duration-300 overflow-hidden backdrop-blur-md"
-            style={{
-              background: 'rgba(120, 80, 40, 0.12)',
-              border: '1px solid rgba(217, 119, 6, 0.18)',
-              color: 'rgba(251, 191, 36, 0.75)',
-              boxShadow: '0 4px 16px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.04)',
-            }}
-          >
-            {/* Subtle glass shimmer */}
-            <motion.div
-              className="absolute inset-0 pointer-events-none"
+          /* When has save: show Reprendre (primary) + Recommencer (secondary) */
+          <div className="flex flex-col items-center gap-3">
+            {/* Reprendre — primary action, breathing glow */}
+            <motion.button
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 2, duration: 0.6 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={handleStart}
+              className="breathing-glow group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-amber-800 to-amber-700 hover:from-amber-700 hover:to-amber-600 text-amber-100 font-serif text-lg rounded-lg transition-all duration-300 overflow-hidden"
+            >
+              {/* Shimmer sweep overlay */}
+              <motion.div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.12) 50%, transparent 60%)',
+                  backgroundSize: '250% 100%',
+                }}
+                animate={{
+                  backgroundPosition: ['100% 0%', '-100% 0%'],
+                }}
+                transition={{
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: 'linear',
+                  repeatDelay: 1.5,
+                }}
+              />
+              <div className="absolute inset-0 rounded-lg border border-amber-500/20" />
+              <div
+                className="absolute inset-[-1px] rounded-lg pointer-events-none"
+                style={{
+                  boxShadow: '0 0 12px rgba(217, 119, 6, 0.1), inset 0 0 12px rgba(217, 119, 6, 0.05)',
+                }}
+              />
+              <Play className="w-5 h-5 relative z-10" />
+              <span className="relative z-10">Reprendre le voyage</span>
+            </motion.button>
+
+            {/* Recommencer — secondary, muted */}
+            <motion.button
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 2.3, duration: 0.6 }}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={handleRestart}
+              className="group relative inline-flex items-center gap-2 px-6 py-2.5 rounded-lg font-serif text-sm transition-all duration-300 overflow-hidden backdrop-blur-md"
               style={{
-                background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.06) 50%, transparent 60%)',
-                backgroundSize: '250% 100%',
+                background: 'rgba(120, 80, 40, 0.1)',
+                border: '1px solid rgba(217, 119, 6, 0.15)',
+                color: 'rgba(251, 191, 36, 0.55)',
               }}
-              animate={{
-                backgroundPosition: ['100% 0%', '-100% 0%'],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: 'linear',
-                repeatDelay: 3,
-              }}
-            />
-            <RotateCcw className="w-5 h-5 relative z-10" />
-            <span className="relative z-10">Recommencer le voyage</span>
-          </motion.button>
+            >
+              <RotateCcw className="w-3.5 h-3.5 relative z-10" />
+              <span className="relative z-10">Recommencer</span>
+            </motion.button>
+          </div>
         )}
 
         {/* 7. Endings found badges — sparkle effect + staggered entrance */}
